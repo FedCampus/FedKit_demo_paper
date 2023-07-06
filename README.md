@@ -9,8 +9,9 @@
 - [ ] Benchmarking with simulated heterogeneity.
     - [ ] **Benchmarking basics (Steven, July 11)**.
 - [ ] HealthKit demo.
+    - [ ] **Refactor & clean up (Beilong)**.
     - [ ] UI.
     - [ ] ML model.
     - [ ] Data collection.
     - [ ] Backend deployment.
-    - [ ] **Background job (Beilong)**.
+    - [ ] *Background job (Beilong)*.
