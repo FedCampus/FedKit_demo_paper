@@ -8,3 +8,5 @@ for rapid FL development iteration.
 - Straightforward Android platform FL deployment with any TensorFlow model.
 - Spawning Flower servers on demand using a persistent process.
 - Changing ML models on the fly from the backend server.
+- Comprehensive testing, telemetry, and benchmarking support.
+- (Less relevant) FA with DP.
