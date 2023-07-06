@@ -1,9 +1,7 @@
 # What do we have
 
-Pipelined, user-friendly, customizable ML model deployment (and hopefully
-benchmarking) on Android (and hopefully iOS) for FL,
-where the ML models can be changed on the fly,
-for rapid FL development iteration.
+Pipelined, user-friendly, customizable FL & FA platform for rapid ML model
+deployment, iteration (and hopefully benchmarking) on Android (→ mobile).
 
 - Straightforward Android platform FL deployment with any TensorFlow model.
 - Spawning Flower servers on demand using a persistent process.
