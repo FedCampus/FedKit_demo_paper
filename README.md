@@ -3,6 +3,7 @@
 - [ ] ML model deployment pipeline.
     - [ ] Android.
         - [ ] **Upstream Android SDK (Steven, July 9)**.
+        - [ ] *Background job (Steven)*.
     - [ ] iOS.
         - [ ] Dynamic model loading and backend connection.
         - [ ] **iOS Basics (Johnny)**.
@@ -14,4 +15,3 @@
     - [ ] ML model.
     - [ ] Data collection.
     - [ ] Backend deployment.
-    - [ ] *Background job (Beilong)*.
