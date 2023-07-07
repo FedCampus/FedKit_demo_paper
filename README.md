@@ -4,6 +4,7 @@
     - [ ] Android.
         - [ ] **Upstream Android SDK (Steven, July 9)**.
         - [ ] *Background job (Steven, July 11)*.
+        - [ ] Rename `dyn_flower_android_drf` to `FedKit` (after Android SDK upstream).
     - [ ] iOS.
         - [ ] Dynamic model loading and backend connection.
         - [ ] **iOS Basics (Johnny, July 10)**.
