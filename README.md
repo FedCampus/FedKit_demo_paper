@@ -3,15 +3,23 @@
 - [ ] ML model deployment pipeline.
     - [ ] Android.
         - [ ] **Upstream Android SDK (Steven, July 9)**.
-        - [ ] *Background job (Steven)*.
+        - [ ] *Background job (Steven, July 11)*.
     - [ ] iOS.
         - [ ] Dynamic model loading and backend connection.
-        - [ ] **iOS Basics (Johnny)**.
+        - [ ] **iOS Basics (Johnny, July 10)**.
 - [ ] Benchmarking with simulated heterogeneity.
-    - [ ] **Benchmarking basics (Steven, July 11)**.
+    - [ ] *Benchmarking basics (Steven, July 12)*.
 - [ ] HealthKit demo.
-    - [ ] **Refactor & clean up (Beilong)**.
-    - [ ] UI.
+    - [ ] **Refactor & clean up (Beilong, July 8)**.
+    - [ ] User-facing functionality.
+        - [ ] **What to provide: idea (Beilong, July 11)**.
+        - [ ] UI.
     - [ ] ML model.
     - [ ] Data collection.
     - [ ] Backend deployment.
+        - [ ] **uWSGI Django setup (Johnny, July 8)**.
+            - [ ] Database connection.
+        - [ ] Map multiple ports to different subdomains.
+        - [ ] Static file (`.tflite`) serving.
+        - [ ] HTTPS for backend server (defer).
+        - [ ] SSL for Flower server (defer).
