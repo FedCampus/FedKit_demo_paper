@@ -7,7 +7,7 @@
         - [ ] Rename `dyn_flower_android_drf` to `FedKit` (after Android SDK upstream).
     - [ ] iOS.
         - [ ] Dynamic model loading and backend connection.
-        - [ ] **iOS Basics (Johnny, July 10)**.
+        - [ ] **iOS Basics (Johnny, July 12)**.
 - [ ] Benchmarking with simulated heterogeneity.
     - [ ] *Benchmarking basics (Steven, July 12)*.
 - [ ] HealthKit demo.
@@ -18,7 +18,7 @@
     - [ ] ML model.
     - [ ] Data collection.
     - [ ] Backend deployment.
-        - [ ] **uWSGI Django setup (Johnny, July 8)**.
+        - [ ] **uWSGI Django setup (Johnny, July 9)**.
             - [ ] Database connection.
         - [ ] Map multiple ports to different subdomains.
         - [ ] Static file (`.tflite`) serving.
