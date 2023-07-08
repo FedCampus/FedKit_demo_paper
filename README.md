@@ -11,7 +11,6 @@
 - [ ] Benchmarking with simulated heterogeneity.
     - [ ] *Benchmarking basics (Steven, July 12)*.
 - [ ] HealthKit demo.
-    - [ ] **Refactor & clean up (Beilong, July 8)**.
     - [ ] User-facing functionality.
         - [ ] **What to provide: idea (Beilong, July 11)**.
         - [ ] UI.
