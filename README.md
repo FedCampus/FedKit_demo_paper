@@ -2,9 +2,9 @@
 
 - [ ] ML model deployment pipeline.
     - [ ] Android.
-        - [ ] **Upstream Android SDK (Steven, July 9)**.
         - [ ] *Background job (Steven, July 11)*.
         - [ ] Rename `dyn_flower_android_drf` to `FedKit` (after Android SDK upstream).
+        - [ ] Follow up on upstream Android SDK (Steven).
     - [ ] iOS.
         - [ ] Dynamic model loading and backend connection.
         - [ ] **iOS Basics (Johnny, July 12)**.
