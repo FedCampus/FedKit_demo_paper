@@ -17,9 +17,5 @@
     - [ ] ML model.
     - [ ] Data collection.
     - [ ] Backend deployment.
-        - [ ] **uWSGI Django setup (Johnny, July 9)**.
-            - [ ] Database connection.
-        - [ ] Map multiple ports to different subdomains.
-        - [ ] Static file (`.tflite`) serving.
         - [ ] HTTPS for backend server (defer).
         - [ ] SSL for Flower server (defer).
