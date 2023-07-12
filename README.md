@@ -2,19 +2,20 @@
 
 - [ ] ML model deployment pipeline.
     - [ ] Android.
-        - [ ] *Background job (Steven, July 11)*.
-        - [ ] Rename `dyn_flower_android_drf` to `FedKit` (after Android SDK upstream).
-        - [ ] Follow up on upstream Android SDK (Steven).
+        - [ ] **Ensure background jobs run (Steven, July 13)**.
+        - [ ] Rename `dyn_flower_android_drf` to `FedKit`.
+            - [ ] Follow up on upstream Android SDK (Steven).
     - [ ] iOS.
         - [ ] Dynamic model loading and backend connection.
         - [ ] **iOS Basics (Johnny, July 12)**.
 - [ ] Benchmarking with simulated heterogeneity.
-    - [ ] *Benchmarking basics (Steven, July 12)*.
+    - [ ] *Benchmark-app-specific instruction w/ backend (Steven, July 15)*.
 - [ ] HealthKit demo.
     - [ ] User-facing functionality.
-        - [ ] **What to provide: idea (Beilong, July 11)**.
         - [ ] UI.
-    - [ ] ML model.
+        - [ ] **Integrate background service w/ Steven (Beilong, July 14)**.
+    - [ ] ML model: Transformer predicting workout probability (Beilong).
+        - [ ] *Basic transformer using HealthKit data (Beilong, July 15)*.
     - [ ] Data collection.
     - [ ] Backend deployment.
         - [ ] HTTPS for backend server (defer).
