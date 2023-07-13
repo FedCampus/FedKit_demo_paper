@@ -2,7 +2,7 @@
 
 - [ ] ML model deployment pipeline.
     - [ ] Android.
-        - [ ] **Ensure background jobs run (Steven, July 13)**.
+        - [ ] **Ensure background jobs run (Steven, July 14)**.
         - [ ] Rename `dyn_flower_android_drf` to `FedKit`.
             - [ ] Follow up on upstream Android SDK (Steven).
     - [ ] iOS.
