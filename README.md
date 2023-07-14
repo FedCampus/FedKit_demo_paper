@@ -17,6 +17,10 @@
     - [ ] ML model: Transformer predicting workout probability (Beilong).
         - [ ] *Basic transformer using HealthKit data (Beilong, July 15)*.
     - [ ] Data collection.
-    - [ ] Backend deployment.
-        - [ ] HTTPS for backend server (defer).
-        - [ ] SSL for Flower server (defer).
+- [ ] Literature review.
+
+## Deferred
+
+- [ ] Backend deployment.
+    - [ ] HTTPS for backend server.
+    - [ ] SSL for Flower server.
