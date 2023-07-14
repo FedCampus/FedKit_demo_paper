@@ -2,25 +2,44 @@
 
 - [ ] ML model deployment pipeline.
     - [ ] Android.
-        - [ ] **Ensure background jobs run (Steven, July 14)**.
         - [ ] Rename `dyn_flower_android_drf` to `FedKit`.
             - [ ] Follow up on upstream Android SDK (Steven).
     - [ ] iOS.
         - [ ] Dynamic model loading and backend connection.
-        - [ ] **iOS Basics (Johnny, July 12)**.
-- [ ] Benchmarking with simulated heterogeneity.
-    - [ ] *Benchmark-app-specific instruction w/ backend (Steven, July 15)*.
+        - [ ] **iOS Basics (Johnny/Steven, July 20)**.
 - [ ] HealthKit demo.
     - [ ] User-facing functionality.
         - [ ] UI.
-        - [ ] **Integrate background service w/ Steven (Beilong, July 14)**.
+        - [ ] **Integrate background service (Steven, July 15)**.
     - [ ] ML model: Transformer predicting workout probability (Beilong).
-        - [ ] *Basic transformer using HealthKit data (Beilong, July 15)*.
+        - [ ] **Basic transformer using HealthKit data (Beilong, July 15)**.
     - [ ] Data collection.
 - [ ] Literature review.
 
+## Learning
+
+Beilong:
+
+- [ ] Kotlin coroutines.
+    - [ ] Kotlin basics.
+- [ ] Transformer making.
+
+Johnny:
+
+- [ ] iOS development basics.
+
+Steven:
+
+- [ ] iOS development basics.
+
 ## Deferred
 
-- [ ] Backend deployment.
+- [ ] ML model deployment pipeline.
+    - [ ] Android.
+        - [ ] Ensure background jobs run (Steven).
+            Note: `AlarmManager` or `JobService`.
+- [ ] Benchmarking with simulated heterogeneity.
+    - [ ] Benchmark-app-specific instruction w/ backend (Steven).
+- [ ] Backend deployment (Johnny).
     - [ ] HTTPS for backend server.
     - [ ] SSL for Flower server.
