@@ -16,6 +16,11 @@
             - [ ] **Integrate ML model (Steven, July 19)**.
                 - [ ] **Data collection API to load training data
                     (Beilong, July 19)**.
+- [ ] Benchmark platform (Steven).
+    - [ ] On-device automatic benchmark.
+        - [ ] Simulation.
+            - [ ] Non-IID training options^[1].
+                - [ ] Basic simulation for assigned model and data.
 - [ ] Literature review.
 
 ## Learning
@@ -48,3 +53,5 @@ Steven:
 - [ ] Backend deployment (Johnny).
     - [ ] HTTPS for backend server.
     - [ ] SSL for Flower server.
+
+[1]: https://github.com/TL-System/plato/tree/2974ade33e7c2a9b596d64f96486252f2f4feb42/plato/samplers
