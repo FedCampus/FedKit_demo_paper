@@ -10,11 +10,10 @@
 - [ ] HealthKit demo.
     - [ ] User-facing functionality.
         - [ ] UI.
-            - [ ] **Try making Flutter work on Android (Steven, July 16)**
+            - [ ] Port UI to Flutter.
         - [ ] *Integrate background service (Steven)*.
             - [ ] **Refactor HealthKit data collection (Steven & Beilong)**.
-    - [ ] ML model: Transformer predicting workout probability (Beilong).
-        - [ ] **Basic transformer using HealthKit data (Beilong, July 16)**.
+    - [ ] ML model (Beilong).
     - [ ] Data collection.
 - [ ] Literature review.
 
@@ -41,6 +40,9 @@ Steven:
     - [ ] Android.
         - [ ] Ensure background jobs run (Steven).
             Note: `AlarmManager` or `JobService`.
+- [ ] HealthKit demo.
+    - [ ] ML model: Transformer predicting workout probability (Beilong).
+        - [ ] Basic transformer using HealthKit data (Beilong).
 - [ ] Benchmarking with simulated heterogeneity.
     - [ ] Benchmark-app-specific instruction w/ backend (Steven).
 - [ ] Backend deployment (Johnny).
