@@ -6,15 +6,16 @@
             - [ ] Follow up on upstream Android SDK (Steven).
     - [ ] iOS.
         - [ ] Dynamic model loading and backend connection.
-        - [ ] **iOS Basics (Johnny/Steven, July 20)**.
+        - [ ] **iOS basic demo to train with Flower server (Johnny, July 20)**.
 - [ ] HealthKit demo.
     - [ ] User-facing functionality.
         - [ ] UI.
+            - [ ] *FedAnalysis functionality (Beilong, July 21)*.
             - [ ] Port UI to Flutter.
         - [ ] *Integrate background service (Steven)*.
-            - [ ] **Refactor HealthKit data collection (Steven & Beilong)**.
-    - [ ] ML model (Beilong).
-    - [ ] Data collection.
+            - [ ] **Integrate ML model (Steven, July 19)**.
+                - [ ] **Data collection API to load training data
+                    (Beilong, July 19)**.
 - [ ] Literature review.
 
 ## Learning
@@ -23,7 +24,6 @@ Beilong:
 
 - [ ] Kotlin coroutines.
     - [ ] Kotlin basics.
-- [ ] Transformer making.
 
 Johnny:
 
