@@ -10,17 +10,18 @@
 - [ ] HealthKit demo.
     - [ ] User-facing functionality.
         - [ ] UI.
-            - [ ] *FedAnalysis functionality (Beilong, July 21)*.
+            - [ ] *FedAnalysis functionality (Beilong, July 23)*.
             - [ ] Port UI to Flutter.
         - [ ] *Integrate background service (Steven)*.
-            - [ ] **Integrate ML model (Steven, July 19)**.
+            - [ ] **Integrate ML model (Steven, July 21)**.
                 - [ ] **Data collection API to load training data
-                    (Beilong, July 19)**.
+                    (Beilong, July 21)**.
 - [ ] Benchmark platform (Steven).
     - [ ] On-device automatic benchmark.
         - [ ] Simulation.
             - [ ] Non-IID training options[^1].
                 - [ ] Basic simulation for assigned model and data.
+    - [ ] Benchmark the ML model for HealthKit demo (Steven, July 24).
 - [ ] Literature review.
 
 ## Learning
@@ -54,4 +55,4 @@ Steven:
     - [ ] HTTPS for backend server.
     - [ ] SSL for Flower server.
 
-[^1]: https://github.com/TL-System/plato/tree/2974ade33e7c2a9b596d64f96486252f2f4feb42/plato/samplers
+[^1]: <https://github.com/TL-System/plato/tree/2974ade33e7c2a9b596d64f96486252f2f4feb42/plato/samplers>
