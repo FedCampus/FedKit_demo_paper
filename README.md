@@ -6,7 +6,7 @@
             - [ ] Follow up on upstream Android SDK (Steven).
     - [ ] iOS.
         - [ ] Dynamic model loading and backend connection.
-        - [ ] **iOS basic demo to train with Flower server (Johnny, July 20)**.
+        - [ ] **iOS basic demo to train with Flower server (Johnny, July 24)**.
 - [ ] HealthKit demo.
     - [ ] User-facing functionality.
         - [ ] UI.
