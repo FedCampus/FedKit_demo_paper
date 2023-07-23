@@ -16,12 +16,6 @@
             - [ ] **Integrate ML model (Steven, July 21)**.
                 - [ ] **Data collection API to load training data
                     (Beilong, July 21)**.
-- [ ] Benchmark platform (Steven).
-    - [ ] On-device automatic benchmark.
-        - [ ] Simulation.
-            - [ ] Non-IID training options[^1].
-                - [ ] Basic simulation for assigned model and data.
-    - [ ] Benchmark the ML model for HealthKit demo (Steven, July 24).
 - [ ] Literature review.
 
 ## Learning
@@ -51,6 +45,11 @@ Steven:
         - [ ] Basic transformer using HealthKit data (Beilong).
 - [ ] Benchmarking with simulated heterogeneity.
     - [ ] Benchmark-app-specific instruction w/ backend (Steven).
+    - [ ] On-device automatic benchmark.
+        - [ ] Simulation.
+            - [ ] Non-IID training options[^1].
+                - [ ] Basic simulation for assigned model and data.
+    - [ ] Benchmark the ML model for HealthKit demo (Steven).
 - [ ] Backend deployment (Johnny).
     - [ ] HTTPS for backend server.
     - [ ] SSL for Flower server.
