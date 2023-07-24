@@ -3,17 +3,16 @@
 - [ ] ML model deployment pipeline.
     - [ ] Android.
         - [ ] Rename `dyn_flower_android_drf` to `FedKit`.
-            - [ ] Follow up on upstream Android SDK (Steven).
     - [ ] iOS.
         - [ ] Dynamic model loading and backend connection.
         - [ ] **iOS basic demo to train with Flower server (Johnny, July 24)**.
+    - [ ] Make basic training demo work with Flutter (Steven, July 25).
 - [ ] HealthKit demo.
     - [ ] User-facing functionality.
         - [ ] UI.
             - [ ] *FedAnalysis functionality (Beilong, July 27)*.
             - [ ] Port UI to Flutter.
-                - [ ] Make basic training demo work with Flutter (Steven, July 25).
-            - [ ] **Recruit dedicated UI people (Steven, WIP)**.
+                - [ ] **Recruit dedicated UI people (Steven, WIP)**.
         - [ ] *Integrate background service (Steven)*.
             - [ ] **Integrate ML model (Steven)**.
                 - [ ] **Data collection API to load training data
@@ -42,6 +41,7 @@ Steven:
     - [ ] Android.
         - [ ] Ensure background jobs run (Steven).
             Note: `AlarmManager` or `JobService`.
+        - [ ] Follow up on upstream Android SDK (Steven).
 - [ ] HealthKit demo.
     - [ ] ML model: Transformer predicting workout probability (Beilong).
         - [ ] Basic transformer using HealthKit data (Beilong).
