@@ -10,12 +10,14 @@
 - [ ] HealthKit demo.
     - [ ] User-facing functionality.
         - [ ] UI.
-            - [ ] *FedAnalysis functionality (Beilong, July 23)*.
+            - [ ] *FedAnalysis functionality (Beilong, July 27)*.
             - [ ] Port UI to Flutter.
+                - [ ] Make basic training demo work with Flutter (Steven, July 25).
+            - [ ] **Recruit dedicated UI people (Steven, WIP)**.
         - [ ] *Integrate background service (Steven)*.
-            - [ ] **Integrate ML model (Steven, July 21)**.
+            - [ ] **Integrate ML model (Steven)**.
                 - [ ] **Data collection API to load training data
-                    (Beilong, July 21)**.
+                    (Beilong, July 25)**.
 - [ ] Literature review.
 
 ## Learning
