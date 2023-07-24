@@ -22,3 +22,11 @@
 - 前端：如何高效地开发 UI，外包可行性如何？
 - 保活：国产安卓会主动终止后台应用程序，如何保持后台活动？
 - 后台活动时间分布：我们需要在设备空闲时训练（睡眠，充电）。合理的负载分布是什么样的，这样我们不会过多地打扰用户？
+
+## Notes
+
+- Continuous integration.
+- Identify our users.
+     - Students who are interested in their position among peers.
+- UI component library.
+- Alarm users to train on foreground.
