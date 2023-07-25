@@ -10,12 +10,14 @@
 - [ ] HealthKit demo.
     - [ ] User-facing functionality.
         - [ ] UI.
-            - [ ] *FedAnalysis functionality (Beilong, July 27)*.
+            - [ ] *FedAnalysis functionality (Beilong, July 29)*.
             - [ ] Port UI to Flutter.
                 - [ ] **Recruit dedicated UI people (Steven, WIP)**.
 - [ ] Deployment.
     - [ ] *Change Flower server to send parameters via HTTP to workaround uWSGI.
         (Steven, July 26)*.
+    - [ ] **Deploy FA backend on our machine (Johnny, Beilong, July 27).
+        - [ ] **Collect FA backend to a repo (Beilong, July 26).
     - [ ] **Investigate telemetry routes database error (Johnny, ASAP)**.
 - [ ] Literature review.
 
