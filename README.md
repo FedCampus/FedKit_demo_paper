@@ -5,30 +5,30 @@
         - [ ] Rename `dyn_flower_android_drf` to `FedKit`.
     - [ ] iOS.
         - [ ] Dynamic model loading and backend connection.
-        - [ ] **iOS basic demo to train with Flower server (Johnny, July 24)**.
-    - [ ] Make basic training demo work with Flutter (Steven, July 25).
+        - [ ] *iOS basic demo to train with Flower server (Johnny)*.
+    - [ ] **Make basic training demo work with Flutter (Steven, July 25)**.
 - [ ] HealthKit demo.
     - [ ] User-facing functionality.
         - [ ] UI.
             - [ ] *FedAnalysis functionality (Beilong, July 27)*.
             - [ ] Port UI to Flutter.
                 - [ ] **Recruit dedicated UI people (Steven, WIP)**.
-        - [ ] *Integrate background service (Steven)*.
-            - [ ] **Integrate ML model (Steven)**.
-                - [ ] **Data collection API to load training data
-                    (Beilong, July 25)**.
+- [ ] Deployment.
+    - [ ] *Change Flower server to send parameters via HTTP to workaround uWSGI.
+        (Steven, July 26)*.
+    - [ ] **Investigate telemetry routes database error (Johnny, ASAP)**.
 - [ ] Literature review.
 
 ## Learning
 
 Beilong:
 
-- [ ] Kotlin coroutines.
-    - [ ] Kotlin basics.
+- [ ] Flutter.
 
 Johnny:
 
 - [ ] iOS development basics.
+- [ ] Flutter.
 
 Steven:
 
