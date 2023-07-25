@@ -27,6 +27,7 @@
 
 - Continuous integration.
 - Identify our users.
-     - Students who are interested in their position among peers.
+    - Students who are interested in their health-related position among peers,
+        but want to preserve individual privacy.
 - UI component library.
 - Alarm users to train on foreground.
