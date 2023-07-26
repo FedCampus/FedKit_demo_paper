@@ -17,7 +17,7 @@
     - [ ] *Change Flower server to send parameters via HTTP to workaround uWSGI.
         (Steven, July 26)*.
     - [ ] **Deploy FA backend on our machine (Johnny, Beilong, July 27)**.
-        - [ ] **Collect FA backend to a repo (Beilong, July 26)**.
+        - [x] **Collect FA backend to a repo (Beilong, July 26)**.
     - [ ] **Investigate telemetry routes database error (Johnny, ASAP)**.
 - [ ] Literature review.
 
