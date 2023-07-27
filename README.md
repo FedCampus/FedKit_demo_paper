@@ -14,7 +14,7 @@
             - [ ] Port UI to Flutter.
                 - [ ] **Recruit dedicated UI people (Steven, WIP)**.
 - [ ] Deployment.
-    - [ ] **Deploy FA backend on our machine (Johnny, Beilong, July 27)**.
+    - [x] **Deploy FA backend on our machine (Johnny, Beilong, July 27)**. (server: 10.200.20.31:8005)
     - [ ] **Investigate telemetry routes database error (Johnny, ASAP)**.
 - [ ] Literature review.
 
