@@ -11,7 +11,7 @@
     - [ ] **Alpha testing within group**.
     - [ ] User-facing functionality.
         - [ ] UI.
-            - [x] *FedAnalysis functionality (Beilong, July 29)*.
+            - [ ] FedAnalysis functionality.
             - [ ] Port UI to Flutter.
                 - [ ] **Recruit dedicated UI people (Steven, WIP)**.
 - [ ] Deployment.
@@ -46,6 +46,8 @@ Steven:
     - [ ] User-facing functionality.
         - [x] Refactor HealthKit data collection (Steven & Beilong).
         - [ ] UI.
+            - [ ] FedAnalysis functionality.
+                - [x] FedAnalysis functionality basics (Beilong, July 28).
             - [ ] Port UI to Flutter.
                 - [x] Make basic training demo work with Flutter (Steven, July 25).
                 - [x] Try making Flutter work on Android (Steven, July 16).
