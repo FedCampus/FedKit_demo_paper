@@ -9,7 +9,7 @@
 - [ ] HealthKit demo.
     - [ ] User-facing functionality.
         - [ ] UI.
-            - [ ] *FedAnalysis functionality (Beilong, July 29)*.
+            - [ x ] *FedAnalysis functionality (Beilong, July 29)*.
             - [ ] Port UI to Flutter.
                 - [ ] **Recruit dedicated UI people (Steven, WIP)**.
 - [ ] Deployment.
