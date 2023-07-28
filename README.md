@@ -6,7 +6,9 @@
     - [ ] iOS.
         - [ ] Dynamic model loading and backend connection.
         - [ ] *iOS basic demo to train with Flower server (Johnny)*.
+    - [ ] **Fix Docker CI (Johnny, ASAP)**.
 - [ ] HealthKit demo.
+    - [ ] **Alpha testing within group**.
     - [ ] User-facing functionality.
         - [ ] UI.
             - [x] *FedAnalysis functionality (Beilong, July 29)*.
@@ -38,6 +40,7 @@ Steven:
     - [ ] Android.
         - [ ] Rename `dyn_flower_android_drf` to `FedKit`.
             - [x] Clean up `dyn_flower_android_drf` (Steven, July 27).
+    - [x] CI to check style and test `dyn_flower_android_drf` (Steven, July 27).
     - [x] Make basic training demo work with Flutter (Steven, July 25).
 - [ ] HealthKit demo.
     - [ ] User-facing functionality.
