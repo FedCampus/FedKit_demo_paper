@@ -3,7 +3,6 @@
 - [ ] ML model deployment pipeline.
     - [ ] Android.
         - [ ] Rename `dyn_flower_android_drf` to `FedKit`.
-            - [ ] Clean up `dyn_flower_android_drf` (Steven, July 27).
     - [ ] iOS.
         - [ ] Dynamic model loading and backend connection.
         - [ ] *iOS basic demo to train with Flower server (Johnny)*.
@@ -14,7 +13,6 @@
             - [ ] Port UI to Flutter.
                 - [ ] **Recruit dedicated UI people (Steven, WIP)**.
 - [ ] Deployment.
-    - [x] **Deploy FA backend on our machine (Johnny, Beilong, July 27)**. (server: 10.200.20.31:8005)
     - [ ] **Investigate telemetry routes database error (Johnny, ASAP)**.
 - [ ] Literature review.
 
@@ -33,6 +31,34 @@ Steven:
 
 - [ ] Flutter.
 - [ ] iOS development basics.
+
+## Done
+
+- [ ] ML model deployment pipeline.
+    - [ ] Android.
+        - [ ] Rename `dyn_flower_android_drf` to `FedKit`.
+            - [x] Clean up `dyn_flower_android_drf` (Steven, July 27).
+    - [x] Make basic training demo work with Flutter (Steven, July 25).
+- [ ] HealthKit demo.
+    - [ ] User-facing functionality.
+        - [x] Refactor HealthKit data collection (Steven & Beilong).
+        - [ ] UI.
+            - [ ] Port UI to Flutter.
+                - [x] Make basic training demo work with Flutter (Steven, July 25).
+                - [x] Try making Flutter work on Android (Steven, July 16).
+        - [x] Integrate background service (Steven).
+            - [x] Integrate ML model (Steven).
+                - [x] Data collection API to load training data
+                    (Beilong, July 25).
+        - [x] What to provide: idea (Beilong, July 11).
+    - [x] ML model (Beilong).
+    - [x] Refactor & clean up (Beilong, July 8).
+- [ ] Deployment.
+    - [x] Change Flower server to send parameters via HTTP to workaround uWSGI.
+        (Steven, July 26).
+    - [x] Deploy FA backend on our machine (Johnny, Beilong, July 27).
+        (server: 10.200.20.31:8005)
+        - [x] **Collect FA backend to a repo (Beilong, July 26)**.
 
 ## Deferred
 
