@@ -3,6 +3,7 @@
 - [ ] ML model deployment pipeline.
     - [ ] Android.
         - [ ] Rename `dyn_flower_android_drf` to `FedKit`.
+        - [ ] **Fix NaN in loss (Steven, July 29)**.
     - [ ] iOS.
         - [ ] Dynamic model loading and backend connection.
         - [ ] *iOS basic demo to train with Flower server (Johnny)*.
