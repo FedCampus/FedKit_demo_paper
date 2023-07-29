@@ -15,7 +15,6 @@
             - [ ] Port UI to Flutter.
                 - [ ] **Recruit dedicated UI people (Steven, WIP)**.
 - [ ] Deployment.
-    - [ ] **Investigate telemetry routes database error (Johnny, ASAP)**.
 - [ ] Literature review.
 
 ## Learning
@@ -60,6 +59,7 @@ Steven:
     - [x] ML model (Beilong).
     - [x] Refactor & clean up (Beilong, July 8).
 - [ ] Deployment.
+    - [x] Fix telemetry routes database error (~~Johnny, ASAP~~ Steven, July 29).
     - [x] Change Flower server to send parameters via HTTP to workaround uWSGI.
         (Steven, July 26).
     - [x] Deploy FA backend on our machine (Johnny, Beilong, July 27).
