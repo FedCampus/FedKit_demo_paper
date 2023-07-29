@@ -3,10 +3,10 @@
 - [ ] ML model deployment pipeline.
     - [ ] Android.
         - [ ] Rename `dyn_flower_android_drf` to `FedKit`.
+            - [ ] **Fix Docker CI (Johnny, ASAP, alias below)**.
     - [ ] iOS.
         - [ ] Dynamic model loading and backend connection.
         - [ ] *iOS basic demo to train with Flower server (Johnny)*.
-    - [ ] **Fix Docker CI (Johnny, ASAP)**.
 - [ ] HealthKit demo.
     - [ ] **Alpha testing within group**.
     - [ ] User-facing functionality.
@@ -14,6 +14,8 @@
             - [ ] FedAnalysis functionality.
             - [ ] Port UI to Flutter.
                 - [ ] **Recruit dedicated UI people (Steven, WIP)**.
+    - [ ] **Use Fedkit in the Android side (Steven, ASAP)**.
+        - [ ] Fix Docker CI (alias).
 - [ ] Deployment.
 - [ ] Literature review.
 
