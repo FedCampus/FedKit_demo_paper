@@ -11,7 +11,6 @@
         - [ ] UI.
             - [ ] FedAnalysis functionality.
             - [ ] Port UI to Flutter.
-                - [ ] **Recruit dedicated UI people (Steven, WIP)**.
         - [ ] Fix Docker CI (alias).
 - [ ] Deployment.
 - [ ] Literature review.
@@ -39,7 +38,7 @@ Steven:
         - [x] Rename `dyn_flower_android_drf` to `FedKit`.
             - [x] Fix Docker CI (Johnny, July 29).
             - [x] Clean up `dyn_flower_android_drf` (Steven, July 27).
-        - [ ] Fix NaN in loss (Steven, July 29).
+        - [x] Fix NaN in loss (Steven, July 29).
     - [x] CI to check style and test `dyn_flower_android_drf` (Steven, July 27).
     - [x] Make basic training demo work with Flutter (Steven, July 25).
 - [ ] HealthKit demo.
@@ -49,6 +48,7 @@ Steven:
             - [ ] FedAnalysis functionality.
                 - [x] FedAnalysis functionality basics (Beilong, July 28).
             - [ ] Port UI to Flutter.
+                - [x] Recruit dedicated UI people (Steven, Aug 1).
                 - [x] Make basic training demo work with Flutter (Steven, July 25).
                 - [x] Try making Flutter work on Android (Steven, July 16).
         - [x] Integrate background service (Steven).
