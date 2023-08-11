@@ -4,14 +4,16 @@
     - [ ] Android.
     - [ ] iOS.
         - [ ] Dynamic model loading and backend connection.
-        - [ ] *iOS basic demo to train with Flower server (Johnny)*.
+        - [ ] *iOS basic demo to train with Flower server (~~Johnny~~)*.
+            - [ ] **iOS on-device training (Steven)**.
 - [ ] HealthKit demo.
     - [ ] **Alpha testing within group**.
+        - [ ] **Huawei Health installation issue**.
     - [ ] User-facing functionality.
         - [ ] UI.
-            - [ ] FedAnalysis functionality.
-            - [ ] Port UI to Flutter.
-        - [ ] Fix Docker CI (alias).
+            - [ ] FedAnalysis functionality (Beilong).
+            - [ ] Port UI to Flutter (Beilong & Luyao).
+    - [ ] **Fix CI failing due to out of quota (Johnny)**.
 - [ ] Deployment.
 - [ ] Literature review.
 
@@ -34,6 +36,9 @@ Steven:
 ## Done
 
 - [ ] ML model deployment pipeline.
+    - [ ] iOS.
+        - [ ] iOS basic demo to train with Flower server (~~Johnny~~).
+            - [x] Move more functionality to Flutter (Steven, Aug 11).
     - [ ] Android.
         - [x] Rename `dyn_flower_android_drf` to `FedKit`.
             - [x] Fix Docker CI (Johnny, July 29).
@@ -43,11 +48,14 @@ Steven:
     - [x] Make basic training demo work with Flutter (Steven, July 25).
 - [ ] HealthKit demo.
     - [ ] User-facing functionality.
+        - [x] Fix Docker CI (Steven, Aug 9).
         - [x] Refactor HealthKit data collection (Steven & Beilong).
         - [ ] UI.
             - [ ] FedAnalysis functionality.
+                - [x] Basic FedAnalysis in Flutter (Beilong, Aug 7).
                 - [x] FedAnalysis functionality basics (Beilong, July 28).
             - [ ] Port UI to Flutter.
+                - [x] Basic UI in Flutter (Renyuan & Luyao & Beilong, Aug 11).
                 - [x] Recruit dedicated UI people (Steven, Aug 1).
                 - [x] Make basic training demo work with Flutter (Steven, July 25).
                 - [x] Try making Flutter work on Android (Steven, July 16).
@@ -59,6 +67,7 @@ Steven:
     - [x] Use Fedkit in the Android side (Steven, July 30).
     - [x] ML model (Beilong).
     - [x] Refactor & clean up (Beilong, July 8).
+    - [x] Basic CI tests (Steven).
 - [ ] Deployment.
     - [x] Fix telemetry routes database error (~~Johnny, ASAP~~ Steven, July 29).
     - [x] Change Flower server to send parameters via HTTP to workaround uWSGI.
