@@ -11,17 +11,13 @@
         - [ ] **Huawei Health installation issue**.
     - [ ] User-facing functionality.
         - [ ] UI.
-            - [ ] FedAnalysis functionality (Beilong).
-            - [ ] Port UI to Flutter (Beilong & Luyao).
+            - [x] FedAnalysis functionality (Beilong).
+            - [x] Port UI to Flutter (Beilong & Luyao).
     - [ ] **Fix CI failing due to out of quota (Johnny)**.
 - [ ] Deployment.
 - [ ] Literature review.
 
 ## Learning
-
-Beilong:
-
-- [ ] Flutter.
 
 Johnny:
 
@@ -30,7 +26,6 @@ Johnny:
 
 Steven:
 
-- [ ] Flutter.
 - [ ] iOS development basics.
 
 ## Done
