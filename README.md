@@ -3,17 +3,8 @@
 - [ ] ML model deployment pipeline.
     - [ ] Android.
     - [ ] iOS.
-        - [ ] Dynamic model loading and backend connection.
-        - [ ] *iOS basic demo to train with Flower server (~~Johnny~~)*.
-            - [ ] **iOS on-device training (Steven)**.
 - [ ] HealthKit demo.
     - [ ] **Alpha testing within group**.
-        - [ ] **Huawei Health installation issue**.
-    - [ ] User-facing functionality.
-        - [ ] UI.
-            - [x] FedAnalysis functionality (Beilong).
-            - [x] Port UI to Flutter (Beilong & Luyao).
-    - [ ] **Fix CI failing due to out of quota (Johnny)**.
 - [ ] Deployment.
 - [ ] Literature review.
 
@@ -24,15 +15,13 @@ Johnny:
 - [ ] iOS development basics.
 - [ ] Flutter.
 
-Steven:
-
-- [ ] iOS development basics.
-
 ## Done
 
 - [ ] ML model deployment pipeline.
     - [ ] iOS.
-        - [ ] iOS basic demo to train with Flower server (~~Johnny~~).
+        - [x] Dynamic model loading and backend connection.
+        - [x] iOS basic demo to train with Flower server (~~Johnny~~ Steven).
+            - [x] iOS on-device training (Steven).
             - [x] Move more functionality to Flutter (Steven, Aug 11).
     - [ ] Android.
         - [x] Rename `dyn_flower_android_drf` to `FedKit`.
@@ -42,14 +31,17 @@ Steven:
     - [x] CI to check style and test `dyn_flower_android_drf` (Steven, July 27).
     - [x] Make basic training demo work with Flutter (Steven, July 25).
 - [ ] HealthKit demo.
-    - [ ] User-facing functionality.
+    - [ ] Alpha testing within group.
+        - [x] Huawei Health installation issue.
+    - [x] Fix CI failing due to out of quota (~~Johnny~~ by paying).
+    - [x] User-facing functionality.
         - [x] Fix Docker CI (Steven, Aug 9).
         - [x] Refactor HealthKit data collection (Steven & Beilong).
-        - [ ] UI.
-            - [ ] FedAnalysis functionality.
+        - [x] UI.
+            - [x] FedAnalysis functionality (Beilong).
                 - [x] Basic FedAnalysis in Flutter (Beilong, Aug 7).
                 - [x] FedAnalysis functionality basics (Beilong, July 28).
-            - [ ] Port UI to Flutter.
+            - [x] Port UI to Flutter (Beilong & Luyao).
                 - [x] Basic UI in Flutter (Renyuan & Luyao & Beilong, Aug 11).
                 - [x] Recruit dedicated UI people (Steven, Aug 1).
                 - [x] Make basic training demo work with Flutter (Steven, July 25).
@@ -77,7 +69,6 @@ Steven:
     - [ ] Android.
         - [ ] Ensure background jobs run (Steven).
             Note: `AlarmManager` or `JobService`.
-        - [ ] Follow up on upstream Android SDK (Steven).
 - [ ] HealthKit demo.
     - [ ] ML model: Transformer predicting workout probability (Beilong).
         - [ ] Basic transformer using HealthKit data (Beilong).
