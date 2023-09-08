@@ -4,6 +4,7 @@
     - [ ] Android.
     - [ ] iOS.
 - [ ] HealthKit demo.
+    - [ ] **Generate Core ML model for training demo**.
     - [ ] **Alpha testing within group**.
 - [ ] Deployment.
 - [ ] Literature review.
@@ -33,6 +34,8 @@ Johnny:
 - [ ] HealthKit demo.
     - [ ] Alpha testing within group.
         - [x] Huawei Health installation issue.
+    - [ ] Support non-Huawei.
+        - [x] Figure out what data we can get (Beilong & Luyao).
     - [x] Fix CI failing due to out of quota (~~Johnny~~ by paying).
     - [x] User-facing functionality.
         - [x] Fix Docker CI (Steven, Aug 9).
