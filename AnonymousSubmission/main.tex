@@ -94,7 +94,7 @@
 % nouns, adverbs, adjectives should be capitalized, including both words in hyphenated terms, while
 % articles, conjunctions, and prepositions are lower case unless they
 % directly follow a colon or long dash
-\title{AAAI Press Anonymous Submission\\Instructions for Authors Using \LaTeX{}}
+\title{FedKit---A Cross-Platform SDK for Mobile Federated Learning Research}
 \author{
     %Authors
     % All authors must be in the same font size and format.
@@ -167,6 +167,10 @@
 \end{abstract}
 
 \section{Introduction}
+The most appealing area of application for FL is mobile devices.
+Yet, we could not find enough support for our real-world cross-platform mobile
+FL research.
+So, we purposefully built FedKit to power our mobile app for FL research.
 
 \section{System Description}
 
@@ -234,10 +238,10 @@ For that, we offer a Flutter package and a Kotlin package.
 
 The Backend Server is designed as a persistent orchestrator service.
 
-On-device training is especially difficult because smartphones have limited
+On-device training is especially difficult because mobile devices have limited
 compute power.
 To achieve optimal performance, our implementation adopts native
-solutions—TensorFlow Lite on Android and Core ML on iOS.
+solutions---TensorFlow Lite on Android and Core ML on iOS.
 We offer an Android package for on-device training and a Python package for
 TensorFlow Lite model conversion from any Keras model.
 
