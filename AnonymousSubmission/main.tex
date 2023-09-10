@@ -18,6 +18,9 @@
 \usepackage{algorithm}
 \usepackage{algorithmic}
 
+% Custom packages
+\usepackage{tikz}
+
 %
 % These are are recommended to typeset listings but not required. See the subsubsection on listing. Remove this block if you don't have listings in your paper.
 \usepackage{newfloat}
@@ -166,6 +169,79 @@
 \section{Introduction}
 
 \section{System Description}
+
+\subsection{FL Workflow}
+
+\newcommand{\model}{$M$}
+\newcommand{\fs}{$S_F$}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+    \node[draw, minimum height=4cm] at (0, 0) {App};
+    \node[draw, minimum height=4cm] at (6, 0) {Backend};
+    \draw[-stealth] (0.5, 1.5) node[above right]{Requests for ML model} --
+                    (5.0, 1.5);
+    \draw[stealth-] (0.5, 1.4) -- node[below right]{ML model \model}
+                    (5.0, 1.4);
+    \draw[-stealth] (0.5, 0.0) node[above right]{Requests to train \model} --
+                    (5.0, 0.0);
+    \draw[stealth-] (0.5,-0.1) -- node[below]{Flower server to train \model}
+                    (5.0,-0.1);
+    \draw[stealth-] (4.5,-1.0) node[below left, draw]{FL server \fs} --
+                    (5.0,-0.1);
+    \draw[stealth-stealth] (0.5,-1.2) node[above right]{Train \model} --
+                           (2.1,-1.2);
+    \draw[-stealth] (0.5,-1.7) node[below right]{Training telemetry} --
+                    (5.0,-1.7);
+\end{tikzpicture}
+\caption{FL workflow}
+\label{fig:fl-workflow}
+\end{figure}
+
+Mobile clients fetch ML models from the Backend Server before doing FL.
+This workflow allows Backend-oriented model deployment, where researches can
+deploy new ML models simply by uploading them to the Backend,
+without updating the client mobile apps.
+
+\subsubsection{Data Type}
+Each client has its Data Type, the shape of its training input and label,
+predefined.
+This makes sense because obtaining each client's training data requires
+implementation specific to that client.
+
+\subsubsection{Model Request}
+Clients provide the Backend their Data Type and request for an ML model \model.
+
+\subsubsection{Training Initiation}
+Clients request the Backend to start training \model.
+The Backend spawns an FL Server \fs{} and responds directs clients to it.
+
+\subsubsection{Training}
+Clients connect to \fs{} and participate in FL with their local data.
+\fs{} schedules the training, aggregation and evaluation for \model;
+it also sends aggregated parameters to the Backend for analysis.
+Clients send telemetry about timing and loss to the Backend.
+
+\subsection{Implementation}
+
+We offer an example Flutter client implementation that supports both Android and
+iOS, and a separate Kotlin Android client.
+
+The clients make JSON APIs calls to the Backend,
+and gRPC calls to FL Servers.
+For that, we offer a Flutter package and a Kotlin package.
+
+The Backend Server is designed as a persistent orchestrator service.
+
+On-device training is especially difficult because smartphones have limited
+compute power.
+To achieve optimal performance, our implementation adopts native
+solutions—TensorFlow Lite on Android and Core ML on iOS.
+We offer an Android package for on-device training and a Python package for
+TensorFlow Lite model conversion from any Keras model.
+
+We leverage Flower \cite{beutel2020flower} for FL Servers.
 
 \section{Conclusion and Future Work}
 
