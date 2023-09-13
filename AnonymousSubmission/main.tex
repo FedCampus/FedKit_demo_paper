@@ -227,6 +227,31 @@ Clients connect to \fs{} and participate in FL with their local data.
 it also sends aggregated parameters to the Backend for analysis.
 Clients send telemetry about timing and loss to the Backend.
 
+\subsection{Features}
+
+\subsubsection{General Approachability}
+FedKit allows ML researchers to develop ML models to run on mobile devices
+using Python libraries they are already familiar with.
+We integrate TensorFlow Lite to support Android training and Core ML for iOS
+training,
+both of which support converting models from popular libraries such as Pytorch,
+TensorFlow, and Scikit-Learn.
+% FIX: This is not that true about iOS.
+
+\subsubsection{Backend-Oriented Model Deployment}
+Researchers can deploy new models simply from the Backend,
+without the need to update the mobile apps.
+Most FL frameworks assume a fixed ML model that is bundled with the app,
+making it difficult to iterate on the models.
+By adding the additional step for clients to request for an ML model to train,
+we make it trivial to deploy new models as long as the new models take the same
+kind of inputs and outputs.
+
+\subsubsection{Optional Telemetry}
+During each stage of training, we allow options to record telemetry information
+for analytics.
+% TODO: What to say here?
+
 \subsection{Implementation}
 
 We offer an example Flutter client implementation that supports both Android and
