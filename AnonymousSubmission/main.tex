@@ -174,11 +174,14 @@ So, we purposefully built FedKit to power our mobile app for FL research.
 
 \section{System Description}
 
+\newcommand{\model}{$M$}
+\newcommand{\fs}{$S_F$}
+
 \subsection{Features}
 
 \subsubsection{General Approachability}
-FedKit allows ML researchers to develop ML models to run on mobile devices
-using Python libraries they are already familiar with.
+FedKit allows ML researchers to develop ML models to target mobile devices
+using Python libraries that they are already familiar with.
 We integrate TensorFlow Lite to support Android training and Core ML for iOS
 training,
 both of which support converting models from popular libraries such as Pytorch,
@@ -189,20 +192,26 @@ TensorFlow, and Scikit-Learn.
 Researchers can deploy new models simply from the Backend,
 without the need to update the mobile apps.
 Most FL frameworks assume a fixed ML model that is bundled with the app,
-making it difficult to iterate on the models.
-By adding the additional step for clients to request for an ML model to train,
-we make it trivial to deploy new models as long as the new models take the same
-kind of inputs and outputs.
+making it difficult to iterate on the ML models.
+By moving to our Backend the responsibility to choose which ML model to train,
+we make it trivial to deploy new models that take the same kind of inputs and
+outputs as the old one.
+
+\subsubsection{Full Model Checkpointing}
+On every round of training an ML model \model,
+all the parameters of \model{} is saved to the Backend database.
+When \model{} is used for the next session of training,
+its latest checkpoint is restored.
 
 \subsubsection{Optional Telemetry}
-During each stage of training, we allow options to record telemetry information
-for analytics.
-% TODO: What to say here?
+On each round of training and evaluation,
+we allow optional telemetry information to be sent to the Backend.
+This includes the timing and loss,
+associated with the FL session and the participants' ID.
+This extra information helps FL researchers observe and analyze
+the performance of their models.
 
 \subsection{FL Workflow}
-
-\newcommand{\model}{$M$}
-\newcommand{\fs}{$S_F$}
 
 \begin{figure}
 \centering
