@@ -203,6 +203,15 @@ By moving to our Backend the responsibility to choose which ML model to train,
 we make it trivial to deploy new models that take the same kind of inputs and
 outputs as the old one.
 
+\subsubsection{Standardized On-Device Training}
+On-device training is by far the most challenging part of FL because
+the libraries involved are complex, experimental, poorly documented
+and lack of community guidance.
+FedKit simplifies this integration by providing implementation libraries
+that wraps on-device training libraries and
+only provides the functionality required by FL.
+
+% TODO: Maybe merge checkpointing & telemetry.
 \subsubsection{Full Model Checkpointing}
 On every round of training an ML model \model,
 all the parameters of \model{} is saved to the Backend database.
