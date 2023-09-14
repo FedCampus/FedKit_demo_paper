@@ -228,8 +228,8 @@ that wraps on-device training libraries and
 only provides the functionality required by FL.
 
 \subsubsection{Observability}
-On every round of training, the Backend stores the ML model parameters and
-telemetry information into the database.
+On every round of training, the Backend records the ML model parameters and
+telemetry information.
 Telemetry is optional and includes the timing and the loss.
 This extra information helps FL researchers observe and analyze
 the performance of their models.
@@ -286,29 +286,51 @@ Clients send telemetry about timing and loss to the Backend.
 
 \subsection{Realization}
 
-We integrate TensorFlow Lite to support Android training and Core ML for iOS
-training,
-both come with Python libraries to convert models from popular
-frameworks such as Pytorch and TensorFlow.
+FedKit implements 6 libraries:
+Backend Server,
+Flutter client,
+Android client,
+Android trainer,
+TensorFlow Lite converter, and
+iOS trainer.
 
-We offer an example Flutter client implementation that supports both Android and
-iOS, and a separate Kotlin Android client.
+The Backend Server in Django is a persistent REST API service and database
+controller for FL training and telemetry.
+It creates and manages FL Servers on different fixed port numbers.
+The FL gRPC Servers use the Flower FL framework \cite{beutel2020flower} and
+have the full capabilities of Flower Servers.
 
-The clients make JSON APIs calls to the Backend,
-and gRPC calls to FL Servers.
-For that, we offer a Flutter package and a Kotlin package.
-
-The Backend Server is designed as a persistent orchestrator service.
+The Flutter client in Dart works on both Android and iOS to
+call the Backend over HTTP and connect to FL Servers over gRPC.
+On-device training is left to the platform-specific trainers
+by providing a common abstract class for them to implement.
+The Android client in Kotlin is similar but less flexible.
 
 On-device training is especially difficult because mobile phones have limited
 compute power.
-To achieve optimal performance, our implementation adopts native
-solutions---TensorFlow Lite on Android and Core ML on iOS.
-We offer an Android package for on-device training and a Python package for
-TensorFlow Lite model conversion from any Keras model.
-% TODO: Touch more on the conversion.
+To achieve optimal performance, our implementation adopts native solutions
+to leverages GPUs and NPUs.
 
-We leverage Flower \cite{beutel2020flower} for FL Servers.
+The Android trainer in Kotlin leverages TensorFlow Lite for on-device training.
+We support any Lite model that have these 4 standardized methods:
+\lstinline{train},
+\lstinline{infer},
+\lstinline{parameters} and
+\lstinline{restore}.
+
+% TODO: This reads like a manual.
+The TensorFlow Lite converter in Python converts any Keras model to
+a supported Lite model.
+Model written in other frameworks can be converted to Keras models using
+Open Neural Network Exchange (ONNX).
+
+The iOS trainer in Swift exploits Core ML.
+Core ML, being proprietary and poorly documented,
+is extremely difficult to use for FL.
+To update Core ML model parameters,
+we resorted to modify their ProtoBuf representation.
+Core ML comes with \lstinline{coremltools} in Python to convert models from
+popular frameworks such as TensorFlow and PyTorch.
 
 \section{Conclusion and Future Work}
 
