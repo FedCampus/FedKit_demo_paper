@@ -167,19 +167,28 @@
 \end{abstract}
 
 \section{Introduction}
-The most appealing area of application for FL is mobile devices.
-Yet, we could not find enough support for our real-world cross-platform mobile
-FL research.
-So, we purposefully built FedKit to power our mobile app for FL research.
 
-PySyft \cite{ryffel2018generic,Ziller2021,hall2021syft}
-does support cross-platform on-device training,
-but its home-brew implementation is inefficient.
+Our goal is to carry out Federated Learning (FL) research that incorporates
+personal data on volunteers' mobile phones.
+Federated Learning (FL) is a privacy-preserving machine learning (ML) technique
+for edge devices to collaboratively train a shared ML model.
+FL's most appealing application area is mobile devices because
+they generate a huge amount of privacy-sensitive data.
+In our FL setting,
+volunteers use a mobile app to train shared ML models
+using un-uploaded private data on their phones.
 
-FedML \cite{he2020fedml} forces users to use a proprietary backend and
-does not support iOS.
+To achieve our goal, we need cross-platform mobile FL libraries that
+enable fast deployment iteration and high observability,
+which we could not find.
+Most FL frameworks do not support on-device training,
+and the ones that do fails other requirements. % TODO: What specifically?
+PySyft's \cite{ryffel2018generic,Ziller2021,hall2021syft}
+custom on-device training implementation is inefficient;
+FedML \cite{he2020fedml} uses a proprietary backend and does not support iOS.
 
-Most other FL frameworks do not support on-device training.
+So, we purposefully built FedKit to power our FL research on mobile phones.
+% TODO: Do we describe the advantage of FedKit here?
 
 \section{System Description}
 
@@ -296,7 +305,7 @@ For that, we offer a Flutter package and a Kotlin package.
 
 The Backend Server is designed as a persistent orchestrator service.
 
-On-device training is especially difficult because mobile devices have limited
+On-device training is especially difficult because mobile phones have limited
 compute power.
 To achieve optimal performance, our implementation adopts native
 solutions---TensorFlow Lite on Android and Core ML on iOS.
