@@ -94,7 +94,7 @@
 % nouns, adverbs, adjectives should be capitalized, including both words in hyphenated terms, while
 % articles, conjunctions, and prepositions are lower case unless they
 % directly follow a colon or long dash
-\title{FedKit---A Cross-Platform SDK for Mobile Federated Learning Research}
+\title{FedKit---Cross-Platform SDKs for Mobile Federated Learning Research}
 \author{
     %Authors
     % All authors must be in the same font size and format.
@@ -187,6 +187,8 @@ and the ones that do fails other requirements. % TODO: What specifically?
 PySyft's \cite{ryffel2018generic,Ziller2021,hall2021syft}
 custom on-device training implementation is inefficient;
 FedML \cite{he2020fedml} uses a proprietary backend and does not support iOS.
+Also, most FL frameworks assume a fixed ML model that is bundled with the app,
+making it difficult to iterate on the models.
 
 So, we purposefully built FedKit to power our FL research on mobile phones.
 % TODO: Do we describe the advantage of FedKit here?
@@ -205,32 +207,32 @@ by on-device training and exchanging ML models and parameters.
 \subsection{Features}
 
 \subsubsection{General Approachability}
-FedKit allows ML researchers to develop ML models to run on mobile devices
-using their familiar frameworks.
-We then provide tooling to convert these models to formats that are compatible
-with the runtime we use.
+FedKit allows researchers to develop mobile FL
+using their familiar Python frameworks.
+For ML models, we offer tooling to convert models in popular frameworks to
+formats that are compatible with mobile runtimes.
+For FL algorithms, we allow researchers to directly modify FL Server code in
+the Python Backend.
 
-\subsubsection{Backend-Oriented Model Deployment}
-Researchers can deploy new models simply from the Backend,
-without the need to update the mobile apps.
-Most FL frameworks assume a fixed ML model that is bundled with the app,
-making it difficult to iterate on the ML models.
-By moving to our Backend the responsibility to choose which ML model to train,
-we make it trivial to deploy new models that take the same kind of inputs and
-outputs as the old one.
+\newcommand{\backendorin}{Backend-Oriented Model Deployment}
+\subsubsection{\backendorin}
+Researchers can deploy new ML models simply from the Backend,
+without the need to update mobile client apps.
+This makes real-world mobile FL experiments feasible---instead of constantly
+annoying the users by telling them to update the apps,
+we can trivially iterate on the models without users noticing.
 
 \subsubsection{Standardized On-Device Training}
 On-device training is by far the most challenging part of FL because
 the libraries involved are complex, experimental, poorly documented
 and lack of community guidance.
-FedKit simplifies this integration by providing implementation libraries
+FedKit simplifies this integration by providing trainers
 that wraps on-device training libraries and
-only provides the functionality required by FL.
+only expose a small interface required by FL.
 
-\subsubsection{Observability}
+\subsubsection{FL Observability}
 On every round of training, the Backend records the ML model parameters and
-telemetry information.
-Telemetry is optional and includes the timing and the loss.
+telemetry information including timing and loss.
 This extra information helps FL researchers observe and analyze
 the performance of their models.
 
@@ -247,7 +249,7 @@ the performance of their models.
                     (5.0, 1.4);
     \draw[-stealth] (0.5, 0.0) node[above right]{Requests to train \model} --
                     (5.0, 0.0);
-    \draw[stealth-] (0.5,-0.1) -- node[below]{Flower server to train \model}
+    \draw[stealth-] (0.5,-0.1) -- node[below]{FL server \fs{} to train \model}
                     (5.0,-0.1);
     \draw[stealth-] (4.5,-1.0) node[below left, draw]{FL server \fs} --
                     (5.0,-0.1);
@@ -260,32 +262,31 @@ the performance of their models.
 \label{fig:fl-workflow}
 \end{figure}
 
-Mobile clients fetch ML models from the Backend Server before doing FL.
-This workflow allows Backend-oriented model deployment, where researches can
-deploy new ML models simply by uploading them to the Backend,
-without updating the client mobile apps.
+Mobile clients, usually in the form of an app,
+fetch training information from the Backend Server,
+before actually federating learning (Figure \ref{fig:fl-workflow}).
+This gives FedKit extra control over the FL process.
 
-\subsubsection{Data Type}
-Each client has its Data Type, the shape of its training input and label,
-predefined.
-This makes sense because obtaining each client's training data requires
-implementation specific to that client.
-
-\subsubsection{Model Request}
-Clients provide the Backend their Data Type and request for an ML model \model.
+\newcommand{\modelreq}{Model Request}
+\subsubsection{\modelreq}
+Clients request the Backend for an ML model \model{} that suits their need.
+This step allows \backendorin.
 
 \subsubsection{Training Initiation}
 Clients request the Backend to start training \model.
-The Backend spawns an FL Server \fs{} and responds directs clients to it.
+The Backend spawns an FL Server \fs{} and directs clients to it.
 
 \subsubsection{Training}
 Clients connect to \fs{} and participate in FL with their local data.
-\fs{} schedules the training, aggregation and evaluation for \model;
-it also sends aggregated parameters to the Backend for analysis.
-Clients send telemetry about timing and loss to the Backend.
+\fs{} schedules the training, aggregation and evaluation for \model.
+Aggregated parameters and telemetry are sent to the Backend
+from \fs{} and clients respectively.
 
-\subsection{Realization}
+\section{Realization}
 
+\newcommand{\dt}{\textit{data type}}
+
+% TODO: Reorganize by data structure.
 FedKit implements 6 libraries:
 Backend Server,
 Flutter client,
@@ -293,7 +294,16 @@ Android client,
 Android trainer,
 TensorFlow Lite converter, and
 iOS trainer.
+% TODO: There's also a library to upload models.
 
+Each ML model is associated with a fixed \dt{} that specifies the shape of
+of its training inputs and labels.
+Clients need to be built with the \dt{} they support along with
+the specific implementation to obtain that data.
+During \modelreq, clients need to send their \dt{} to the Backend to
+request for compatible models.
+
+% TODO: Cluster by logic.
 The Backend Server in Django is a persistent REST API service and database
 controller for FL training and telemetry.
 It creates and manages FL Servers on different fixed port numbers.
@@ -309,7 +319,7 @@ The Android client in Kotlin is similar but less flexible.
 On-device training is especially difficult because mobile phones have limited
 compute power.
 To achieve optimal performance, our implementation adopts native solutions
-to leverages GPUs and NPUs.
+to leverage GPUs and NPUs.
 
 The Android trainer in Kotlin leverages TensorFlow Lite for on-device training.
 We support any Lite model that have these 4 standardized methods:
