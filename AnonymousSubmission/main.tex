@@ -298,6 +298,19 @@ We leverage Flower \cite{beutel2020flower} for FL Servers.
 
 \section{Conclusion and Future Work}
 
+% TODO: Conclusion.
+
+We may adopt other iOS training libraries to avoid the restrictions of Core
+ML---it only supports updating convolution and inner product layers.
+One promising candidate is ONNX Runtime.
+
+Security is not a priority in FedKit but it is easy to extend.
+Differential Privacy can be added simply by adding noise before the data is
+used for training.
+Transport Layer Security can be enabled by
+using HTTPS instead of HTTP for the Backend and
+enabling SSL in the gRPC setting for the FL Servers.
+
 \appendix
 
 \section*{Acknowledgments}
