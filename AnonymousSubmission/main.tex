@@ -168,6 +168,7 @@
 
 \section{Introduction}
 
+% TODO: Come back after finishing Conclusion.
 Our goal is to carry out Federated Learning (FL) research that incorporates
 personal data on volunteers' mobile phones.
 Federated Learning (FL) is a privacy-preserving machine learning (ML) technique
@@ -193,7 +194,7 @@ So, we purposefully built FedKit to power our FL research on mobile phones.
 \section{System Description}
 
 \newcommand{\model}{$M$}
-\newcommand{\fs}{$S_F$}
+\newcommand{\fs}{$S_\mathrm F$}
 
 FedKit powers a Federated Learning system that
 consists of a single Backend Server and a set of mobile clients.
@@ -204,13 +205,10 @@ by on-device training and exchanging ML models and parameters.
 \subsection{Features}
 
 \subsubsection{General Approachability}
-FedKit allows ML researchers to develop ML models to target mobile devices
-using Python libraries that they are already familiar with.
-We integrate TensorFlow Lite to support Android training and Core ML for iOS
-training,
-both of which support converting models from popular libraries such as Pytorch,
-TensorFlow, and Scikit-Learn.
-% FIX: This is not that true about iOS.
+FedKit allows ML researchers to develop ML models to run on mobile devices
+using their familiar frameworks.
+We then provide tooling to convert these models to formats that are compatible
+with the runtime we use.
 
 \subsubsection{Backend-Oriented Model Deployment}
 Researchers can deploy new models simply from the Backend,
@@ -229,18 +227,10 @@ FedKit simplifies this integration by providing implementation libraries
 that wraps on-device training libraries and
 only provides the functionality required by FL.
 
-% TODO: Maybe merge checkpointing & telemetry.
-\subsubsection{Full Model Checkpointing}
-On every round of training an ML model \model,
-all the parameters of \model{} is saved to the Backend database.
-When \model{} is used for the next session of training,
-its latest checkpoint is restored.
-
-\subsubsection{Optional Telemetry}
-On each round of training and evaluation,
-we allow optional telemetry information to be sent to the Backend.
-This includes the timing and loss,
-associated with the FL session and the participants' ID.
+\subsubsection{Observability}
+On every round of training, the Backend stores the ML model parameters and
+telemetry information into the database.
+Telemetry is optional and includes the timing and the loss.
 This extra information helps FL researchers observe and analyze
 the performance of their models.
 
@@ -294,7 +284,12 @@ Clients connect to \fs{} and participate in FL with their local data.
 it also sends aggregated parameters to the Backend for analysis.
 Clients send telemetry about timing and loss to the Backend.
 
-\subsection{Implementation}
+\subsection{Realization}
+
+We integrate TensorFlow Lite to support Android training and Core ML for iOS
+training,
+both come with Python libraries to convert models from popular
+frameworks such as Pytorch and TensorFlow.
 
 We offer an example Flutter client implementation that supports both Android and
 iOS, and a separate Kotlin Android client.
@@ -311,6 +306,7 @@ To achieve optimal performance, our implementation adopts native
 solutions---TensorFlow Lite on Android and Core ML on iOS.
 We offer an Android package for on-device training and a Python package for
 TensorFlow Lite model conversion from any Keras model.
+% TODO: Touch more on the conversion.
 
 We leverage Flower \cite{beutel2020flower} for FL Servers.
 
