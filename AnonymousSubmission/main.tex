@@ -20,6 +20,7 @@
 
 % Custom packages
 \usepackage{tikz}
+\usepackage[inline]{enumitem}
 
 %
 % These are are recommended to typeset listings but not required. See the subsubsection on listing. Remove this block if you don't have listings in your paper.
@@ -94,7 +95,7 @@
 % nouns, adverbs, adjectives should be capitalized, including both words in hyphenated terms, while
 % articles, conjunctions, and prepositions are lower case unless they
 % directly follow a colon or long dash
-\title{FedKit---Cross-Platform SDKs for Mobile Federated Learning Research}
+\title{FedKit---Cross-Platform On-Smartphone Federated Learning}
 \author{
     %Authors
     % All authors must be in the same font size and format.
@@ -169,29 +170,29 @@
 \section{Introduction}
 
 % TODO: Come back after finishing Conclusion.
-Our goal is to carry out Federated Learning (FL) research that incorporates
-personal data on volunteers' mobile phones.
-Federated Learning (FL) is a privacy-preserving machine learning (ML) technique
-for edge devices to collaboratively train a shared ML model.
-FL's most appealing application area is mobile devices because
-they generate a huge amount of privacy-sensitive data.
-In our FL setting,
-volunteers use a mobile app to train shared ML models
-using un-uploaded private data on their phones.
+The most appealing field of Federated Learning (FL) application is smartphones.
+However, most FL frameworks do not support on-smartphone training
+\cite{}, % TODO: Cite many
+only partially support Android \cite{he2020fedml},
+have proprietary backend \cite{he2020fedml,madrigal2023project},
+are still exploring on-smartphones training
+\cite{beutel2020flower,mathur2021ondevice}, or
+suffer from performance penalties from custom training implementations
+\cite{ryffel2018generic,Ziller2021,hall2021syft}.
+For our FL research on smartphones,
+we want a platform to
+\begin{enumerate*}[label=\arabic*)]
+    \item train ML models on Android and iOS smartphones,
+    \item easily deploy different ML models, and
+    \item self-host the backend server.
+\end{enumerate*}
 
-To achieve our goal, we need cross-platform mobile FL libraries that
-enable fast deployment iteration and high observability,
-which we could not find.
-Most FL frameworks do not support on-device training,
-and the ones that do fails other requirements. % TODO: What specifically?
-PySyft's \cite{ryffel2018generic,Ziller2021,hall2021syft}
-custom on-device training implementation is inefficient;
-FedML \cite{he2020fedml} uses a proprietary backend and does not support iOS.
-Also, most FL frameworks assume a fixed ML model that is bundled with the app,
-making it difficult to iterate on the models.
-
-So, we purposefully built FedKit to power our FL research on mobile phones.
-% TODO: Do we describe the advantage of FedKit here?
+We developed FedKit,
+an open-source library collection that fulfills all the above requirements,
+to power our first FL app in deployment.
+FedKit makes cross-platform FL and on-device training approachable,
+and pioneers backend-oriented model deployment.
+With FedKit, we extend FL researchers' reach to smartphones.
 
 \section{System Description}
 
@@ -208,6 +209,7 @@ by on-device training and exchanging ML models and parameters.
 \subsection{Features}
 
 % TODO: Cross-platform
+% TODO: Checklist.
 
 \subsubsection{General Approachability}
 FedKit allows researchers to develop mobile FL
@@ -241,6 +243,7 @@ the performance of their models.
 
 \subsection{FL Workflow}
 
+% TODO: Boxes.
 % TODO: Redo with numbers.
 \begin{figure}
 \centering
@@ -347,6 +350,8 @@ the layer names and weights/biases specified in model information.
 To convert models from popular frameworks such as TensorFlow,
 we developed the TFLite Converter,
 and Core ML comes with \lstinline{coremltools}.
+
+% TODO: Experiments: the app.
 
 \section{Conclusion and Future Work}
 
