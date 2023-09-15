@@ -272,7 +272,8 @@ This gives FedKit extra control over the FL process.
 Clients request the Backend for an ML model \model{} that suits their need.
 This step allows \backendorin.
 
-\subsubsection{Training Initiation}
+\newcommand{\traininginit}{Training Initiation}
+\subsubsection{\traininginit}
 Clients request the Backend to start training \model.
 The Backend spawns an FL Server \fs{} and directs clients to it.
 
@@ -286,61 +287,62 @@ from \fs{} and clients respectively.
 
 \newcommand{\dt}{\textit{data type}}
 
-% TODO: Reorganize by data structure.
-FedKit implements 6 libraries:
-Backend Server,
-Flutter client,
-Android client,
-Android trainer,
-TensorFlow Lite converter, and
-iOS trainer.
-% TODO: There's also a library to upload models.
+\begin{table}
+\centering
+\begin{tabular}{lp{0.4\linewidth}l}
+    Library&Role&Lang\\
+    \hline
+    Backend Server&Training orchestration&Python\\
+    Flutter client&Backend \& FL Server communication&Flutter\\
+    Android Trainer&TFLite training&Kotlin\\
+    TFLite Converter&Convert Keras models&Python\\
+    iOS Trainer&Core ML training&Swift
+\end{tabular}
+\caption{FedKit's main libraries.}
+\label{table:libs}
+\end{table}
 
-Each ML model is associated with a fixed \dt{} that specifies the shape of
-of its training inputs and labels.
-Clients need to be built with the \dt{} they support along with
-the specific implementation to obtain that data.
-During \modelreq, clients need to send their \dt{} to the Backend to
-request for compatible models.
+FedKit implements 5 libraries (Table \ref{table:libs}) to
+manage client-server communication and simplify on-device training.
 
-% TODO: Cluster by logic.
-The Backend Server in Django is a persistent REST API service and database
-controller for FL training and telemetry.
-It creates and manages FL Servers on different fixed port numbers.
-The FL gRPC Servers use the Flower FL framework \cite{beutel2020flower} and
-have the full capabilities of Flower Servers.
+FedKit's Backend communication centers on ML models.
+In our deployment, each model is first uploaded to the Django Backend,
+where model files are stored using the file system and
+model information is stored in a PostgreSQL database.
+Model information is used to determine which clients a model support.
+It include what on-device training it supports, and
+a fixed \dt{} that specifies the shape of training inputs and labels.
+Clients are bundled with a specific implementation to obtain a certain \dt,
+which they use to request the Backend for compatible models during \modelreq.
 
-The Flutter client in Dart works on both Android and iOS to
-call the Backend over HTTP and connect to FL Servers over gRPC.
-On-device training is left to the platform-specific trainers
-by providing a common abstract class for them to implement.
-The Android client in Kotlin is similar but less flexible.
+On-demand FL is achieved by wrapping the Flower FL framework
+\cite{beutel2020flower}.
+Upon \traininginit,
+the Backend spawns full-featured Flower FL Servers as child processes on
+different fixed port numbers,
+then offloads the training scheduling to these gRPC servers.
+The Flutter Clients then run Flower gRPC clients to bridge between
+server communication and the platform-specific trainers
+behind a common abstract class.
 
-On-device training is especially difficult because mobile phones have limited
-compute power.
-To achieve optimal performance, our implementation adopts native solutions
-to leverage GPUs and NPUs.
-
-The Android trainer in Kotlin leverages TensorFlow Lite for on-device training.
-We support any Lite model that have these 4 standardized methods:
+To overcome the limited compute power on mobile phones,
+we adopt and standardize native solutions for on-device training
+despite the difficulties they impose.
+The Android trainer leverages TensorFlow Lite (TFLite),
+and the iOS trainer exploits Core ML,
+both leveraging GPUs and NPUs.
+To organize the excessively open-ended TFLite,
+we standardize a supported TFLite model form with 4 methods:
 \lstinline{train},
 \lstinline{infer},
 \lstinline{parameters} and
 \lstinline{restore}.
-
-% TODO: This reads like a manual.
-The TensorFlow Lite converter in Python converts any Keras model to
-a supported Lite model.
-Model written in other frameworks can be converted to Keras models using
-Open Neural Network Exchange (ONNX).
-
-The iOS trainer in Swift exploits Core ML.
-Core ML, being proprietary and poorly documented,
-is extremely difficult to use for FL.
-To update Core ML model parameters,
-we resorted to modify their ProtoBuf representation.
-Core ML comes with \lstinline{coremltools} in Python to convert models from
-popular frameworks such as TensorFlow and PyTorch.
+To update model parameters with the proprietary and poorly-documented Core ML,
+we resorted to modify their ProtoBuf representation by
+the layer names and weights/biases specified in model information.
+To convert models from popular frameworks such as TensorFlow,
+we developed the TFLite Converter,
+and Core ML comes with \lstinline{coremltools}.
 
 \section{Conclusion and Future Work}
 
