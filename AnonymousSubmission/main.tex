@@ -346,18 +346,21 @@ and Core ML comes with \lstinline{coremltools}.
 
 \section{Conclusion and Future Work}
 
-% TODO: Conclusion.
+FedKit is a modularized system that enables real-world cross-platform
+mobile FL research.
+It enables researchers to focus on developing and iterating on the ML models
+using familiar Python frameworks,
+while handling optimal on-device training for them and
+offering high observability.
 
-We may adopt other iOS training libraries to avoid the restrictions of Core
-ML---it only supports updating convolution and inner product layers.
-One promising candidate is ONNX Runtime.
-
-Security is not a priority in FedKit but it is easy to extend.
-Differential Privacy can be added simply by adding noise before the data is
-used for training.
-Transport Layer Security can be enabled by
-using HTTPS instead of HTTP for the Backend and
-enabling SSL in the gRPC setting for the FL Servers.
+FedKit is still an early step towards approachable mobile FL research,
+so its many limitations can be improved.
+The restrictions of Core ML on updatable layers may be avoided
+using alternative trainers such as ONNX Runtime.
+Security may be extended by implementing Differential Privacy or
+enabling Transport Layer Security.
+Finally, the Backend can be further modularized so researchers can
+test new FL algorithms in a more contained environment.
 
 \appendix
 
