@@ -30,3 +30,21 @@
     - How the app is deployed
         - (Figure of the setup)
 - Conclusion and Future Work
+
+## Not Mentioned
+
+- Cross platform communication support with Flutter
+- Model checkpointing
+- Telemetry collection
+
+Implementation details
+
+- FedMCRNN model
+- Client cache model in file system
+- Android trainer takes generic input & output
+
+## Removed
+
+- Background training scheduling
+- Simple HealthKit model
+- Benchmark app
