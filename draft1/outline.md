@@ -1,7 +1,7 @@
 # Draft 1 Outline
 
 - Introduction
-    - What is mobile FL
+    - What is mobile FL & why it is important
     - Related work in mobile FL
     - What is missing for on-smartphone FL research to be practical
         - Cross-platform training support
@@ -9,17 +9,17 @@
     - Brief introduction to FedKit
         - FedKit features
             - (Checklist figure)
-        - Our research app in production
+        - Our research app in production (Key contributions)
 - System Description
     - Architecture Overview
         - Client-server relationship
         - FL Workflow
         - (Figure of structure with workflow, numbered)
-    - On-Smartphone Training (long)
-        - Most ML frameworks don't support on-smartphone training
+    - Cross-platform Federated Learning (long)
+        - Most ML frameworks don't support on-smartphone training [Simple Chart], & Why it is significant
         - Only TensorFlow and Core ML work
-        - Model conversion is the only way to go about models
-    - Handling ML Models
+        - [Describe the proposed framework] We propose a novel framework that uses model conversion to enable cross-platform federated learning on smartphones with different operating systems and hardware configurations. 
+    - Handling ML Models (Should this section be merged with the previous section?)
         - Model Update from the Backend
             - Researchers would want to update the model
             - How it is done
