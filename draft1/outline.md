@@ -1,0 +1,27 @@
+# Draft 1 Outline
+
+- Introduction
+    - What is mobile FL
+    - Related work in mobile FL
+    - What is missing for on-smartphone FL research to be practical
+        - Cross-platform training support
+        - Ability to change the implementation
+    - Brief introduction to FedKit
+        - Our research app in production
+- System Description
+    - Overview
+        - Client-server relationship
+        - FL Workflow
+    - On-Device training (long)
+        - Most ML frameworks don't support on-smartphone training
+        - Only TensorFlow and Core ML work
+        - Model conversion is the only way to go about models
+    - Handling ML Models
+        - Model Update from the Backend
+            - Researchers would want to update the model
+            - How it is done
+        - Cross-Platform Model Support
+            - How we serve different models for different platform
+- Experiment
+    - How the app is deployed
+- Conclusion and Future Work

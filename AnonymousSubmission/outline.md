@@ -1,9 +1,9 @@
 # Draft 0 Outline
 
 - Introduction
-    - Importance of on-smartphone FL
+    - Importance of on-smartphone FL and what we want
     - Current solutions don't work
-    - Brief introduction for FedKit
+    - Brief introduction to FedKit
 - System Description
     - Summary of the system
     - Features
