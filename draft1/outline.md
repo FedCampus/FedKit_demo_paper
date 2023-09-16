@@ -5,7 +5,7 @@
     - Related work in mobile FL
     - What is missing for on-smartphone FL research to be practical
         - Cross-platform training support
-        - Ability to change the implementation
+        - Ability to change the model & algorithm
     - Brief introduction to FedKit
         - FedKit features
             - (Checklist figure)
@@ -15,7 +15,7 @@
         - Client-server relationship
         - FL Workflow
         - (Figure of structure with workflow, numbered)
-    - On-Device training (long)
+    - On-Smartphone Training (long)
         - Most ML frameworks don't support on-smartphone training
         - Only TensorFlow and Core ML work
         - Model conversion is the only way to go about models
