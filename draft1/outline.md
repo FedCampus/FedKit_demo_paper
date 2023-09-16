@@ -7,11 +7,14 @@
         - Cross-platform training support
         - Ability to change the implementation
     - Brief introduction to FedKit
+        - FedKit features
+            - (Checklist figure)
         - Our research app in production
 - System Description
-    - Overview
+    - Architecture Overview
         - Client-server relationship
         - FL Workflow
+        - (Figure of structure with workflow, numbered)
     - On-Device training (long)
         - Most ML frameworks don't support on-smartphone training
         - Only TensorFlow and Core ML work
@@ -23,5 +26,7 @@
         - Cross-Platform Model Support
             - How we serve different models for different platform
 - Experiment
+    - Describe the app
     - How the app is deployed
+        - (Figure of the setup)
 - Conclusion and Future Work
