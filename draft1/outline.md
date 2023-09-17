@@ -11,19 +11,27 @@
             - (Checklist figure)
         - Our research app in production (Key contributions)
 - System Description
-    - Architecture Overview
+    - Basic Architecture
         - Client-server relationship
-        - FL Workflow
-        - (Figure of structure with workflow, numbered)
-    - Cross-platform Federated Learning (long)
-        - Most ML frameworks don't support on-smartphone training [Simple Chart], & Why it is significant
-        - Only TensorFlow and Core ML work
-        - [Describe the proposed framework] We propose a novel framework that uses model conversion to enable cross-platform federated learning on smartphones with different operating systems and hardware configurations. 
-    - Handling ML Models (Should this section be merged with the previous section?)
-        - Model Update from the Backend
-            - Researchers would want to update the model
-            - How it is done
-        - Cross-Platform Model Support
+    - Cross-Smartphone-Platform FL Training (detailed)
+        - Description: cross-platform FL on smartphones with different OS and
+            hardware configurations
+        - Significance of cross-smartphone-platform training
+            - They are needed for on-smartphone FL to be practical
+            - Most ML frameworks don't support on-smartphone training
+                - Only TensorFlow and Core ML are usable
+                - No cross-smartphone-platform support from them
+        - How it is done
+            - Model conversion
+                - (Figure of model conversion)
+            - Unified parameter transmission allows simultaneous
+                cross-platform FL
+                <!-- TODO: Better naming. -->
+    - Maximal ML Model Control from the Backend
+        - FL frameworks assume models bundled with app
+        - Researchers would want to update the model
+        - How it is done: FL workflow with a preparation stage
+            - (Figure of structure with workflow, numbered)
             - How we serve different models for different platform
 - Experiment
     - Describe the app
