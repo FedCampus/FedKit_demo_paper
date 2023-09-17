@@ -3,9 +3,9 @@
 - Introduction
     - What is mobile FL & why it is important
     - Related work in mobile FL
-    - What is missing for on-smartphone FL research to be practical
+    - Difficulties in practical on-smartphone FL research
         - Cross-platform training support
-        - Ability to change the model & algorithm
+        - Customizing FL in production
     - Brief introduction to FedKit
         - FedKit features
             - (Checklist figure)
@@ -13,17 +13,26 @@
 - System Description
     - Architecture Overview
         - Client-server relationship
-        - FL Workflow
-        - (Figure of structure with workflow, numbered)
-    - Cross-platform Federated Learning (long)
-        - Most ML frameworks don't support on-smartphone training [Simple Chart], & Why it is significant
-        - Only TensorFlow and Core ML work
-        - [Describe the proposed framework] We propose a novel framework that uses model conversion to enable cross-platform federated learning on smartphones with different operating systems and hardware configurations. 
-    - Handling ML Models (Should this section be merged with the previous section?)
-        - Model Update from the Backend
-            - Researchers would want to update the model
-            - How it is done
-        - Cross-Platform Model Support
+        - 2 innovation points: the following
+    - Cross-Smartphone-Platform FL (detailed)
+        - Description: cross-platform FL on smartphones with different OS and
+            hardware configurations
+        - Significance[^1]
+            - Academic: enable real-world cross-platform research
+            - Industrial: use data on smartphones
+        - Difficulty: on-smartphone ML training
+            - (Chart of FL frameworks' platform support)
+        - How it is done
+            - Model conversion to native format (TFLite & Core ML)
+                - (Figure of model conversion)
+            - Unified parameter transmission allows simultaneous
+                cross-platform FL
+                <!-- TODO: Better naming. -->
+    - Flexible In-Production FL Customization
+        - FL frameworks assume models bundled with app
+        - Researchers would want to update the model after the app is deployed
+        - How it is done: FL workflow with a preparation stage
+            - (Figure of structure with workflow, numbered)
             - How we serve different models for different platform
 - Experiment
     - Describe the app
@@ -48,3 +57,5 @@ Implementation details
 - Background training scheduling
 - Simple HealthKit model
 - Benchmark app
+
+[^1]: <https://github.com/FedCampus/AAAI_conf_demo/pull/2#discussion_r1328039222>
