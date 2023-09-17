@@ -3,9 +3,9 @@
 - Introduction
     - What is mobile FL & why it is important
     - Related work in mobile FL
-    - What is missing for on-smartphone FL research to be practical
+    - Difficulties in practical on-smartphone FL research
         - Cross-platform training support
-        - Ability to customize FL in production
+        - Customizing FL in production
     - Brief introduction to FedKit
         - FedKit features
             - (Checklist figure)
