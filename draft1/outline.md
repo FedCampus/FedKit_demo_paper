@@ -11,13 +11,17 @@
             - (Checklist figure)
         - Our research app in production (Key contributions)
 - System Description
-    - Basic Architecture
+    - Architecture Overview
         - Client-server relationship
-    - Cross-Smartphone-Platform FL Training (detailed)
+        - 2 innovation points: the following
+    - Cross-Smartphone-Platform FL (detailed)
         - Description: cross-platform FL on smartphones with different OS and
             hardware configurations
-        - Significance of cross-smartphone-platform training
-            - They are needed for on-smartphone FL to be practical
+        - Why it is a major contribution
+            - Significance
+                - Needed for on-smartphone FL research to be feasible
+                - No FL framework practically has full support
+                    - (Chart of FL frameworks' platform support)
             - Most ML frameworks don't support on-smartphone training
                 - Only TensorFlow and Core ML are usable
                 - No cross-smartphone-platform support from them
@@ -29,7 +33,7 @@
                 <!-- TODO: Better naming. -->
     - Maximal ML Model Control from the Backend
         - FL frameworks assume models bundled with app
-        - Researchers would want to update the model
+        - Researchers would want to update the model after the app is deployed
         - How it is done: FL workflow with a preparation stage
             - (Figure of structure with workflow, numbered)
             - How we serve different models for different platform
