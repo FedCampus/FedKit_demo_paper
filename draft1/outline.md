@@ -5,7 +5,7 @@
     - Related work in mobile FL
     - What is missing for on-smartphone FL research to be practical
         - Cross-platform training support
-        - Ability to change the model & algorithm
+        - Ability to customize FL in production
     - Brief introduction to FedKit
         - FedKit features
             - (Checklist figure)
@@ -17,21 +17,18 @@
     - Cross-Smartphone-Platform FL (detailed)
         - Description: cross-platform FL on smartphones with different OS and
             hardware configurations
-        - Why it is a major contribution
-            - Significance
-                - Needed for on-smartphone FL research to be feasible
-                - No FL framework practically has full support
-                    - (Chart of FL frameworks' platform support)
-            - Most ML frameworks don't support on-smartphone training
-                - Only TensorFlow and Core ML are usable
-                - No cross-smartphone-platform support from them
+        - Significance[^1]
+            - Academic: enable real-world cross-platform research
+            - Industrial: use data on smartphones
+        - Difficulty: on-smartphone ML training
+            - (Chart of FL frameworks' platform support)
         - How it is done
-            - Model conversion
+            - Model conversion to native format (TFLite & Core ML)
                 - (Figure of model conversion)
             - Unified parameter transmission allows simultaneous
                 cross-platform FL
                 <!-- TODO: Better naming. -->
-    - Maximal ML Model Control from the Backend
+    - Flexible In-Production FL Customization
         - FL frameworks assume models bundled with app
         - Researchers would want to update the model after the app is deployed
         - How it is done: FL workflow with a preparation stage
@@ -60,3 +57,5 @@ Implementation details
 - Background training scheduling
 - Simple HealthKit model
 - Benchmark app
+
+[^1]: <https://github.com/FedCampus/AAAI_conf_demo/pull/2#discussion_r1328039222>
