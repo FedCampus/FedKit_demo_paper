@@ -113,38 +113,40 @@
 
 \section{System Description}
 
-Our FL setting is a distributed system.
-The Backend orchestrates the FL process and manages data.
+FedKit is a typical client-server FL system.
+The Backend Server orchestrates the FL process and persists ML model data.
 Clients, in the form of smartphone apps,
-connect to the Backend to prepare and run FL tasks.
-We propose two major innovations:
+connect to the Backend to prepare and federate learning.
+While the simplicity of the system structure makes it easy to implement,
+our two major innovations make cross-platform on-smartphone FL possible:
 \begin{enumerate*}[label=\arabic*)]
-    \item cross-smartphone-platform FL support by converting ML models
-    into ones that Android and iOS natively support, and
-    \item flexible FL customization in production by adding a preparation stage
-    before FL training
+    \item cross-smartphone-platform FL support using
+        native smartphone ML frameworks, and
+    \item flexible FL customization in production enabled by
+        our custom FL workflow
 \end{enumerate*}.
 We elaborate on these innovations next.
 
 \subsection{Cross-Smartphone-Platform FL}
-We support federating ML models training on smartphones
+FedKit enables federating learning ML models on smartphones
 with different operating systems.
 For the same ML model developed in Python on a desktop computer,
-we can federate training it both on Android and iOS smartphones,
-and we aggregate parameters across these platforms.
+we can train it on both Android and iOS smartphones,
+and aggregate its parameters across these platforms.
 This is significant because it
 \begin{enumerate*}[label=\arabic*)]
-    \item makes it feasible for academic researchers to
-        conduct real-world cross-platform FL research, and
-    \item allows companies to use the data on smartphones to train their FL
-        models
+    \item allows FL academic research that tests FL algorithms
+        on data across smartphone platforms under real-world circumstances, and
+    \item enables the industry to use the massive amount of data on smartphones
+        for FL
 \end{enumerate*}.
-Cross-smartphone-platform FL is difficult because it means we need to interface
+However, popular FL frameworks generally do not support
+cross-smartphone-platform FL.
+% TODO: Chart of FL frameworks' platform support.
+The main difficulty is to interface
 Python-incompatible environments with different operating systems and
 ML frameworks.
-This is the major reason why other FL frameworks do not have
-cross-smartphone-platform support.
-% TODO: Chart of FL frameworks' platform support.
+We discuss how we overcome these difficulties next.
 
 We achieve cross-smartphone-platform FL by bridging between
 desktop ML and native smartphone ML in three steps:
@@ -153,34 +155,34 @@ desktop ML and native smartphone ML in three steps:
         into formats natively supported by each smartphone platform,
     \item build an unified interface to run the converted models on smartphones
         using native ML frameworks, and
-    \item transmit model parameters in an unified format for
-        cross-platform aggregation
+    \item aggregate model parameters across platforms using an unified format
 \end{enumerate*}.
 % TODO: Figure of ML model conversion.
-Using the native frameworks is important because
-we can then leverage the GPUs and NPUs on these resource-constraint smartphones.
-These frameworks are Google's TensorFlow Lite (TFLite) on Android and
-Apple's Core ML on iOS,
-and they impose difficulties at different stages.
+The native ML frameworks are Google's TensorFlow Lite (TFLite) on Android and
+Apple's Core ML on iOS.
+We find them to be way superior to othe frameworks because
+they best leverage the GPUs and NPUs to accelerate training on
+these resource-constraint smartphones.
+But, they impose difficulties at different stages.
 TFLite model definitions are excessively open-ended,
 so we standardize four methods to read and update parameters,
 train and infer, and
 provide a Python converter to generate standardized TFLite models from
 any TensorFlow models.
-Running TFLite on smartphones are straightforward interpreter method calls.
+Running TFLite on smartphones is straightforward using their interpreter.
 In contrast, Core ML models have defined forms and an official Python converter,
-but on-device training is artificially restricted.
-To work around the restrictions,
+but Apple artificially restricts on-smartphone training.
+To work around Apple's restrictions,
 we manually read and update Core ML models' underlying ProtoBuf representations
 to update their parameters and configure the training data.
-In the end, we have unified native training APIs both on Android and iOS,
-which, more importantly, yield model parameters in the same representation.
-On both platforms, neural network's parameters are represented as byte arrays
-for each layer.
-We align these layers in the same order on both platforms,
-so when the Backend receives them,
+In the end, we have unified native training APIs on both Android and iOS.
+More importantly, our APIs yield model parameters in the same
+representation---each neural network layer's weights or biases are represented
+as a byte array, and
+the order of these layers are the same across platforms.
+When the Backend receives model parameters,
 it can aggregate them without any knowledge of
-the implementation of the clients.
+the implementations of the clients.
 This enables us to aggregate parameters from different platforms.
 Cross-smartphone-platform aggregation,
 together with cross-smartphone-platform training and model conversion,
@@ -193,39 +195,36 @@ We provide the flexibility to customize ML models and FL algorithms
 in production.
 This is crucial because, to iterate on ML models and explore new FL algorithms,
 researchers must have the ability to change them.
-However, customization in production is difficult because
-the clients in on-smartphone FL are deployed as smartphone apps and
-remain largely static until an update comes.
-App updates make fast research iteration infeasible because of
-app stores' slow review processes and
-the wait for the users to apply the update.
-Instead, we add a preparation stage in our FL workflow and
-utilizes the flexibility of our Backend to
-maximize the potential of FL customization.
+However, customizing on-smartphone FL in production is difficult because
+changing deployed smartphone apps requires an app update,
+which suffers from app stores' slow review processes and
+users' slow reaction to update their apps.
+Most FL frameworks simply ignore this problem and assume to
+bundle the ML models with the app.
+Instead, we shift responsibilities to the Backend in our FL workflow and
+utilize the flexibility of the Backend to
+maximize the potential of FL customization,
+which we detail next.
 
 Our FL workflow provides extra flexibility in FL customization in production by
-\begin{enumerate*}[label=\arabic*)]
-    \item moving as many responsibilities to the Backend as possible and
-    \item separating out the FL responsibility
-\end{enumerate*}.
-We first move to the Backend the responsibility to
-decide which ML model to train.
+shifting as many responsibilities to the Backend as possible.
+First, the Backend is responsible to decide which ML model to train.
 % TODO: Figure of structure with workflow, numbered.
 As shown in Fig. , % TODO: ref
 clients start by requesting the Backend for an ML model \model{} that fits
-the kind of data they have.
+their platform and the kind of training data they have.
 They then initiate the training by requesting an FL Server \fs{} for \model{}
 from the Backend and federate learning by communicating with \fs{}
 (Fig. ). % TODO: ref
-This is where we move to the Backend the responsibility to track FL sessions
-and separate out the FL responsibility to FL Servers.
-The Backend spawns FL Servers as sub-processes and track them to decide whether
+This is where the Backend is responsible to track different FL sessions and
+decide whether
 to spawn new FL Servers or let new clients join existing ones.
-The FL Servers manages the actual FL training and evaluation process.
+The FL Servers are subprocesses to the Backend and
+manages the actual FL training and evaluation process.
 Both the Backend and the FL Servers are easy to customize in production because
 they are Python programs using, respectively,
 the Django REST Framework and the Flower FL Framework.
-By simply uploading new ML models to the associated data types and
+By simply uploading new ML models and
 changing the FL algorithm code for the FL Servers in Python,
 researchers can flexibly customize the FL process in production.
 
