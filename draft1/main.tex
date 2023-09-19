@@ -113,11 +113,78 @@
 
 \section{System Description}
 
-% TODO: Cross-platform
-% TODO: Checklist.
-% TODO: Boxes.
+Our FL setting is a distributed system.
+The Backend orchestrates the FL process and manages data.
+Clients, in the form of smartphone apps,
+connect to the Backend to prepare and run FL tasks.
+We propose two major innovations:
+\begin{enumerate*}[label=\arabic*)]
+    \item cross-smartphone-platform FL support by converting ML models
+    into ones that Android and iOS natively support, and
+    \item flexible FL customization in production by adding a preparation stage
+    before FL training
+\end{enumerate*}.
+We elaborate on these innovations next.
 
-% TODO: Experiments: the app.
+\subsection{Cross-Smartphone-Platform FL}
+We support federating ML models training on smartphones
+with different operating systems.
+For the same ML model developed in Python on a desktop computer,
+we can federate training it both on Android and iOS smartphones,
+and we aggregate parameters across these platforms.
+This is significant because it
+\begin{enumerate*}[label=\arabic*)]
+    \item makes it feasible for academic researchers to
+        conduct real-world cross-platform FL research, and
+    \item allows companies to use the data on smartphones to train their FL
+        models
+\end{enumerate*}.
+Cross-smartphone-platform FL is difficult because it means we need to interface
+Python-incompatible environments with different operating systems and
+ML frameworks.
+This is the major reason why other FL frameworks do not have
+cross-smartphone-platform support.
+% TODO: Chart of FL frameworks' platform support.
+
+We achieve cross-smartphone-platform FL by bridging between
+desktop ML and native smartphone ML in three steps:
+\begin{enumerate*}[label=\arabic*.]
+    \item convert the ML models from desktop ML frameworks (e.g. TensorFlow)
+        into formats natively supported by each smartphone platform,
+    \item build an unified interface to run the converted models on smartphones
+        using native ML frameworks, and
+    \item transmit model parameters in an unified format for
+        cross-platform aggregation
+\end{enumerate*}.
+% TODO: Figure of ML model conversion.
+Using the native frameworks is important because
+we can then leverage the GPUs and NPUs on these resource-constraint smartphones.
+These frameworks are Google's TensorFlow Lite (TFLite) on Android and
+Apple's Core ML on iOS,
+and they impose difficulties at different stages.
+TFLite model definitions are excessively open-ended,
+so we standardize four methods to read and update parameters,
+train and infer, and
+provide a Python converter to generate standardized TFLite models from
+any TensorFlow models.
+Running TFLite on smartphones are straightforward interpreter method calls.
+In contrast, Core ML models have defined forms and an official Python converter,
+but on-device training is artificially restricted.
+To work around the restrictions,
+we manually read and update Core ML models' underlying ProtoBuf representations
+to update their parameters and configure the training data.
+In the end, we have unified native training APIs both on Android and iOS,
+which, more importantly, yield model parameters in the same representation.
+On both platforms, neural network's parameters are represented as byte arrays
+for each layer.
+We align these layers in the same order on both platforms,
+so when the Backend receives them,
+it can aggregate them without any knowledge of
+the implementation of the clients.
+This enables us to aggregate parameters from different platforms.
+Cross-smartphone-platform aggregation,
+together with cross-smartphone-platform training and model conversion,
+allows true cross-smartphone-platform FL.
 
 \section{Conclusion and Future Work}
 
