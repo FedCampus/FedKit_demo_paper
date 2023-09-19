@@ -113,19 +113,23 @@
 
 \section{System Description}
 
-FedKit is a typical client-server FL system.
-The Backend Server orchestrates the FL process and persists ML model data.
-Clients, in the form of smartphone apps,
-connect to the Backend to prepare and federate learning.
-While the simplicity of the system structure makes it easy to implement,
-our two major innovations make cross-platform on-smartphone FL possible:
+FedKit is a client-server FL system with a Backend as the server and
+apps across smartphone platforms as clients.
+% TODO: Figure of system structure.
+The Backend orchestrates the FL process and manages ML model data.
+Clients learn local training data and exchange ML model information with
+the Backend.
+While the system structure is simple and elegant,
+technical challenges imposed by mobile development make it very difficult to
+implement.
+To address these challenges and make cross-platform on-smartphone FL possible,
+in the following, we propose
 \begin{enumerate*}[label=\arabic*)]
     \item cross-smartphone-platform FL support using
         native smartphone ML frameworks, and
     \item flexible FL customization in production enabled by
         our custom FL workflow
 \end{enumerate*}.
-We elaborate on these innovations next.
 
 \subsection{Cross-Smartphone-Platform FL}
 FedKit enables federating learning ML models on smartphones
