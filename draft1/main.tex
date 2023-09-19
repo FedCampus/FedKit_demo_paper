@@ -186,6 +186,50 @@ Cross-smartphone-platform aggregation,
 together with cross-smartphone-platform training and model conversion,
 allows true cross-smartphone-platform FL.
 
+\subsection{Flexible In-Production FL Customization}
+\newcommand{\model}{$M$}
+\newcommand{\fs}{$S_\mathrm F$}
+We provide the flexibility to customize ML models and FL algorithms
+in production.
+This is crucial because, to iterate on ML models and explore new FL algorithms,
+researchers must have the ability to change them.
+However, customization in production is difficult because
+the clients in on-smartphone FL are deployed as smartphone apps and
+remain largely static until an update comes.
+App updates make fast research iteration infeasible because of
+app stores' slow review processes and
+the wait for the users to apply the update.
+Instead, we add a preparation stage in our FL workflow and
+utilizes the flexibility of our Backend to
+maximize the potential of FL customization.
+
+Our FL workflow provides extra flexibility in FL customization in production by
+\begin{enumerate*}[label=\arabic*)]
+    \item moving as many responsibilities to the Backend as possible and
+    \item separating out the FL responsibility
+\end{enumerate*}.
+We first move to the Backend the responsibility to
+decide which ML model to train.
+% TODO: Figure of structure with workflow, numbered.
+As shown in Fig. , % TODO: ref
+clients start by requesting the Backend for an ML model \model{} that fits
+the kind of data they have.
+They then initiate the training by requesting an FL Server \fs{} for \model{}
+from the Backend and federate learning by communicating with \fs{}
+(Fig. ). % TODO: ref
+This is where we move to the Backend the responsibility to track FL sessions
+and separate out the FL responsibility to FL Servers.
+The Backend spawns FL Servers as sub-processes and track them to decide whether
+to spawn new FL Servers or let new clients join existing ones.
+The FL Servers manages the actual FL training and evaluation process.
+Both the Backend and the FL Servers are easy to customize in production because
+they are Python programs using, respectively,
+the Django REST Framework and the Flower FL Framework.
+By simply uploading new ML models to the associated data types and
+changing the FL algorithm code for the FL Servers in Python,
+researchers can flexibly customize the FL process in production.
+
+
 \section{Conclusion and Future Work}
 
 
