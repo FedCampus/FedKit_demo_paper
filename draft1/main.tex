@@ -192,16 +192,11 @@ so we had to employ exotic solutions to handle them.
 Our approaches not only result in unified native training APIs on
 both Android and iOS, but also
 allow for seamless parameter aggregation across these platforms.
-This is possible because our APIs represent model parameter consistently.
 On both platforms,
-we carefully access neural network layers in the same order,
+we carefully access the models' layers in the same order,
 and retrieve each layer's weights or biases as a byte array.
-Having the same format of model parameters enables us to
+Having this unified model parameters format enables us to
 aggregate them from different platforms.
-
-Cross-smartphone-platform aggregation,
-together with cross-smartphone-platform training and model conversion,
-allows true cross-smartphone-platform FL.
 
 \subsection{Flexible In-Production FL Customization}
 \newcommand{\model}{$M$}
