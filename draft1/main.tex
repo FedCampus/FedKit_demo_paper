@@ -194,39 +194,40 @@ in production.
 This is crucial because, to iterate on ML models and explore new FL algorithms,
 researchers must have the ability to change them.
 However, customizing on-smartphone FL in production is difficult because
-changing deployed smartphone apps requires an app update,
+we cannot modify the client apps without an app update,
 which suffers from app stores' slow review processes and
 users' slow reaction to update their apps.
-Most FL frameworks simply ignore this problem and assume to
-bundle the ML models with the app.
-Instead, we shift responsibilities to the Backend in our FL workflow and
-utilize the flexibility of the Backend to
+Most FL frameworks simply ignore this problem and
+hard-code the ML models into the app.
+Instead, we shift responsibilities to the Backend in our FL workflow,
+utilizing our full control over the Backend to
 maximize the potential of FL customization,
 which we detail next.
 
 Our FL workflow provides extra flexibility in FL customization in production by
 shifting as many responsibilities to the Backend as possible.
-In deployment, we cannot control the clients,
-but we can change the Backend at any time.
-For example, we can deploy new ML models from the Backend because
+First, we can deploy new ML models from the Backend because
 it is responsible to decide which model to train.
 % TODO: Figure of structure with workflow, numbered.
 As shown in Fig. , % TODO: ref
 clients start by requesting the Backend for an ML model \model{} that fits
 their platform and the kind of training data they have.
-They then initiate the training by requesting an FL Server \fs{} for \model{}
-from the Backend and federate learning by communicating with \fs{}
+They then initiate the training by requesting the Backend for
+an FL Server \fs{} for \model{}
 (Fig. ). % TODO: ref
-This is where the Backend is responsible to track different FL sessions and
+FL Server \fs{} is a Python subprocesses of the Backend and
+utilizes the Flower FL Framework to
+schedule training and evaluation in the FL process.
+Here, the Backend is responsible to track different FL sessions and
 decide whether
 to spawn new FL Servers or let new clients join existing ones.
-The FL Servers are subprocesses to the Backend and
-manages the actual FL training and evaluation process.
-Both the Backend and the FL Servers are easy to customize in production because
-they are Python programs using, respectively,
-the Django REST Framework and the Flower FL Framework.
+This design isolates each FL session,
+so we can federate learning multiple models simultaneously, and
+users would be able to customize the FL process for each model.
+We chose Python, Django, and Flower to implement the Backend so that
+FL researchers can customize it using the language they are familiar with.
 By simply uploading new ML models and
-changing the FL algorithm code for the FL Servers in Python,
+changing the FL algorithm code in Python,
 researchers can flexibly customize the FL process in production.
 
 
