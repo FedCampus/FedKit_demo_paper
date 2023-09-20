@@ -206,7 +206,10 @@ which we detail next.
 
 Our FL workflow provides extra flexibility in FL customization in production by
 shifting as many responsibilities to the Backend as possible.
-First, the Backend is responsible to decide which ML model to train.
+In deployment, we cannot control the clients,
+but we can change the Backend at any time.
+For example, we can deploy new ML models from the Backend because
+it is responsible to decide which model to train.
 % TODO: Figure of structure with workflow, numbered.
 As shown in Fig. , % TODO: ref
 clients start by requesting the Backend for an ML model \model{} that fits
