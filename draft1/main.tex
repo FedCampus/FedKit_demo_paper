@@ -189,38 +189,38 @@ allows true cross-smartphone-platform FL.
 \subsection{Flexible In-Production FL Customization}
 \newcommand{\model}{$M$}
 \newcommand{\fs}{$S_\mathrm F$}
-We provide the flexibility to customize ML models and FL algorithms
+FedKit provides the flexibility to customize ML models and FL algorithms
 in production.
-This is crucial because, to iterate on ML models and explore new FL algorithms,
-researchers must have the ability to change them.
-However, customizing on-smartphone FL in production is difficult because
-we cannot modify the client apps without an app update,
-which suffers from app stores' slow review processes and
-users' slow reaction to update their apps.
-Most FL frameworks simply ignore this problem and
-hard-code the ML models into the app.
-Instead, we shift responsibilities to the Backend in our FL workflow,
-utilizing our full control over the Backend to
-maximize the potential of FL customization,
-which we detail next.
+It gives FL researchers the crucial ability to
+conveniently iterate on ML models and explore new FL algorithms.
+To allow these changes, we identify the main difficulty when
+customizing existing FL solutions in production:
+with the ML models and the training hard-coded in the client app,
+modifying them requires a complete app update,
+which is largely controlled by app stores and app users.
+Instead, to retain the control in researchers' hands,
+we propose a three-step FL workflow from clients' perspective:
+\begin{enumerate*}[label=\arabic*.]
+    \item Model Request: request the Backend for an ML model \model{} that fits
+        their platform and training data type.
+    \item Training Initiation: request the Backend for an FL Server \fs{}
+        for \model.
+    \item Training: regular FL training by communicating with \fs.
+\end{enumerate*}
+% TODO: Figure of structure with workflow, numbered.
 
-Our FL workflow provides extra flexibility in FL customization in production by
+FedKit's FL workflow implementation provides extra flexibility in
+FL customization in production by
 shifting as many responsibilities to the Backend as possible.
 First, we can deploy new ML models from the Backend because
-it is responsible to decide which model to train.
-% TODO: Figure of structure with workflow, numbered.
-As shown in Fig. , % TODO: ref
-clients start by requesting the Backend for an ML model \model{} that fits
-their platform and the kind of training data they have.
-They then initiate the training by requesting the Backend for
-an FL Server \fs{} for \model{}
-(Fig. ). % TODO: ref
-FL Server \fs{} is a Python subprocesses of the Backend and
-utilizes the Flower FL Framework to
-schedule training and evaluation in the FL process.
-Here, the Backend is responsible to track different FL sessions and
+it is responsible to decide which model \model{} to train in Model Request.
+In Training Initiation,
+the Backend is responsible to track different FL sessions and
 decide whether
 to spawn new FL Servers or let new clients join existing ones.
+Each FL Server \fs{} is a Python subprocesses of the Backend and
+utilizes the Flower FL Framework to
+schedule training and evaluation in the FL process.
 This design isolates each FL session,
 so we can federate learning multiple models simultaneously, and
 users would be able to customize the FL process for each model.
