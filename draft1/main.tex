@@ -111,6 +111,17 @@
 
 % TODO: Come back after finishing Conclusion.
 
+TODO
+
+FedKit presents the following key highlights:
+
+\begin{enumerate*}[label=\arabic*)]
+    \item Academic Research: FedKit enables FL academic research to test FL algorithms using real-world data from diverse smartphone platforms, providing valuable insights under real-world circumstances.
+    \item Industry Application: FedKit allows the industry to harness the vast amount of data available on smartphones for FL applications, offering potential improvements in various domains.
+\end{enumerate*}.
+
+% TODO: Chart of FL frameworks' platform support.
+
 \section{System Description}
 
 FedKit is a sophisticated client-server FL system that leverages a robust Backend as the server, complemented by \textit{cross-platform smartphones} as clients.
@@ -127,21 +138,22 @@ To address these challenges, we propose FedKit to support cross-platform on-smar
 
 \subsection{Cross-Smartphone-Platform FL}
 
-FedKit introduces a novel approach to mobile-based FL that facilitates the training on \textbf{smartphones} with different operating systems. 
-FedKit simplifies the implementation of FL models using Python and empowers local training on Android and iOS smartphones. Notably, it facilitates model aggregation across heterogeneous smartphone platforms.
-
-\noincident \textbf{Challenges} 
-Existing FL frameworks generally do not support
-cross-smartphone-platform FL.
-% TODO: Chart of FL frameworks' platform support.
-The primary challenges in achieving cross-smartphone-platform FL are:
+FedKit introduces a novel approach to FL on smartphones
+with different operating systems.
+It simplifies on-smartphone FL for researchers by empowering them to
+use Python to
 \begin{enumerate*}[label=\arabic*)]
-    \item Varying ML Frameworks: Different smartphone platforms employ distinct ML frameworks, adding complexity to cross-platform FL training.
-    \item Python Incompatibility: FL frameworks typically depend on Python for model development, posing interface issues with smartphone environments.
+    \item create ML models to train on different smartphone platforms at
+        native performance, and
+    \item schedule FL and aggregate models across
+        heterogeneous smartphone platforms
 \end{enumerate*}.
-
-
-\noincident \textbf{Proposed Approach} 
+The primary challenges that block existing solutions from
+achieving cross-smartphone-platform FL are
+\begin{enumerate*}[label=\arabic*)]
+    \item the foreignness in cross-platform mobile development and
+    \item the complexity in on-smartphone ML training
+\end{enumerate*}.
 To overcome the above challenges, we propose a three-step approach:
 \begin{enumerate*}[label=\arabic*.]
     \item Convert the ML models from desktop ML frameworks (e.g., TensorFlow)
@@ -150,50 +162,42 @@ To overcome the above challenges, we propose a three-step approach:
         using native ML frameworks, and
     \item Aggregate model parameters across platforms using a unified format
 \end{enumerate*}.
+
 % TODO: Figure of ML model conversion.
-\noincident \textbf{Implementation Details} 
-Our approach leverages native mobile ML frameworks, specifically Google's TensorFlow Lite (TFLite) on Android and Apple's Core ML on iOS. These frameworks are chosen for their superior utilization of GPUs and NPUs, which are essential for accelerating training on resource-constrained smartphones. 
-However, they impose unique challenges at different stages, which we also propose solutions to handle. 
+FedKit's implementation does the heavy-lifting by leveraging
+native mobile ML frameworks, specifically,
+Google's TensorFlow Lite (TFLite) on Android and Apple's Core ML on iOS.
+These frameworks are chosen for their superior utilization of GPUs and NPUs,
+which are essential for accelerating training on resource-constrained smartphones.
+The drawback is that they impose unique and intricate challenges,
+so we had to employ exotic solutions to handle them.
 \begin{enumerate*}[label=\arabic*)]
-    \item TFLite Model Standardization: TFLite model definitions are open-ended, so we standardize four methods to read and update parameters, train, and infer. Additionally, we provide a Python converter to generate standardized TFLite models from any TensorFlow models.
-    \item Core ML Adaptation: Core ML models have defined forms and an official Python converter. However, Apple restricts on-smartphone training. To overcome these restrictions, we manually read and update Core ML models' underlying ProtoBuf representations to update their parameters and configure the training data.
+    \item TFLite Model Standardization:
+        A TFLite model is a collection of user-defined methods to be run on
+        its interpreter.
+        To provide a unified training interface and simplify model construction,
+        we standardize four methods
+        (read and update parameters, train, and infer),
+        and utilizing them to implement FL on Android.
+        Additionally, to free researchers from manually implementing and
+        converting TFLite models,
+        we provide a Python converter that supports any TensorFlow models.
+    \item Core ML Jail-Break:
+        Core ML models have defined forms and an official Python converter.
+        However, in our experiments, we confirmed that
+        Core ML disallows setting model parameters,
+        which makes FL impossible.
+        To overcome this restriction, we manually alter
+        Core ML models' underlying ProtoBuf representations to
+        update their parameters and configure the training data
 \end{enumerate*}.
 
-
-Our approach results in unified native training APIs on both Android and iOS, where model parameters are represented consistently, allowing for seamless parameter aggregation across different platforms.
-
-% TFLite model definitions are excessively open-ended,
-% so we standardize four methods to read and update parameters,
-% train and infer, and
-% provide a Python converter to generate standardized TFLite models from
-% any TensorFlow models.
-% Running TFLite on smartphones is straightforward using their interpreter.
-% In contrast, Core ML models have defined forms and an official Python converter,
-% but Apple artificially restricts on-smartphone training.
-% To work around Apple's restrictions,
-% we manually read and update Core ML models' underlying ProtoBuf representations
-% to update their parameters and configure the training data.
-% In the end, we have unified native training APIs on both Android and iOS.
-% More importantly, our APIs yield model parameters in the same
-% representation---each neural network layer's weights or biases are represented
-% as a byte array, and
-% the order of these layers are the same across platforms.
-% When the Backend receives model parameters,
-% it can aggregate them without any knowledge of
-% the implementations of the clients.
-% This enables us to aggregate parameters from different platforms.
-% Cross-smartphone-platform aggregation,
-% together with cross-smartphone-platform training and model conversion,
-% allows true cross-smartphone-platform FL.
-
-\noincident \textbf{Highlights}
-FedKit presents the following key highlights:
-
-
-\begin{enumerate*}[label=\arabic*)]
-    \item Academic Research: FedKit enables FL academic research to test FL algorithms using real-world data from diverse smartphone platforms, providing valuable insights under real-world circumstances.
-    \item Industry Application: FedKit allows the industry to harness the vast amount of data available on smartphones for FL applications, offering potential improvements in various domains.
-\end{enumerate*}.
+Our approaches not only result in unified native training APIs on
+both Android and iOS, but also
+allow for seamless cross-platform aggregation.
+To aggregate local models from different platforms,
+we carefully represent model parameters in a unified format by
+sequentially retrieving each layer's parameters as a byte array.
 
 \subsection{Flexible In-Production FL Customization}
 \newcommand{\model}{$M$}
