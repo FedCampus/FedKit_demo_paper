@@ -104,7 +104,7 @@
 \maketitle
 
 \begin{abstract}
-    TODO
+	TODO
 \end{abstract}
 
 \section{Introduction}
@@ -118,6 +118,24 @@
 % TODO: Boxes.
 
 % TODO: Experiments: the app.
+\section{Demostration}
+To demostrate the usability of our FedKit platform, we deployed our FedKit
+Platform on edge devices (phones) [add a figure of phones].
+We built an app that enables
+Federated Learning and Federated using the exercise data collected from
+smart watches
+to train a sleep-efficiency prediction model. Our model, a variant of
+FedMCRNN, takes the rest heart rate, heart rate, calories, exercise time,
+elevation gain, step count from the previous 7 days to predict the sleep
+efficiency today. Our app, built on Flutter, gets data from Huawei HealthKit
+on Android and Apple Health on iOS. The app uses gRPC to connect to our FedKit
+backend to conduct Federated Learning as well as Federated Analytics. Below is
+a graph of the app flow [Add a graph of the app flow]. We had 3 test uesrs and
+they trained the model at least once a day. Below is the result of the app
+	[Add a training curve probably] .
+
+
+
 
 \section{Conclusion and Future Work}
 
