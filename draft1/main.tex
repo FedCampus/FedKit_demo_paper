@@ -205,15 +205,10 @@ allow for seamless cross-platform aggregation.
 \newcommand{\fs}{$S_\mathrm F$}
 FedKit provides the flexibility to customize ML models and FL algorithms
 in production.
-It gives FL researchers the crucial ability to
-conveniently iterate on ML models and explore new FL algorithms.
-To allow these changes, we identify the primary challenge when
-customizing existing FL solutions in production:
-with the ML models and the training procedures hard-coded in the client app,
-modifying them requires a complete app update,
-which is largely governed by app stores and app users.
-Instead, to maintain control in researchers' hands,
-we propose a three-step FL workflow from clients' perspective:
+Compared with existing FL frameworks where training procedures are hard-coded on the client side, 
+we maintain control in the researchers' hands.
+Consequently, FedKit does not require a complete app update and ensures FL operates independently of app stores and users.
+Specifically, we propose a three-step FL workflow (from the clients' perspective):
 \begin{enumerate*}[label=\arabic*.]
     \item Model Request: request the Backend for an ML model \model{} that fits
         their platform and training data type.
@@ -223,9 +218,10 @@ we propose a three-step FL workflow from clients' perspective:
 \end{enumerate*}
 % TODO: Figure of structure with workflow, numbered.
 
-FedKit's FL workflow implementation provides extra flexibility in
-FL customization in production by
-shifting as many responsibilities to the Backend as possible.
+% FedKit's FL workflow implementation provides extra flexibility in
+% FL customization in production by
+% shifting as many responsibilities to the Backend as possible.
+
 To support deploying new ML models from the Backend,
 we rely on the Backend to decide which model \model{} to train in Model Request.
 To control each FL session in isolation, in Training Initiation,
@@ -236,12 +232,14 @@ we utilize the Backend to either
 \end{enumerate*}.
 Such isolation enables federating learning multiple models simultaneously, and
 allows the users to customize the FL Server for each model.
-Moreover, customizing individual FL Servers is well-supported because
-they utilize the user-friendly Flower FL Framework to
-allows for custom FL algorithms to schedule training and evaluation.
-With our Django Backend and Flower FL Servers,
-we offer FL researchers strong control and flexibility to customize FL
-using Python in production.
+Moreover, customizing individual FL Servers is well-supported by the user-friendly Flower FL Framework, 
+allowing for custom FL algorithms to schedule training and evaluation.
+Thus, FedKit provides a solution for researchers the ability to
+customize models and explore novel mobile-based FL algorithms.
+
+% With our Django Backend and Flower FL Servers,
+% we offer FL researchers strong control and flexibility to customize FL
+% using Python in production.
 
 
 \section{Conclusion and Future Work}
