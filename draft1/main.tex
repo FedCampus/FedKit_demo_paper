@@ -162,7 +162,7 @@ provide a Python converter.
 Our standard TFLite models include four necessary methods for FL:
 read and update parameters, train, and infer.
 
-\subsubsection{On-Device Training}
+\subsubsection{Unified Training APIs}
 With the converted models, we use corresponding frameworks to train them
 on smartphones.
 For cross-platform support,
@@ -187,6 +187,7 @@ The training API implementations then sequentially access these layers to
 retrieve or insert the parameters as byte arrays.
 
 \subsection{Flexible In-Production FL Customization}
+% TODO: Mention self-host.
 \newcommand{\model}{$M$}
 \newcommand{\fs}{$S_\mathrm F$}
 After being able to federate learning on smartphones,
@@ -228,8 +229,7 @@ They are regular Flower gRPC servers, meaning that
 they inherit all of Flower's great flexibility to customize the FL algorithm in
 Python.
 
-% TODO: Experiments: the app.
-\section{Demonstration}
+\section{Experiment}
 To demonstrate FedKit in action,
 we deployed an app that federates learning using exercise data collected from
 smart watches.
@@ -238,13 +238,9 @@ This Flutter app trains a sleep-efficiency prediction model similar to ()
 %TODO: Cite FedMCRNN
 using data obtained from Huawei HealthKit
 on Android and Apple Health on iOS.
-% TODO: Graph of the app flow.
 We had 3 test users who opened the app to train the model at least once a day,
 resulting in decreasing training loss.
 % TODO: Training telemetry graph. Is loss going down?
-
-\section{Conclusion and Future Work}
-
 
 \appendix
 
