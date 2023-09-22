@@ -131,7 +131,7 @@ Each client trains a local ML model with its private data on the smartphone.
 Then, the Backend aggregates these local models to update the global model.
 
 In practice, this system faces significant intricacies in
-on-device ML training and mobile development production cycle.
+on-device ML training and mobile development-production cycle.
 To facilitate cross-platform on-smartphone FL research,
 FedKit features two innovations:
 \begin{enumerate*}[label=\arabic*)]
@@ -177,8 +177,10 @@ To jail-break from this restriction, we manually alter
 Core ML models' underlying ProtoBuf representations.
 
 \subsubsection{Cross-Platform Aggregation}
-Now that we can train the models,
-the next step is to aggregate their parameters across platforms.
+In the previous two steps,
+a single model would get converted and trained into two models of different
+formats.
+How could we aggregate their parameters across platforms?
 We carefully design FedKit so the APIs to get and set model parameters
 yield the same representation on both platforms.
 During model conversion,
