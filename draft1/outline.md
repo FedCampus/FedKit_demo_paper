@@ -1,8 +1,12 @@
 # Draft 1 Outline
 
 - Introduction
-    - What is mobile FL & why it is important
+    - What is on-smartphone FL
+    - Significance[^1]
+        - Academic: enable real-world cross-platform research
+        - Industrial: use data on smartphones
     - Related work in mobile FL
+        - (Chart of FL frameworks' platform support)
     - Difficulties in practical on-smartphone FL research
         - Cross-platform training support
         - Customizing FL in production
@@ -13,21 +17,14 @@
 - System Description
     - Architecture Overview
         - Client-server relationship
-        - 2 innovation points: the following
+        - 2 innovations: the following
     - Cross-Smartphone-Platform FL (detailed)
-        - Description: cross-platform FL on smartphones with different OS and
-            hardware configurations
-        - Significance[^1]
-            - Academic: enable real-world cross-platform research
-            - Industrial: use data on smartphones
-        - Difficulty: on-smartphone ML training
-            - (Chart of FL frameworks' platform support)
-        - How it is done
+        - Description: cross-platform FL on smartphones
+        - Three steps
             - Model conversion to native format (TFLite & Core ML)
                 - (Figure of model conversion)
-            - Unified parameter transmission allows simultaneous
-                cross-platform FL
-                <!-- TODO: Better naming. -->
+            - Unified on-device training interface using native ML frameworks
+            - Cross-platform parameter aggregation
     - Flexible In-Production FL Customization
         - FL frameworks assume models bundled with app
         - Researchers would want to update the model after the app is deployed
