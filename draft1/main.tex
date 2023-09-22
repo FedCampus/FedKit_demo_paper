@@ -228,6 +228,20 @@ They are regular Flower gRPC servers, meaning that
 they inherit all of Flower's great flexibility to customize the FL algorithm in
 Python.
 
+% TODO: Experiments: the app.
+\section{Demonstration}
+To demonstrate FedKit in action,
+we deployed an app that federates learning using exercise data collected from
+smart watches.
+% TODO: figure of phones.
+This Flutter app trains a sleep-efficiency prediction model similar to ()
+%TODO: Cite FedMCRNN
+using data obtained from Huawei HealthKit
+on Android and Apple Health on iOS.
+% TODO: Graph of the app flow.
+We had 3 test users who opened the app to train the model at least once a day,
+resulting in decreasing training loss.
+% TODO: Training telemetry graph. Is loss going down?
 
 \section{Conclusion and Future Work}
 
