@@ -21,6 +21,8 @@
 % Custom packages
 \usepackage{tikz}
 \usepackage[inline]{enumitem}
+\usepackage{rotating}
+\usepackage{amssymb}  % for the checkmark
 
 %
 % These are are recommended to typeset listings but not required. See the subsubsection on listing. Remove this block if you don't have listings in your paper.
@@ -134,6 +136,36 @@ iterate on their FL designs under real-world circumstances.
 Previous work has yet to facilitate general cross-smartphone-platform
 FL research.
 % TODO: Chart of FL frameworks' platform support.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+Functionality & FedKit & FedML & Flower & Pysyft & Project Florida \\
+\hline
+Cross-Smartphone-Platform FL & \checkmark & & & & \\
+\hline
+In-production Customizations & \checkmark & & \checkmark & & \\
+\hline
+Model Conversion & \checkmark & \checkmark & & & \\
+\hline
+Unified Training APIs & \checkmark & & & & \\
+\hline
+Cross-Platform Aggregation & \checkmark & & \checkmark & & \\
+\hline
+Flexible FL Customization in Production & \checkmark & & & & \\
+\hline
+Model Request Handling & \checkmark & \checkmark & & & \\
+\hline
+Training Initiation Management & \checkmark & & & & \\
+\hline
+Dynamic Training Workflow & \checkmark & & & & \\
+\hline
+\end{tabular}
+\caption{Functional support of different FL frameworks.}
+\label{tab:fl_functional_support_vertical_revised}
+\end{table}
+    
 Some systems only support Android
 \cite{he2020fedml,madrigal2023project},
 but real-world FL scenarios must also include iOS.
