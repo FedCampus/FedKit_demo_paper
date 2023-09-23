@@ -116,13 +116,13 @@ allowing smartphones to collaboratively train a shared ML model while
 keeping training data local.
 If achieved, it would allow the general industry to
 harness the vast amount of data available on smartphones.
-But before that, researchers need practical FL tools to test and
-iterate on their FL designs under real-world circumstances.
 
+But before that, researchers need practical FL systems to test and
+iterate on their FL designs under real-world circumstances.
 Previous work has yet to facilitate general cross-smartphone-platform
 FL research.
 % TODO: Chart of FL frameworks' platform support.
-Some projects only support Android
+Some systems only support Android
 \cite{he2020fedml,madrigal2023project},
 but real-world FL scenarios must also include iOS.
 Several FL services present proprietary backends,
@@ -132,11 +132,11 @@ Open-source solutions are in early exploration stages
 or suffer from performance penalties from custom training implementations
 \cite{ryffel2018generic,Ziller2021,hall2021syft}.
 % TODO: Cite more.
-Moreover, they mostly assume a one-shot experiment and
+Moreover, these systems mostly assume a one-shot experiment and
 provide little support for researchers to change their designs in production.
 
-So, we present FedKit,
-a set of open-source libraries to facilitate
+So, we developed FedKit,
+an open-source system to facilitate
 cross-smartphone-platform FL research.
 FedKit leverages existing smartphone ML frameworks tailored for each platform,
 yet provides a unified interface for on-device training and model aggregation.
@@ -148,6 +148,7 @@ showing its feasibility in action.
 By facilitating cross-smartphone-platform FL research,
 FedKit shall extend FL researchers' reach to billions of smartphones and
 benefit the mass with the huge potential in FL.
+% TODO: Move to abstract.
 
 \section{System Description}
 
@@ -258,7 +259,7 @@ They are regular Flower gRPC servers, meaning that
 they inherit all of Flower's great flexibility to customize the FL algorithm in
 Python.
 
-\section{Experiment}
+\section{Experiment and Conclusion}
 To demonstrate FedKit in action,
 we deployed an app that federates learning using exercise data collected from
 smart watches.
@@ -270,6 +271,8 @@ on Android and Apple Health on iOS.
 We had 3 test users who opened the app to train the model at least once a day,
 resulting in decreasing training loss.
 % TODO: Training telemetry graph. Is loss going down?
+
+% TODO: Conclusion
 
 \appendix
 
