@@ -95,7 +95,7 @@
 % nouns, adverbs, adjectives should be capitalized, including both words in hyphenated terms, while
 % articles, conjunctions, and prepositions are lower case unless they
 % directly follow a colon or long dash
-\title{FedKit---Feasible Cross-Platform On-Smartphone Federated Learning}
+\title{FedKit---Facilitating Cross-Smartphone-Platform Federated Learning Research}
 \author{}
 \affiliations{}
 
@@ -116,13 +116,36 @@ allowing smartphones to collaboratively train a shared ML model while
 keeping training data local.
 If achieved, it would allow the general industry to
 harness the vast amount of data available on smartphones.
-But before that, researchers need practical FL tools to explore and
-iterate on ML models and FL algorithms under real-world circumstances.
+But before that, researchers need practical FL tools to test and
+iterate on their FL designs under real-world circumstances.
 
-% TODO: Related work.
+Previous work has yet to facilitate general cross-smartphone-platform
+FL research.
 % TODO: Chart of FL frameworks' platform support.
+Some projects only support Android
+\cite{he2020fedml,madrigal2023project},
+but real-world FL scenarios must also include iOS.
+Several FL services present proprietary backends,
+but researchers need direct customization abilities.
+Open-source solutions are in early exploration stages
+\cite{beutel2020flower,mathur2021ondevice},
+or suffer from performance penalties from custom training implementations
+\cite{ryffel2018generic,Ziller2021,hall2021syft}.
+% TODO: Cite more.
+Moreover, they mostly assume a one-shot experiment and
+provide little support for researchers to change their designs in production.
 
-% TODO: Highlight FedKit.
+So, we present FedKit,
+a set of open-source libraries to facilitate
+cross-smartphone-platform FL research.
+FedKit leverages existing smartphone ML frameworks tailored for each platform,
+yet provides a unified interface for on-device training and model aggregation.
+To enable fast FL research iteration,
+it also gives researchers supreme control and customization over
+the FL procedure in production.
+By making cross-smartphone-platform FL research feasible,
+FedKit shall extend FL researchers' reach to billions of smartphones and
+benefit the mass with the huge potential in research.
 
 \section{System Description}
 
@@ -134,9 +157,9 @@ Then, the Backend aggregates these local models to update the global model.
 
 In practice, this system faces significant intricacies in
 on-device ML training and mobile development-production cycle.
-To facilitate cross-platform on-smartphone FL research,
+To facilitate cross-smartphone-platform FL research,
 FedKit features two innovations:
-\begin{enumerate*}[label=\arabic*)]
+\begin{enumerate*}[label=\arabic*]
     \item cross-smartphone-platform FL support using
         native smartphone ML frameworks, and
     \item flexible FL customization in production enabled by
