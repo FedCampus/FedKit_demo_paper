@@ -104,17 +104,29 @@
 \maketitle
 
 \begin{abstract}
-    TODO
+    Federated Learning (FL) creates a huge potential to
+    harness the data on billions of smartphones.
+    However, before the industry adopts FL designs in production,
+    researchers need to test and iterate on them under real-world circumstances.
+    For this purpose,
+    we developed FedKit to be a practical system that provides researchers
+    a cross-smartphone-platform FL environment.
+    It federates learning models across smartphones platforms,
+    and offers in-production customizations.
+    We have already successfully deployed FedKit for our research app
+    in production.
+    In the future,
+    FedKit shall extend FL researchers' reach to billions of smartphones and
+    benefit the mass with the huge potential in FL.
 \end{abstract}
 
 \section{Introduction}
 
-Federated learning (FL) on smartphones has become an interesting and
-promising research topic.
-This machine learning (ML) technique preserves user privacy by
+Federated learning (FL)
+is machine learning (ML) technique that preserves user privacy by
 allowing smartphones to collaboratively train a shared ML model while
 keeping training data local.
-If achieved, it would allow the general industry to
+If achieved, FL on smartphones would allow the general industry to
 harness the vast amount of data available on smartphones.
 
 But before that, researchers need practical FL systems to test and
@@ -138,17 +150,10 @@ provide little support for researchers to change their designs in production.
 So, we developed FedKit,
 an open-source system to facilitate
 cross-smartphone-platform FL research.
-FedKit leverages existing smartphone ML frameworks tailored for each platform,
-yet provides a unified interface for on-device training and model aggregation.
+FedKit leverages platform-specific smartphone ML frameworks,
+yet provides a unified FL interface.
 To enable fast FL research iteration,
-it also gives researchers supreme control and customization over
-the FL procedure in production.
-Using FedKit, we successfully deployed a research app in production,
-showing its feasibility in action.
-By facilitating cross-smartphone-platform FL research,
-FedKit shall extend FL researchers' reach to billions of smartphones and
-benefit the mass with the huge potential in FL.
-% TODO: Move to abstract.
+it also offers researchers FL customization in production.
 
 \section{System Description}
 
