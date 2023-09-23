@@ -143,9 +143,11 @@ yet provides a unified interface for on-device training and model aggregation.
 To enable fast FL research iteration,
 it also gives researchers supreme control and customization over
 the FL procedure in production.
-By making cross-smartphone-platform FL research feasible,
+Using FedKit, we successfully deployed a research app in production,
+showing its feasibility in action.
+By facilitating cross-smartphone-platform FL research,
 FedKit shall extend FL researchers' reach to billions of smartphones and
-benefit the mass with the huge potential in research.
+benefit the mass with the huge potential in FL.
 
 \section{System Description}
 
@@ -203,10 +205,10 @@ Core ML models' underlying ProtoBuf representations.
 
 \subsubsection{Cross-Platform Aggregation}
 In the previous two steps,
-a single model would get converted and trained into two models of different
-formats.
-How could we aggregate their parameters across platforms?
-We carefully design FedKit so the APIs to get and set model parameters
+a single model would get converted and trained into two models in
+completely different formats.
+Naively, we would need to aggregate them separately.
+Instead, we carefully design FedKit so the APIs to get and set model parameters
 yield the same representation on both platforms.
 During model conversion,
 the updatable model layers are recorded in the same order.
