@@ -6,6 +6,7 @@
 \usepackage{courier}  % DO NOT CHANGE THIS
 \usepackage[hyphens]{url}  % DO NOT CHANGE THIS
 \usepackage{graphicx} % DO NOT CHANGE THIS
+\graphicspath{ {./images/} }
 \urlstyle{rm} % DO NOT CHANGE THIS
 \def\UrlFont{\rm}  % DO NOT CHANGE THIS
 \usepackage{natbib}  % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
@@ -158,11 +159,18 @@ it also offers researchers FL customization in production.
 \section{System Description}
 
 FedKit federates learning among client apps across smartphone platforms and
-a single Backend server.
+a single Backend server. Figure \ref*{system_overview} is the overview of the system.
 % TODO: Figure of system structure.
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics*[width=\linewidth]{Group67.png}
+        \caption{System Overview}
+        \label{system_overview}
+    \end{center}
+\end{figure}
+
 Each client trains a local ML model with its private data on the smartphone.
 Then, the Backend aggregates these local models to update the global model.
-
 In practice, this system faces significant intricacies in
 on-device ML training and mobile development-production cycle.
 To facilitate cross-smartphone-platform FL research,
