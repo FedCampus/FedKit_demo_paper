@@ -159,18 +159,18 @@ it also offers researchers FL customization in production.
 \section{System Description}
 
 FedKit federates learning among client apps across smartphone platforms and
-a single Backend server. Figure \ref*{system_overview} is the overview of the system.
+a single Backend server (Fig. \ref{system_overview}).
 % TODO: Figure of system structure.
-\begin{figure}[h]
-    \begin{center}
-        \includegraphics*[width=\linewidth]{Group67.png}
-        \caption{System Overview}
-        \label{system_overview}
-    \end{center}
+\begin{figure}
+    \centering
+    \includegraphics*[width=\linewidth]{Group67.png}
+    \caption{System Overview}
+    \label{system_overview}
 \end{figure}
 
 Each client trains a local ML model with its private data on the smartphone.
 Then, the Backend aggregates these local models to update the global model.
+
 In practice, this system faces significant intricacies in
 on-device ML training and mobile development-production cycle.
 To facilitate cross-smartphone-platform FL research,
