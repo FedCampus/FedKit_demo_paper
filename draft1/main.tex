@@ -22,6 +22,7 @@
 % Custom packages
 \usepackage{tikz}
 \usepackage[inline]{enumitem}
+\usepackage{amssymb}  % for the checkmark
 
 %
 % These are are recommended to typeset listings but not required. See the subsubsection on listing. Remove this block if you don't have listings in your paper.
@@ -120,6 +121,26 @@
 
 \section{Introduction}
 
+\begin{table}
+    \centering
+    \small
+    \setlength{\tabcolsep}{2.4pt}
+    \begin{tabular}{lccccc}
+    Support & FedKit & FedML & Flower & PySyft & Florida \\
+    \hline
+    Android & \checkmark & \checkmark & & \checkmark & \checkmark \\
+    iOS & \checkmark & & \checkmark & \checkmark & \\
+    Self-Host & \checkmark & & \checkmark & \checkmark & \\
+    Modify in Production & \checkmark & \checkmark & & & \checkmark \\
+    Native Performance & \checkmark & & \checkmark & & \\
+    \end{tabular}
+    \caption{
+        Functionality comparison of promising FL frameworks that
+        support smartphones.
+    }
+    \label{tbl:fn-frameworks}
+\end{table}
+
 Federated learning (FL)
 is machine learning (ML) technique that preserves user privacy by
 allowing smartphones to collaboratively train a shared ML model while
@@ -132,7 +153,6 @@ iterate on their FL designs under real-world circumstances.
 Most promising FL frameworks
 \cite[e.g.,][]{bonawitz2019towards,liu2021fate,ma2019paddlepaddle,openfl_citation}
 do not support smartphones.
-% TODO: Chart of FL frameworks' platform support.
 Some systems only support Android
 \cite{he2020fedml,madrigal2023project},
 but real-world FL scenarios must also include iOS.
@@ -158,9 +178,6 @@ it also offers researchers FL customization in production.
 
 \section{System Description}
 
-FedKit federates learning among client apps across smartphone platforms and
-a single Backend server (Fig. \ref{system_overview}).
-% TODO: Figure of system structure.
 \begin{figure}
     \centering
     \includegraphics*[width=\linewidth]{system_overview.pdf}
@@ -168,6 +185,8 @@ a single Backend server (Fig. \ref{system_overview}).
     \label{system_overview}
 \end{figure}
 
+FedKit federates learning among client apps across smartphone platforms and
+a single Backend server (Fig. \ref{system_overview}).
 Each client trains a local ML model with its private data on the smartphone.
 Then, the Backend aggregates these local models to update the global model.
 

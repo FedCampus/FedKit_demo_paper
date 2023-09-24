@@ -24,7 +24,7 @@
     - [ ] Machine hosting Backend
     - [ ] Backend Tmux screen
 - Example client app
-    - [ ] 1 Android + 1 iOS running CIFAR10 demo
+    - [ ] 1 Android + 1 iOS running MNIST demo
     - [ ] Local Backend Output
 - Changing model
     - [ ] Change the model & name
