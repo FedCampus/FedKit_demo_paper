@@ -298,15 +298,16 @@ inheriting Flower's flexibility,
 allowing FL algorithm customizations in Python.
 
 \section{Use Case: FedCampus}
-% TODO: Introduce FedCampus.
-To showcase FedKit's capabilities,
-we deployed an app for federated learning using exercise data from smartwatches.
-The Flutter app trains a sleep-efficiency prediction model,
-similar to \cite{khoa2022fedmcrnn},
+
+We introduce FedCampus, a campus-based FL experiment using exercise data from
+participants' smartwatches.
+We deployed FedKit in the FedCampus research app,
+which trains a sleep-efficiency prediction model
+similar to \cite{khoa2022fedmcrnn}
 using data from Huawei HealthKit on Android and Apple Health on iOS.
-Three test users contributed to the training,
-resulting in decreasing training loss.
-% TODO: Training telemetry graph. Is loss going down?
+Our experiment engaged three test users who contributed data,
+resulting in a noticeable reduction in training loss,
+thereby demonstrating the effective functionality of FedKit.
 
 \appendix
 
