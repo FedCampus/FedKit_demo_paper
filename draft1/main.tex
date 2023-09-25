@@ -148,9 +148,9 @@ coordinated by a single Backend server.
 Each client trains a local ML model with its private data,
 and the Backend aggregates these local models to update the global model.
 
-To enable cross-platform FL, FedKit offers two key innovations:
+To enable cross-platform FL, FedKit introduces two key innovations:
 \begin{enumerate}[label=\arabic*.]
-    \item Cross-platform (Android/iOS) FL with unified APIs.
+    \item A cross-platform (Android/iOS) FL pipeline centered around ML models.
     \item In-production FL customization to enable fast FL research iteration.
 \end{enumerate}
 
@@ -172,19 +172,19 @@ To enable cross-platform FL, FedKit offers two key innovations:
     \label{tbl:fn-frameworks}
 \end{table}
 
-\subsection{Cross-Platform (Android/iOS) FL}
+\subsection{Cross-Platform FL Model Pipeline}
 
 To enable cross-platform FL across Android and iOS,
 we aim to create, train and aggregate ML models conveniently while
 utilizing GPU and NPU acceleration.
 Our approach involves model conversion, unified training APIs,
-and cross-platform aggregation,
-as illustrated in Fig. \ref{cross_fl}.
+and cross-platform aggregation
+(Fig.~\ref{cross_fl}).
 
 \begin{figure}
     \centering
     \includegraphics*[width=\linewidth]{cross_smart_fl_workflow.pdf}
-    \caption{Cross-Platform FL Pipeline.}
+    \caption{Cross-Platform FL Model Pipeline.}
     \label{cross_fl}
 \end{figure}
 
@@ -196,7 +196,7 @@ Apple's Core ML for iOS.
 Core ML provides a well-defined model structure with
 an official converter called CoreMLTools.
 For TFLite, we have standardized the model format and
-developed a Python converter.
+developed a Python converter for TensorFlow.
 Our TFLite models encompass the four essential FL methods:
 parameter read/update, train, and infer.
 
@@ -210,35 +210,39 @@ These APIs include functions for retrieving and setting parameters,
 model fitting, and evaluation.
 On Android, we implement these APIs by indirectly invoking
 our standardized methods within the TFLite interpreter.
-However, on iOS, our experimentation revealed a limitation:
-Core ML disallows direct model parameter modification.
+However, on iOS, our experimentation revealed a significant constraint:
+Core ML disallows directly setting model parameters.
 To circumvent this restriction,
-we manually modify the underlying ProtoBuf representations of Core ML models.
+we manually modify the parameters in the underlying ProtoBuf representations of
+Core ML models.
 
 \subsubsection{Cross-Platform Aggregation}
 In the previous steps,
 we convert and train a single model into two distinct formats for
 Android and iOS.
 Traditionally, this would require separate aggregation processes.
-However, we have designed FedKit to ensure uniform parameter representation
+However, we have designed FedKit to ensure unified parameter representation
 on both platforms.
 During model conversion,
 we record the updatable model layers in the same order.
-Subsequently,
-our training API implementations access these layers sequentially to
+During training,
+our API implementations access these layers sequentially to
 retrieve or insert parameters as byte arrays.
 
 \subsection{Flexible In-Production FL Customization}
-% TODO: Mention self-host.
 \newcommand{\model}{$M$}
 \newcommand{\fs}{$S_\mathrm F$}
 Traditionally, conducting FL research on smartphones involved
 embedding models and training procedures into client apps.
 However, this approach led to the necessity for frequent app updates,
-introducing complexity related to app store submissions and user adoption.
-Instead,
-to empower researchers to iteratively develop models and algorithms
-in production, we propose a three-step FL workflow
+introducing complexity from app store submissions and user adoption
+in production.
+
+In contrast,
+FedKit empowers researchers to iteratively develop models and algorithms
+in production.
+Leveraging our self-hosted and directly controlled Backend,
+we propose a three-step FL workflow
 (Fig.~\ref{fig:fl-workflow}).
 \begin{figure}
     \centering
@@ -248,31 +252,34 @@ in production, we propose a three-step FL workflow
 \end{figure}
 
 \subsubsection{Model Request}
-Clients request an ML model (\model{}) from the Backend that
+Clients request for an ML model from the Backend that
 aligns with their platform and training data type
-(Fig.~\ref{fig:fl-workflow}a).
-The Backend selects the appropriate model from its database,
-allowing FL researchers to deploy new models seamlessly
+(Fig.~\ref{fig:fl-workflow}.1).
+The Backend selects the appropriate model \model{} from its database.
+This step allows FL researchers to deploy new models seamlessly
 in production by uploading them to the Backend.
 
 \subsubsection{FL Server Setup}
-Clients request an FL Server (\fs{}) from the Backend to
-train their chosen model (\model{})
-(Fig.~\ref{fig:fl-workflow}b).
-The Backend assigns clients to existing servers or spawns new ones as needed.
-FL Servers, operating as the Backend's Python subprocesses,
-support parallel and independent FL sessions.
-Researchers can customize FL Servers to suit specific models by
+Clients request an FL Server from the Backend to
+train their chosen model \model{}
+(Fig.~\ref{fig:fl-workflow}.2).
+The Backend assigns clients to an existing Fl Server \fs{} that
+is already training \model{},
+or spawns a new one on demand.
+FL Servers, operating as the Backend's independent Python subprocesses,
+occupy their own ports.
+Researchers can customize how FL Servers are set up for each specific models by
 adapting the Backend's Django implementation.
 
 \subsubsection{Training}
-Clients participate in FL training by connecting to their assigned \fs{}
-(Fig.~\ref{fig:fl-workflow}c).
+Clients participate in FL training by directly connecting to
+their assigned \fs{} on its port
+(Fig.~\ref{fig:fl-workflow}.3).
 These FL Servers employ the Flower FL Framework for
 scheduling training and evaluation.
 They function as standard Flower gRPC servers,
 inheriting Flower's flexibility,
-allowing FL algorithm customization in Python.
+allowing FL algorithm customizations in Python.
 
 \section{Experiment}
 To showcase FedKit's capabilities,
