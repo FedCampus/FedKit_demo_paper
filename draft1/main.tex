@@ -238,44 +238,47 @@ retrieve or insert parameters as byte arrays.
 % TODO: Mention self-host.
 \newcommand{\model}{$M$}
 \newcommand{\fs}{$S_\mathrm F$}
-After being able to federate learning on smartphones,
-the traditional approach would hard-code the model and training procedure
-into the client app.
-However, the app would then need to be updated every time a change is made,
-involving the complication of app stores and users in production.
+Traditionally, conducting FL research on smartphones involved
+embedding models and training procedures into client apps.
+However, this approach led to the necessity for frequent app updates,
+introducing complexity related to app store submissions and user adoption.
 Instead,
-we want to empower FL researchers to conveniently iterate on ML models and
-explore new FL algorithms
-without updating the app.
-Therefore, we propose a three-step FL workflow that
-enables customizing ML models and FL algorithms in production.
+to empower researchers to iteratively develop models and algorithms
+in production, we propose a three-step FL workflow
+(Fig.~\ref{fig:fl-workflow}).
 % TODO: Figure of structure with workflow, numbered.
+\begin{figure}
+    \centering
+    % \includegraphics*[width=\linewidth]{model_request.pdf}
+    \caption{FL Workflow.}
+    \label{fig:fl-workflow}
+\end{figure}
 
 \subsubsection{Model Request}
-Clients request the Backend for an ML model \model{} that fits
-their platform and training data type (Fig. ). % TODO: fig.
-The Backend decides which model to train based on
-available models in its database.
-Therefore, FL researchers simply deploy new models in production by uploading them to
-the Backend.
+Clients request an ML model (\model{}) from the Backend that
+aligns with their platform and training data type
+(Fig.~\ref{fig:fl-workflow}).
+The Backend selects the appropriate model from its database.
+This approach allows FL researchers to deploy new models seamlessly
+in production by uploading them to the Backend.
 
-\subsubsection{Training Initiation}
-Clients request the Backend for an FL Server \fs{} to train \model.
-If there exists an FL Server already training \model,
-The Backend assigns new clients to it;
-otherwise, it spawns a new \fs.
-Since FL Servers are the Backend's Python subprocesses,
-they allow for multiple simultaneous yet independent FL sessions.
-Furthermore, researchers can map each model to a tailored FL Server by
-customizing the Backend's Django implementation.
+\subsubsection{FL Server Setup}
+Clients request an FL Server (\fs{}) from the Backend to
+train their chosen model (\model{}).
+The Backend assigns clients to existing servers or spawns new ones as needed.
+FL Servers, operating as the Backend's Python subprocesses,
+support parallel and independent FL sessions.
+Researchers can customize FL Servers to suit specific models by
+adapting the Backend's Django implementation.
 
 \subsubsection{Training}
-Clients participate in regular FL training by connecting to \fs.
-These FL Servers leverage the user-friendly Flower FL Framework to
-schedule training and evaluation.
-They are regular Flower gRPC servers, meaning that
-they inherit all of Flower's great flexibility to customize the FL algorithm in
-Python.
+Clients participate in FL training by connecting to their assigned \fs{}
+(Fig.~\ref{fig:training}).
+These FL Servers employ the Flower FL Framework for
+scheduling training and evaluation.
+They function as standard Flower gRPC servers,
+inheriting Flower's flexibility,
+allowing FL algorithm customization in Python.
 
 \section{Experiment}
 To showcase FedKit's capabilities,
