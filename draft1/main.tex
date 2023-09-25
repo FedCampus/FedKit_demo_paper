@@ -126,13 +126,13 @@
     \small
     \setlength{\tabcolsep}{2.4pt}
     \begin{tabular}{lccccc}
-    Support & FedKit & FedML & Flower & PySyft & Florida \\
-    \hline
-    Android & \checkmark & \checkmark & & \checkmark & \checkmark \\
-    iOS & \checkmark & & \checkmark & \checkmark & \\
-    Self-Host & \checkmark & & \checkmark & \checkmark & \\
-    Modify in Production & \checkmark & \checkmark & & & \checkmark \\
-    Native Performance & \checkmark & & \checkmark & & \\
+        Support              & FedKit     & FedML      & Flower     & PySyft     & Florida    \\
+        \hline
+        Android              & \checkmark & \checkmark &            & \checkmark & \checkmark \\
+        iOS                  & \checkmark &            & \checkmark & \checkmark &            \\
+        Self-Host            & \checkmark &            & \checkmark & \checkmark &            \\
+        Modify in Production & \checkmark & \checkmark &            &            & \checkmark \\
+        Native Performance   & \checkmark &            & \checkmark &            &            \\
     \end{tabular}
     \caption{
         Functionality comparison of promising FL frameworks that
@@ -270,6 +270,13 @@ explore new FL algorithms
 without updating the app.
 Therefore, we propose a three-step FL workflow that
 enables customizing ML models and FL algorithms in production.
+Figure \ref*{fl_workflow} shows the overflow.
+\begin{figure}
+    \centering
+    \includegraphics*[width=\linewidth]{fl_workflow.pdf}
+    \caption{Cross-Smartphone-Platform FL Workflow}
+    \label{fl_workflow}
+\end{figure}
 % TODO: Figure of structure with workflow, numbered.
 
 \subsubsection{Model Request}
