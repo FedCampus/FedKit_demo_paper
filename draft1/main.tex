@@ -136,14 +136,9 @@ a custom on-device training approach that sacrifices performance.
 Moreover, these systems often assume one-shot experiments and
 offer limited support for research iteration in production settings.
 
-We developed FedKit,
-an open-source system to facilitate
-cross-smartphone-platform FL research.
-FedKit brings two major contributions:
-\begin{enumerate*}[label=\arabic*.]
-    \item Cross-platform (Android/iOS) FL with unified APIs.
-    \item FL customization in production to enable fast FL research iteration.
-\end{enumerate*}
+In response to these challenges, we present FedKit,
+an open-source system that supports cross-platform FL research and
+enables flexible in-production customizations.
 
 \section{System Description}
 
@@ -177,18 +172,13 @@ coordinated by a single Backend server (Figure \ref{fig:system_overview}).
 Each client trains a local ML model with its private data,
 and the Backend aggregates these local models to update the global model.
 
-In practice, this system faces significant intricacies in
-on-device ML training and mobile development-production cycle.
-To facilitate cross-smartphone-platform FL research,
-FedKit features two innovations:
-\begin{enumerate*}[label=\arabic*)]
-    \item cross-smartphone-platform FL support using
-          native smartphone ML frameworks, and
-    \item flexible FL customization in production enabled by
-          our custom FL workflow
-\end{enumerate*}.
+To enable cross-platform FL, FedKit offers two key innovations:
+\begin{enumerate}[label=\arabic*.]
+    \item Cross-platform (Android/iOS) FL with unified APIs.
+    \item In-production FL customization to enable fast FL research iteration.
+\end{enumerate}
 
-\subsection{Cross-Smartphone-Platform FL}
+\subsection{Cross-Platform (Android/iOS) FL}
 
 For an ML model created in Python,
 we want to train and aggregate it conveniently across Android and iOS.
