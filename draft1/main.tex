@@ -180,12 +180,12 @@ To enable cross-platform FL, FedKit offers two key innovations:
 
 \subsection{Cross-Platform (Android/iOS) FL}
 
-For an ML model created in Python,
-we want to train and aggregate it conveniently across Android and iOS.
-We also want to utilize GPUs and NPUs to accelerate training.
-For these, we convert the models to supported formats,
-train them under unified APIs using smartphone ML frameworks,
-and aggregate the parameters in unified representations. Figure \ref*{cross_fl} shows the overflow.
+To enable cross-platform FL across Android and iOS,
+we aim to create, train, and aggregate ML models conveniently while
+utilizing GPU and NPU acceleration.
+Our approach involves model conversion, unified training APIs,
+and cross-platform aggregation,
+as illustrated in Fig. \ref{cross_fl}.
 
 \begin{figure}
     \centering
@@ -195,42 +195,44 @@ and aggregate the parameters in unified representations. Figure \ref*{cross_fl} 
 \end{figure}
 
 \subsubsection{Model Conversion}
-% TODO: Figure of ML model conversion.
-We convert TensorFlow models into supported formats,
-targeting Google's TensorFlow Lite (TFLite) for Android,
-and Apple's Core ML for iOS.
-Core ML already has a defined model form and an official converter called
-CoreMLTools.
-For TFLite, we standardized the model form ourselves and
-provide a Python converter.
-Our standard TFLite models include four necessary methods for FL:
-read and update parameters, train, and infer.
+We begin by converting Python-based ML models into formats compatible with
+Android and iOS.
+Specifically, we target Google's TensorFlow Lite (TFLite) for Android and
+Apple's Core ML for iOS.
+Core ML provides a well-defined model structure with
+an official converter called CoreMLTools.
+For TFLite, we have standardized the model format and
+developed a Python converter.
+Our TFLite models encompass the four essential FL methods:
+parameter read/update, train, and infer.
 
 \subsubsection{Unified Training APIs}
-With the converted models, we use corresponding frameworks to train them
-on smartphones.
-For cross-platform support,
-we designed a set of unified APIs that both trainers expose,
-including functions to get and set parameters, fit and evaluate the model.
-On Android, we implement these APIs by indirectly calling
-our four standardized methods in the TFLite interpreter.
-On iOS, however, we found out in our experiments that
-Core ML disallows setting model parameters,
-which would make FL impossible.
-To jail-break from this restriction, we manually alter
-Core ML models' underlying ProtoBuf representations.
+With the converted models in hand,
+we leverage platform-specific ML frameworks to
+perform training on Android and iOS.
+To ensure cross-platform support,
+we have developed a set of unified APIs exposed by both trainers.
+These APIs include functions for retrieving and setting parameters,
+model fitting, and evaluation.
+On Android, we implement these APIs by indirectly invoking
+our standardized methods within the TFLite interpreter.
+However, on iOS, our experimentation revealed a limitation:
+Core ML disallows direct model parameter modification.
+To circumvent this restriction,
+we manually modify the underlying ProtoBuf representations of Core ML models.
 
 \subsubsection{Cross-Platform Aggregation}
-In the previous two steps,
-a single model would get converted and trained into two models in
-completely different formats.
-Naively, we would need to aggregate them separately.
-Instead, we carefully design FedKit so the APIs to get and set model parameters
-yield the same representation on both platforms.
+In the previous steps,
+we convert and train a single model into two distinct formats for
+Android and iOS.
+Traditionally, this would require separate aggregation processes.
+However, we have designed FedKit to ensure uniform parameter representation
+on both platforms.
 During model conversion,
-the updatable model layers are recorded in the same order.
-The training API implementations then sequentially access these layers to
-retrieve or insert the parameters as byte arrays.
+we record the updatable model layers in the same order.
+Subsequently,
+our training API implementations access these layers sequentially to
+retrieve or insert parameters as byte arrays.
 
 \subsection{Flexible In-Production FL Customization}
 % TODO: Mention self-host.
