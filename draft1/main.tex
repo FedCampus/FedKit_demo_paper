@@ -108,8 +108,8 @@
 \begin{abstract}
     FedKit is an open-source federated learning (FL) system designed to
     facilitate cross-platform FL experiments on Android and iOS devices.
-    It offers unified APIs for FL across both platforms and
-    supports in-production customizations.
+    It provides unified APIs for FL across both platforms and supports
+    in-production customizations.
     We have successfully deployed FedKit in a research app,
     achieving significant milestones.
     The code is available at \url{https://github.com/FedCampus/FedKit}.
@@ -119,25 +119,25 @@
 
 Federated learning (FL) is a privacy-preserving machine learning (ML) technique
 that enables edge devices to collaboratively train a shared model while
-keeping training data on-device.
-Leveraging the vast amount of user data on smartphones,
-FL on mobile devices holds great promise.
+retaining data on-device.
 
-However, existing FL systems often lack support for general FL research on
+However, existing FL systems often fall short in
+providing comprehensive support for conducting FL research on
 smartphone platforms.
-Most of them do not run directly on smartphones
+Most of these systems do not operate directly on smartphones
 \cite[e.g.,][]{bonawitz2019towards,liu2021fate,ma2019paddlepaddle,openfl_citation}.
-Some systems, like FedML \cite{he2020fedml} and
+Some, like FedML \cite{he2020fedml} and
 Project Florida \cite{madrigal2023project},
-are limited to Android and lack self-hosting capabilities.
-Flower \cite{beutel2020flower,mathur2021ondevice} has only an iOS SDK,
-while PySyft \cite{ryffel2018generic,Ziller2021,hall2021syft} uses
-a custom on-device training approach that sacrifices performance.
-Moreover, these systems often assume one-shot experiments and
+merely support Android and lack self-hosting capabilities.
+Flower \cite{beutel2020flower,mathur2021ondevice} exclusively provides
+an iOS SDK,
+while PySyft \cite{ryffel2018generic,Ziller2021,hall2021syft} employs
+a custom on-device training approach that compromises performance.
+These two systems also assume one-shot experiments and
 offer limited support for research iteration in production settings.
 
 In response to these challenges, we present FedKit,
-an open-source system that supports cross-platform FL research and
+an open-source system designed to facilitate cross-platform FL research and
 enables flexible in-production customizations.
 
 \section{System Description}
