@@ -143,6 +143,17 @@ enables flexible in-production customizations.
 
 \section{System Description}
 
+FedKit facilitates FL among client apps on Android and iOS platforms,
+coordinated by a single Backend server.
+Each client trains a local ML model with its private data,
+and the Backend aggregates these local models to update the global model.
+
+To enable cross-platform FL, FedKit offers two key innovations:
+\begin{enumerate}[label=\arabic*.]
+    \item Cross-platform (Android/iOS) FL with unified APIs.
+    \item In-production FL customization to enable fast FL research iteration.
+\end{enumerate}
+
 \begin{table}
     \centering
     \small
@@ -161,28 +172,10 @@ enables flexible in-production customizations.
     \label{tbl:fn-frameworks}
 \end{table}
 
-\begin{figure}
-    \centering
-    \includegraphics*[width=\linewidth]{system_overview.pdf}
-    \caption{System Overview.}
-    \label{fig:system_overview}
-\end{figure}
-
-FedKit facilitates FL among client apps on Android and iOS platforms,
-coordinated by a single Backend server (Figure \ref{fig:system_overview}).
-Each client trains a local ML model with its private data,
-and the Backend aggregates these local models to update the global model.
-
-To enable cross-platform FL, FedKit offers two key innovations:
-\begin{enumerate}[label=\arabic*.]
-    \item Cross-platform (Android/iOS) FL with unified APIs.
-    \item In-production FL customization to enable fast FL research iteration.
-\end{enumerate}
-
 \subsection{Cross-Platform (Android/iOS) FL}
 
 To enable cross-platform FL across Android and iOS,
-we aim to create, train, and aggregate ML models conveniently while
+we aim to create, train and aggregate ML models conveniently while
 utilizing GPU and NPU acceleration.
 Our approach involves model conversion, unified training APIs,
 and cross-platform aggregation,
