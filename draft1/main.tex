@@ -190,7 +190,7 @@ as illustrated in Fig. \ref{cross_fl}.
 \begin{figure}
     \centering
     \includegraphics*[width=\linewidth]{cross_smart_fl_workflow.pdf}
-    \caption{Cross-Smartphone-Platform FL Workflow.}
+    \caption{Cross-Platform FL Pipeline.}
     \label{cross_fl}
 \end{figure}
 
@@ -256,14 +256,15 @@ in production, we propose a three-step FL workflow
 \subsubsection{Model Request}
 Clients request an ML model (\model{}) from the Backend that
 aligns with their platform and training data type
-(Fig.~\ref{fig:fl-workflow}).
-The Backend selects the appropriate model from its database.
-This approach allows FL researchers to deploy new models seamlessly
+(Fig.~\ref{fig:fl-workflow}a).
+The Backend selects the appropriate model from its database,
+allowing FL researchers to deploy new models seamlessly
 in production by uploading them to the Backend.
 
 \subsubsection{FL Server Setup}
 Clients request an FL Server (\fs{}) from the Backend to
-train their chosen model (\model{}).
+train their chosen model (\model{})
+(Fig.~\ref{fig:fl-workflow}b).
 The Backend assigns clients to existing servers or spawns new ones as needed.
 FL Servers, operating as the Backend's Python subprocesses,
 support parallel and independent FL sessions.
@@ -272,7 +273,7 @@ adapting the Backend's Django implementation.
 
 \subsubsection{Training}
 Clients participate in FL training by connecting to their assigned \fs{}
-(Fig.~\ref{fig:training}).
+(Fig.~\ref{fig:fl-workflow}c).
 These FL Servers employ the Flower FL Framework for
 scheduling training and evaluation.
 They function as standard Flower gRPC servers,
