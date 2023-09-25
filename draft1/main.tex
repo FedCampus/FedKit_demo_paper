@@ -97,7 +97,7 @@
 % nouns, adverbs, adjectives should be capitalized, including both words in hyphenated terms, while
 % articles, conjunctions, and prepositions are lower case unless they
 % directly follow a colon or long dash
-\title{FedKit---Facilitating Cross-Smartphone-Platform Federated Learning Research}
+\title{FedKit---Enabling Cross-Platform (Android/iOS) Federated Learning}
 \author{}
 \affiliations{}
 
@@ -106,82 +106,72 @@
 \maketitle
 
 \begin{abstract}
-    Federated Learning (FL) creates a new technological pathway for
-    harnessing the data on billions of smartphones.
-    However, before the industry adopts FL designs in production,
-    researchers need to test and iterate on them under real-world circumstances.
-    For this purpose,
-    we developed FedKit to be a practical system that provides researchers
-    a cross-smartphone-platform FL environment.
-    It federates learning models across smartphones platforms,
+    We present FedKit, a federated learning (FL) system to facilitate real-world
+    FL experiments across Android and iOS.
+    FedKit allows for FL for the same models across Android and iOS,
     and offers in-production customizations.
     We have already successfully deployed FedKit for our research app
     in production and attained significant milestones.
+    It is open-source at \url{https://github.com/FedCampus/FedKit}.
 \end{abstract}
 
 \section{Introduction}
+
+Federated learning (FL) is a privacy-preserving machine learning (ML) technique.
+It allows edge devices to collaboratively train a shared ML model while
+keeping training data local.
+FL on smartphones is especially promising because of the huge amount of
+user data.
+
+Unfortunately,
+existing FL systems often lack functionalities to support general FL research
+across smartphone platforms.
+Most do not run on smartphones
+\cite[e.g.,][]{bonawitz2019towards,liu2021fate,ma2019paddlepaddle,openfl_citation}.
+A comparison among some other systems is presented in Table \ref{tbl:fn-frameworks}.
+FedML \cite{he2020fedml} and Project Florida \cite{madrigal2023project}
+only support Android,
+and their proprietary backends cannot be self-hosted and fully controlled.
+Flower \cite{beutel2020flower,mathur2021ondevice} only has an official iOS SDK.
+PySyft \cite{ryffel2018generic,Ziller2021,hall2021syft} uses a custom
+on-device training implementation that is significantly slower than native ones.
+% TODO: Cite more.
+Moreover, these systems mostly assume a one-shot experiment and
+provide little support for researchers to change their designs in production.
+
+We developed FedKit,
+an open-source system to facilitate
+cross-smartphone-platform FL research.
+FedKit brings two major contributions:
+\begin{enumerate*}[label=\arabic*.]
+    \item Cross-platform (Android/iOS) FL with unified APIs.
+    \item FL customization in production to enable fast FL research iteration.
+\end{enumerate*}
 
 \begin{table}
     \centering
     \small
     \setlength{\tabcolsep}{2.4pt}
     \begin{tabular}{lccccc}
-    Support & FedKit & FedML & Flower & PySyft & Florida \\
+    Support & FedML & Florida & Flower & PySyft & \textbf{FedKit} \\
     \hline
-    Android & \checkmark & \checkmark & & \checkmark & \checkmark \\
-    iOS & \checkmark & & \checkmark & \checkmark & \\
-    Self-Host & \checkmark & & \checkmark & \checkmark & \\
+    Android & \checkmark & \checkmark & $\bigcirc$ & \checkmark & \checkmark \\
+    iOS & & & \checkmark & \checkmark & \checkmark \\
+    Self-Host Backend & & & \checkmark & \checkmark & \checkmark \\
     Modify in Production & \checkmark & \checkmark & & & \checkmark \\
-    Native Performance & \checkmark & & \checkmark & & \\
+    Native Performance & $\bigcirc$ & $\bigcirc$ & \checkmark & & \checkmark \\
     \end{tabular}
-    \caption{
-        Functionality comparison of promising FL frameworks that
-        support smartphones.
-    }
+    \caption{Functionality Comparison among On-Smartphone FL frameworks.
+        $\bigcirc$ denotes partial support.}
     \label{tbl:fn-frameworks}
 \end{table}
-
-Federated learning (FL)
-is machine learning (ML) technique that preserves user privacy by
-allowing smartphones to collaboratively train a shared ML model while
-keeping training data local.
-If achieved, FL on smartphones would allow the general industry to
-harness the vast amount of data available on smartphones.
-
-But before that, researchers need practical FL systems to test and
-iterate on their FL designs under real-world circumstances.
-Most promising FL frameworks
-\cite[e.g.,][]{bonawitz2019towards,liu2021fate,ma2019paddlepaddle,openfl_citation}
-do not support smartphones.
-Some systems only support Android
-\cite{he2020fedml,madrigal2023project},
-but real-world FL scenarios must also include iOS.
-Several FL services present proprietary backends,
-but researchers need direct customization abilities.
-Open-source solutions are in early exploration stages
-\cite{beutel2020flower,mathur2021ondevice},
-or suffer from performance penalties from custom training implementations
-\cite{ryffel2018generic,Ziller2021,hall2021syft}.
-% TODO: Cite more.
-Moreover, these systems mostly assume a one-shot experiment and
-provide little support for researchers to change their designs in production.
-Previous work has yet to facilitate general cross-smartphone-platform
-FL research.
-
-So, we developed FedKit,
-an open-source system to facilitate
-cross-smartphone-platform FL research.
-FedKit leverages platform-specific smartphone ML frameworks,
-yet provides a unified FL interface.
-To enable fast FL research iteration,
-it also offers researchers FL customization in production.
 
 \section{System Description}
 
 \begin{figure}
     \centering
     \includegraphics*[width=\linewidth]{system_overview.pdf}
-    \caption{System Overview}
+    \caption{System Overview.}
     \label{system_overview}
 \end{figure}
 
@@ -213,7 +203,7 @@ and aggregate the parameters in unified representations. Figure \ref*{cross_fl} 
 \begin{figure}
     \centering
     \includegraphics*[width=\linewidth]{cross_smart_fl_workflow.pdf}
-    \caption{Cross-Smartphone-Platform FL Workflow}
+    \caption{Cross-Smartphone-Platform FL Workflow.}
     \label{cross_fl}
 \end{figure}
 
@@ -262,7 +252,7 @@ retrieve or insert the parameters as byte arrays.
 After being able to federate learning on smartphones,
 the traditional approach would hard-code the model and training procedure
 into the client app.
-But then, the app would need to be updated every time a change is made,
+However, the app would then need to be updated every time a change is made,
 involving the complication of app stores and users in production.
 Instead,
 we want to empower FL researchers to conveniently iterate on ML models and
@@ -277,7 +267,7 @@ Clients request the Backend for an ML model \model{} that fits
 their platform and training data type (Fig. ). % TODO: fig.
 The Backend decides which model to train based on
 available models in its database.
-So, FL researchers simply deploy new models in production by uploading them to
+Therefore, FL researchers simply deploy new models in production by uploading them to
 the Backend.
 
 \subsubsection{Training Initiation}
@@ -298,7 +288,7 @@ They are regular Flower gRPC servers, meaning that
 they inherit all of Flower's great flexibility to customize the FL algorithm in
 Python.
 
-\section{Experiment and Conclusion}
+\section{Experiment}
 To demonstrate FedKit in action,
 we deployed an app that federates learning using exercise data collected from
 smart watches.
@@ -310,10 +300,6 @@ on Android and Apple Health on iOS.
 We had 3 test users who opened the app to train the model at least once a day,
 resulting in decreasing training loss.
 % TODO: Training telemetry graph. Is loss going down?
-
-In conclusion, our FL experiments with FedKit aim to
-expand researchers' reach to billions of smartphones,
-unlocking FL's immense potential to benefit the masses.
 
 \appendix
 
