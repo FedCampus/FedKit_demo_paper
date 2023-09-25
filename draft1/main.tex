@@ -125,15 +125,21 @@ Federated learning (FL) \cite{mcmahan2017communication}
 is a privacy-preserving machine learning (ML) technique
 that enables edge devices to collaboratively train a shared model while
 retaining data on-device.
+Smartphones are an ideal participant for FL due to the substantial volume of
+sensitive data they handle.
+However, FL on smartphones is challenging due to the complexity in mobile
+development and on-device training.
 
-However, existing FL systems often fall short in
+Existing FL systems often fall short in
 providing comprehensive support for conducting FL research on
 smartphone platforms.
 Most of these systems do not operate directly on smartphones
 \cite[e.g.,][]{bonawitz2019towards,liu2021fate,ma2019paddlepaddle,openfl_citation}.
-Some, like FedML \cite{he2020fedml} and
-Project Florida \cite{madrigal2023project},
-merely support Android and cannot be self-hosted.
+Some, like FedML \cite{he2020fedml}, Project Florida \cite{madrigal2023project}
+and FedScale \cite{lai2022fedscale},
+merely support Android.
+FedML and Florida are proprietary services and cannot be self-hosted,
+so direct customizations are impossible.
 Flower \cite{beutel2020flower,mathur2021ondevice} exclusively provides
 an iOS SDK,
 while PySyft \cite{ryffel2018generic,Ziller2021,hall2021syft} employs
@@ -141,9 +147,15 @@ a custom on-device training approach that compromises performance.
 These two systems also assume one-shot experiments and
 offer limited support for research iteration in production settings.
 
-In response to these challenges, we present FedKit,
+In response to these challenges, we developed FedKit,
 an open-source system designed to facilitate cross-platform FL research and
 enables flexible in-production customizations.
+FedKit offers convenience for researchers to conduct and iterate on
+FL experiments across Android and iOS,
+while maintaining modularity,
+allowing further customizations by reimplementing specific modules.
+As a result, FedKit can serve as a foundational resource or reference for
+the broader FL research community.
 
 \section{System Description}
 
