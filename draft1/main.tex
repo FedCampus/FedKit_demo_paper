@@ -167,13 +167,12 @@ a versatile FL system designed to enable \textbf{cross-platform} FL research on
 
 \section{System Description}
 
-FedKit facilitates FL among client apps on Android and iOS platforms,
+FedKit facilitates FL among clients (mobile apps) on Android and iOS platforms,
 coordinated by a single Backend server.
 Each client trains a local model with private data,
 and the Backend aggregates these local models to update the global model.
-
-To enable cross-platform FL, FedKit introduces two key innovations: 
-\circled{1} A cross-platform (Android-iOS) FL pipeline centered; \circled{2} In-production FL customization to enable fast FL research iteration.
+Specifically, FedKit introduces two key innovations: 
+\circled{1} A cross-platform (Android-iOS) FL pipeline centered; \circled{2} In-production FL customization to enable efficient FL research iteration.
 
 \begin{table}
     \centering
@@ -195,17 +194,15 @@ To enable cross-platform FL, FedKit introduces two key innovations:
 
 \subsection{Cross-Platform FL Model Pipeline}
 
-To enable cross-platform FL across Android and iOS,
-we aim to create, train and aggregate ML models conveniently while
+To enable cross-platform FL across Android and iOS, it is essential to create, train and aggregate ML models conveniently while
 utilizing GPU and NPU acceleration.
-Our approach involves model conversion, unified training APIs,
-and cross-platform aggregation
-(Fig.~\ref{cross_fl}).
+Thus, we propose the approach involves \textit{model conversion}, \textit{unified training APIs},
+and \textit{cross-platform aggregation}, as illustrated Fig.~\ref{cross_fl}.
 
 \begin{figure}
     \centering
     \includegraphics*[width=\linewidth]{cross_smart_fl_workflow.pdf}
-    \caption{Cross-Platform FL Model Pipeline.}
+    \caption{FedKit Model Pipeline for Cross-Platform FL.}
     \label{cross_fl}
 \end{figure}
 
@@ -219,7 +216,7 @@ an official converter called CoreMLTools.
 For TFLite, we have standardized the model format and
 developed a Python converter for TensorFlow.
 Our TFLite models encompass the four essential FL methods:
-parameter read/update, train, and infer.
+parameter \texttt{read}/\texttt{update}, \texttt{train}, and \texttt{infer}.
 
 \subsubsection{Unified Training APIs}
 With the converted models in hand,
@@ -268,7 +265,7 @@ we propose a three-step FL workflow
 \begin{figure}
     \centering
     \includegraphics*[width=0.8\linewidth]{fl_workflow.pdf}
-    \caption{FL Workflow.}
+    \caption{FedKit FL Workflow.}
     \label{fig:fl-workflow}
 \end{figure}
 
