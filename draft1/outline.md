@@ -1,41 +1,41 @@
 # Draft 1 Outline
 
 - Introduction
-    - What is on-smartphone FL
-    - Significance[^1]
-        - Academic: enable real-world cross-platform research
-        - Industrial: use data on smartphones
-    - Related work in mobile FL
-        - (Chart of FL frameworks' platform support)
-    - Difficulties in practical on-smartphone FL research
+    - Background
+        - FL
+        - Smartphone good for FL
+        - What we need for FL on smartphone
+    - Related work in mobile FL lack stuff
+        - (Checklist table)
         - Cross-platform training support
         - Customizing FL in production
     - Brief introduction to FedKit
         - FedKit features
-            - (Checklist figure)
-        - Our research app in production (Key contributions)
+        <!-- TODO: - Our research app in production (Key contributions) -->
 - System Description
     - Architecture Overview
         - Client-server relationship
         - 2 innovations: the following
-    - Cross-Smartphone-Platform FL (detailed)
+    - Cross-Platform FL Model Pipeline (detailed)
         - Description: cross-platform FL on smartphones
         - Three steps
+            - (Figure)
             - Model conversion to native format (TFLite & Core ML)
-                - (Figure of model conversion)
-            - Unified on-device training interface using native ML frameworks
+            - Unified on-device training APIs using native ML frameworks
             - Cross-platform parameter aggregation
     - Flexible In-Production FL Customization
-        - FL frameworks assume models bundled with app
-        - Researchers would want to update the model after the app is deployed
+        - Motivation
+            - FL frameworks assume models bundled with app
+            - Researchers would want to update the model after the app is deployed
         - How it is done: FL workflow with a preparation stage
             - (Figure of structure with workflow, numbered)
-            - How we serve different models for different platform
-- Experiment
+            - Model request
+            - FL Server setup
+            - Training
+- Use Case: FedCampus
     - Describe the app
-    - How the app is deployed
+    - How the app is deployed <!-- TODO: Apply. -->
         - (Figure of the setup)
-- Conclusion and Future Work
 
 ## Not Mentioned
 
@@ -54,5 +54,6 @@ Implementation details
 - Background training scheduling
 - Simple HealthKit model
 - Benchmark app
+- Conclusion and Future Work
 
 [^1]: <https://github.com/FedCampus/AAAI_conf_demo/pull/2#discussion_r1328039222>
