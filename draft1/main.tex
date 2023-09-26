@@ -244,6 +244,7 @@ To circumvent this restriction,
 we manually modify the parameters in the underlying ProtoBuf representations of
 Core ML models.
 
+% TODO: Rewrite.
 \subsubsection{Cross-Platform Aggregation}
 In the previous steps,
 we convert and train a single model into two distinct formats for
@@ -260,15 +261,9 @@ retrieve or insert parameters as byte arrays.
 \subsection{Flexible In-Production FL Customization}
 \newcommand{\model}{$M$}
 \newcommand{\fs}{$S_\mathrm F$}
-Traditionally, conducting FL research on smartphones involved
-embedding models and training procedures into client apps.
-However, this approach led to the necessity for frequent app updates,
-introducing complexity from app store submissions and user adoption
-in production.
-
-In contrast,
 FedKit empowers researchers to iteratively develop models and algorithms
-in production.
+in production without app updates,
+circumventing the complexity from app store submissions and user adoption.
 Leveraging our self-hosted and directly controlled Backend,
 we propose a three-step FL workflow
 (Fig.~\ref{fig:fl-workflow}).
@@ -281,10 +276,9 @@ we propose a three-step FL workflow
 
 \subsubsection{Model Request}
 Clients request for an ML model from the Backend that
-aligns with their platform and training data type
-(Fig.~\ref{fig:fl-workflow}.1).
+aligns with their platform and training data type.
 The Backend selects the appropriate model \model{} from its database.
-This step allows FL researchers to deploy new models seamlessly
+This step allows deploying new models seamlessly
 in production by uploading them to the Backend.
 
 \subsubsection{FL Server Setup}
@@ -299,10 +293,9 @@ occupy their own ports.
 Researchers can customize how FL Servers are set up for each specific models by
 adapting the Backend's Django implementation.
 
-\subsubsection{Training}
+\subsubsection{FL Training}
 Clients participate in FL training by directly connecting to
-their assigned \fs{} on its port
-(Fig.~\ref{fig:fl-workflow}.3).
+their assigned \fs{} on its port.
 These FL Servers employ the Flower FL Framework for
 scheduling training and evaluation.
 They function as standard Flower gRPC servers,
@@ -310,6 +303,16 @@ inheriting Flower's flexibility,
 allowing FL algorithm customizations in Python.
 
 \section{Use Case: FedCampus}
+
+\begin{figure}
+    \centering
+    % TODO: Closer laptop screen. More windows.
+    \includegraphics*[width=0.7\linewidth]{fedcampus_demo.pdf}
+    \caption{FedCampus Experiment Setup.
+        The Backend runs on the server machine in the background,
+        and its logs are shown on the laptop screen in real time.}
+    \label{fig:fedcampus}
+\end{figure}
 
 We present a practical use case of FedKit, FedCampus,
 a campus-based FL experiment.
@@ -324,19 +327,10 @@ With participation from three test users,
 our model's training loss reduction highlights
 FedKit's real-world effectiveness.
 
-\begin{figure}
-    \centering
-    \includegraphics*[width=0.7\linewidth]{fedcampus_demo.pdf}
-    \caption{FedCampus Experiment Setup.
-        The Backend runs on the server machine in the background,
-        and its logs are shown on the laptop screen in real time.}
-    \label{fig:fedcampus}
-\end{figure}
-
 \appendix
 
 \section*{Acknowledgments}
-TODO
+We would like to thank Flower Labs for the discussion on on-device training.
 
 \bigskip
 
