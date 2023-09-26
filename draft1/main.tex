@@ -134,19 +134,21 @@ not only supports cross-platform on-device training,
 but also provides the flexibility to make adjustments in production settings.
 
 However, existing FL systems often fall short of meeting multiple prerequisites.
-Most of these systems do not operate directly on smartphones
-\cite[e.g.,][]{bonawitz2019towards,liu2021fate,ma2019paddlepaddle,openfl_citation}.
-While FedML \cite{he2020fedml}, Project Florida \cite{madrigal2023project}
-and FedScale \cite{lai2022fedscale},
-merely support Android, their
-proprietary services cannot be self-hosted,
-restricting customization options.
-Moreover, Flower \cite{beutel2020flower,mathur2021ondevice} provides only
-an iOS SDK,
-while PySyft \cite{ryffel2018generic,Ziller2021,hall2021syft} employs
-a custom on-device training approach that compromises performance.
-However, Flower and PySyft primarily support one-shot experiments, which makes them less conducive to research iteration in
-production settings.
+First, most systems struggle to provide seamless support for both Android and iOS.
+They do not operate directly on smartphones
+\cite[e.g.,][]{bonawitz2019towards,liu2021fate,ma2019paddlepaddle,openfl_citation},
+merely support Android (e.g.,
+FedML \cite{he2020fedml}, Project Florida \cite{madrigal2023project}
+and FedScale \cite{lai2022fedscale}),
+or provide only iOS SDKs (Flower \cite{beutel2020flower,mathur2021ondevice}).
+Although PySyft \cite{ryffel2018generic,Ziller2021,hall2021syft} supports
+both Android and iOS, it employs
+a custom on-device training approach that significantly compromises performance.
+Second, while proprietary services like FedML and Florida cannot
+be self-hosted and fully customized,
+they offer the advantage of customizations in production settings.
+In contrast, open-source solutions such as Flower and PySyft primarily
+support one-shot experiments.
 
 \subsubsection{Contributions}
 We developed FedKit,
@@ -172,7 +174,8 @@ coordinated by a single Backend server.
 Each client trains a local model with private data,
 and the Backend aggregates these local models to update the global model.
 Specifically, FedKit introduces two key innovations: 
-\circled{1} A cross-platform (Android-iOS) FL pipeline centered; \circled{2} In-production FL customization to enable efficient FL research iteration.
+\circled{1} A cross-platform (Android-iOS) FL pipeline centered around ML models.
+\circled{2} In-production FL customization to enable efficient FL research iteration.
 
 \begin{table}
     \centering
@@ -183,9 +186,9 @@ Specifically, FedKit introduces two key innovations:
         \hline
         Android              & \checkmark & \checkmark & $\bigcirc$ & \checkmark & \checkmark      \\
         iOS                  &            &            & \checkmark & \checkmark & \checkmark      \\
+        Native Performance   & $\bigcirc$ & $\bigcirc$ & \checkmark &            & \checkmark      \\
         Self-Host            &            &            & \checkmark & \checkmark & \checkmark      \\
         Modify in Production & \checkmark & \checkmark &            &            & \checkmark      \\
-        Native Performance   & $\bigcirc$ & $\bigcirc$ & \checkmark &            & \checkmark      \\
     \end{tabular}
     \caption{Functionality Comparison among On-Smartphone FL frameworks.
         $\bigcirc$ denotes partial support.}
