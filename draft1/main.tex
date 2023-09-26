@@ -127,40 +127,42 @@ that enables edge devices to collaboratively train a shared model while
 retaining data on-device.
 Smartphones, with their extensive access to sensitive data,
 are prime candidates for FL participation.
-For feasible FL experiments on smartphones,
-a comprehensive system must support cross-platform on-device training and
-provide flexibility to make changes in production.
+To conduct feasible FL experiments on smartphones,
+it is imperative to have a comprehensive system that
+not only supports cross-platform on-device training,
+but also offers the flexibility to make adjustments in production settings.
 
-However, existing FL systems often fall short in
-multiple requirements for feasible FL experiments on smartphones.
+However, existing FL systems often fall short of meeting multiple prerequisites.
 Most of these systems do not operate directly on smartphones
 \cite[e.g.,][]{bonawitz2019towards,liu2021fate,ma2019paddlepaddle,openfl_citation}.
 Some, like FedML \cite{he2020fedml}, Project Florida \cite{madrigal2023project}
 and FedScale \cite{lai2022fedscale},
 merely support Android.
 Proprietary services such as FedML and Florida cannot be self-hosted,
-limiting customization possibilities.
+restricting customization options.
 Flower \cite{beutel2020flower,mathur2021ondevice} provides only
 an iOS SDK,
 while PySyft \cite{ryffel2018generic,Ziller2021,hall2021syft} employs
-a custom on-device training approach that compromises performance;
-these systems are also less conducive to research iteration in
+a custom on-device training approach that compromises performance.
+Flower and PySyft are also less conducive to research iteration in
 production settings,
 primarily supporting one-shot experiments.
 
 \subsubsection{Contributions}
 We developed FedKit,
-an FL system to enable cross-platform FL research for
-iOS and Android:
+a versatile FL system designed to enable cross-platform FL research on
+Android and iOS:
 \begin{enumerate}[label=\bullet]
-    \item FedKit provide a set of modularized libraries to train
-        and aggregate Python-based ML models on Android and iOS.
-        These libraries can serve as a foundation or reference for
+    \item FedKit provides a set of modularized libraries to train
+        Python-based ML models on Android and iOS and
+        aggregate across platforms.
+        These libraries can serve as a foundational resource or reference for
         future FL systems.
-    \item We exemplify a novel FL workflow to control ML models and
-        FL algorithms from the backend in production settings,
-        inspiring other open-source solutions to compete in this domain with
-        proprietary services.
+    \item We introduce a novel FL workflow within FedKit,
+        enabling control over ML models and FL algorithms from
+        the backend in production settings.
+        This innovative approach inspires other open-source solutions to
+        compete with proprietary services in deployment support.
 \end{enumerate}
 
 \section{System Description}
