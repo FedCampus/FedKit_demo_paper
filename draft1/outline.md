@@ -34,7 +34,7 @@
             - Training
 - Use Case: FedCampus
     - Describe the app
-    - How the app is deployed <!-- TODO: Apply. -->
+    - How the app is deployed
         - (Figure of the setup)
 
 ## Not Mentioned
@@ -55,5 +55,3 @@ Implementation details
 - Simple HealthKit model
 - Benchmark app
 - Conclusion and Future Work
-
-[^1]: <https://github.com/FedCampus/AAAI_conf_demo/pull/2#discussion_r1328039222>
