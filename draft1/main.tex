@@ -115,7 +115,7 @@
     and platform-agnostic model aggregation.
     Our FL workflow supports flexible in-production customizations,
     facilitating rapid iterations of ML models and FL algorithms.
-    We have successfully deployed FedKit in a research app,
+    We have deployed FedKit in a research app,
     achieving significant milestones.
     The code is open-source at \url{https://github.com/FedCampus/FedKit}.
 \end{abstract}
@@ -308,6 +308,19 @@ allowing FL algorithm customizations in Python.
 
 \section{Use Case: FedCampus}
 
+We present a practical use case of FedKit, FedCampus,
+a campus-based FL experiment.
+We integrated FedKit into the FedCampus research app to
+train a sleep-efficiency prediction model with exercise data,
+similar to \cite{khoa2022fedmcrnn}.
+
+Our experiment setup (Fig.~\ref{fig:fedcampus}) featured a self-hosted Backend
+and collected data from participants' smartwatches
+though Huawei HealthKit (Android) or Apple Health (iOS).
+With participation from three test users,
+our model's training loss reduction highlights
+FedKit's real-world effectiveness.
+
 \begin{figure}
     \centering
     \includegraphics*[width=0.7\linewidth]{fedcampus_demo.pdf}
@@ -316,22 +329,6 @@ allowing FL algorithm customizations in Python.
         and its logs are shown on the laptop screen in real time.}
     \label{fig:fedcampus}
 \end{figure}
-
-We present a practical use case of FedKit, FedCampus,
-a campus-based federated learning (FL) experiment leveraging
-exercise data collected from participants' smartwatches.
-We integrated FedKit into the FedCampus research app,
-which was employed to train a sleep-efficiency prediction model similar to
-\cite{khoa2022fedmcrnn}
-utilizing data sourced from Huawei HealthKit on Android devices and
-Apple Health on iOS devices.
-Our setup is illustrated in Fig.~\ref{fig:fedcampus}.
-
-Our experiment involved three test users who contributed data.
-The results were promising,
-as they revealed a significant reduction in training loss.
-This outcome serves as a compelling demonstration of FedKit's
-effective functionality in real-world scenarios.
 
 \appendix
 
