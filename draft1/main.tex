@@ -23,7 +23,8 @@
 \usepackage{tikz}
 \usepackage[inline]{enumitem}
 \usepackage{amssymb}  % for the checkmark
-
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=.6pt] (char) {#1};}}
 %
 % These are are recommended to typeset listings but not required. See the subsubsection on listing. Remove this block if you don't have listings in your paper.
 \usepackage{newfloat}
@@ -121,46 +122,45 @@
 
 \section{Introduction}
 
-Federated learning (FL) \cite{mcmahan2017communication}
+Federated Learning (FL) 
 is a privacy-preserving machine learning (ML) technique
 that enables edge devices to collaboratively train a shared model while
-retaining data on-device.
+retaining private data on-device \cite{mcmahan2017communication}.
 Smartphones, with their extensive access to sensitive data,
-are prime candidates for FL participation.
-To conduct feasible FL experiments on smartphones,
-it is imperative to have a comprehensive system that
+emerge as promising candidates for participation in FL.
+To conduct practical FL experiments on smartphones,
+it is imperative to establish a comprehensive system that
 not only supports cross-platform on-device training,
-but also offers the flexibility to make adjustments in production settings.
+but also provides the flexibility to make adjustments in production settings.
 
 However, existing FL systems often fall short of meeting multiple prerequisites.
 Most of these systems do not operate directly on smartphones
 \cite[e.g.,][]{bonawitz2019towards,liu2021fate,ma2019paddlepaddle,openfl_citation}.
-Some, like FedML \cite{he2020fedml}, Project Florida \cite{madrigal2023project}
+While FedML \cite{he2020fedml}, Project Florida \cite{madrigal2023project}
 and FedScale \cite{lai2022fedscale},
-merely support Android.
-Proprietary services such as FedML and Florida cannot be self-hosted,
+merely support Android, their
+proprietary services cannot be self-hosted,
 restricting customization options.
-Flower \cite{beutel2020flower,mathur2021ondevice} provides only
+Moreover, Flower \cite{beutel2020flower,mathur2021ondevice} provides only
 an iOS SDK,
 while PySyft \cite{ryffel2018generic,Ziller2021,hall2021syft} employs
 a custom on-device training approach that compromises performance.
-Flower and PySyft are also less conducive to research iteration in
-production settings,
-primarily supporting one-shot experiments.
+However, Flower and PySyft primarily support one-shot experiments, which makes them less conducive to research iteration in
+production settings.
 
 \subsubsection{Contributions}
 We developed FedKit,
-a versatile FL system designed to enable cross-platform FL research on
-Android and iOS:
+a versatile FL system designed to enable \textbf{cross-platform} FL research on
+\textbf{Android and iOS}:
 \begin{enumerate}[label=\bullet]
-    \item FedKit provides a set of modularized libraries to train
+    \item FedKit provides a set of \textbf{modularized libraries} to train
         Python-based ML models on Android and iOS and
         aggregate across platforms.
-        These libraries can serve as a foundational resource or reference for
-        future FL systems.
+        These libraries can serve as a foundational resource for
+        on-device FL systems.
     \item We introduce a novel FL workflow within FedKit,
-        enabling control over ML models and FL algorithms from
-        the backend in production settings.
+        enabling flexibly \textbf{customize} ML models and implement FL algorithms from
+        the backend, even in production settings.
         This innovative approach inspires other open-source solutions to
         compete with proprietary services in deployment support.
 \end{enumerate}
@@ -169,14 +169,11 @@ Android and iOS:
 
 FedKit facilitates FL among client apps on Android and iOS platforms,
 coordinated by a single Backend server.
-Each client trains a local ML model with its private data,
+Each client trains a local model with private data,
 and the Backend aggregates these local models to update the global model.
 
-To enable cross-platform FL, FedKit introduces two key innovations:
-\begin{enumerate}[label=\arabic*.]
-    \item A cross-platform (Android/iOS) FL pipeline centered around ML models.
-    \item In-production FL customization to enable fast FL research iteration.
-\end{enumerate}
+To enable cross-platform FL, FedKit introduces two key innovations: 
+\circled{1} A cross-platform (Android-iOS) FL pipeline centered; \circled{2} In-production FL customization to enable fast FL research iteration.
 
 \begin{table}
     \centering
