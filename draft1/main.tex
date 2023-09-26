@@ -185,7 +185,7 @@ Specifically, FedKit introduces two key innovations:
     \begin{tabular}{lccccc}
         Support              & FedML      & Florida    & Flower     & PySyft     & \textbf{FedKit} \\
         \hline
-        Android              & \checkmark & \checkmark & $\bigcirc$ & \checkmark & \checkmark      \\
+        Android              & \checkmark & \checkmark & $\checkmark^\ast$ & \checkmark & \checkmark      \\
         iOS                  &            &            & \checkmark & \checkmark & \checkmark      \\
         Native Performance   & $\bigcirc$ & $\bigcirc$ & \checkmark &            & \checkmark      \\
         Self-Host            &            &            & \checkmark & \checkmark & \checkmark      \\
@@ -193,7 +193,9 @@ Specifically, FedKit introduces two key innovations:
     \end{tabular}
     \caption{Functionality Comparison among On-Smartphone FL frameworks
         as of Sep. 2023.
-        $\bigcirc$ denotes partial support.}
+        $\checkmark^\ast$: full support after our contribution.
+        $\bigcirc$: partial support.
+    }
     \label{tbl:fn-frameworks}
 \end{table}
 
