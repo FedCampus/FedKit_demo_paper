@@ -234,8 +234,8 @@ parameter \texttt{read}/\texttt{update}, \texttt{train}, and \texttt{infer}.
 
 \subsubsection{Unified Training APIs}
 With the converted models in hand,
-we leverage platform-specific ML frameworks to
-perform training on Android and iOS.
+we leverage TFLite and Core ML to perform training,
+utilizing GPU and NPU acceleration.
 To ensure cross-platform support,
 we have developed a set of unified APIs exposed by both trainers.
 These APIs include functions for retrieving and setting parameters,
@@ -243,24 +243,24 @@ model fitting, and evaluation.
 On Android, we implement these APIs by indirectly invoking
 our standardized methods within the TFLite interpreter.
 However, on iOS, our experimentation revealed a significant constraint:
-Core ML disallows directly setting model parameters.
+Core ML forbids directly setting model parameters.
 To circumvent this restriction,
 we manually modify the parameters in the underlying ProtoBuf representations of
 Core ML models.
 
-% TODO: Rewrite.
 \subsubsection{Cross-Platform Aggregation}
-In the previous steps,
-we convert and train a single model into two distinct formats for
-Android and iOS.
-Traditionally, this would require separate aggregation processes.
-However, we have designed FedKit to ensure unified parameter representation
-on both platforms.
+The trained TFLite and Core ML models inherently possess distinct
+representations and runtime environments,
+which suggests for separate aggregation processes,
+undermining the purpose of cross-platform FL.
+In response, FedKit is engineered to maintain unified parameter representation
+on both Android and iOS.
+
 During model conversion,
-we record the updatable model layers in the same order.
-During training,
-our API implementations access these layers sequentially to
-retrieve or insert parameters as byte arrays.
+we meticulously record the model layers in the same order.
+During cross-platform training,
+our API implementations access these layers sequentially,
+retrieving or inserting parameters as byte arrays.
 
 \subsection{Flexible In-Production FL Customization}
 \newcommand{\model}{$M$}
