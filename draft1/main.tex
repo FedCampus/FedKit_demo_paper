@@ -201,12 +201,13 @@ Specifically, FedKit introduces two key innovations:
 
 \subsection{Cross-Platform FL Model Pipeline}
 
-To enable cross-platform FL across Android and iOS,
-we aim to create, train and aggregate ML models conveniently while
-utilizing GPU and NPU acceleration.
-Our approach involves \textit{model conversion},
+As shown in Fig.~\ref{cross_fl},
+to enable cross-platform FL across Android and iOS,
+we propose a pipeline with three modules of
+\textit{model conversion},
 \textit{unified training APIs},
-and \textit{cross-platform aggregation}, as illustrated Fig.~\ref{cross_fl}.
+and \textit{cross-platform aggregation},
+targeting FL model creation, training and aggregation, respectively.
 
 \begin{figure}
     \centering
