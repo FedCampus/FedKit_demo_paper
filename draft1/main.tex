@@ -122,39 +122,37 @@
 
 \section{Introduction}
 
-Federated Learning (FL) 
-is a privacy-preserving machine learning (ML) technique
-that enables edge devices to collaboratively train a shared model while
+Federated Learning (FL) enables edge devices to
+collaboratively train a shared Machine Learning (ML) model while
 retaining private data on device \cite{mcmahan2017communication}.
-Smartphones, with their extensive access to sensitive data,
+Smartphones, rich in sensitive data,
 emerge as promising candidates for participation in FL.
-Nevertheless, most FL frameworks
+Nevertheless, most existing FL frameworks
 \cite[e.g.,][]{bonawitz2019towards,liu2021fate,ma2019paddlepaddle,openfl_citation}
-available today are primarily designed for simulation purposes,
-which restricts their practical applicability on smartphones.
+primarily cater to simulation,
+limiting their practical use on smartphones.
 
 Several FL frameworks have emerged to fulfill on-smartphone FL,
-but they still suffer from some limitations,
+but still suffer from limitations,
 as we summarized in Table~\ref{tbl:fn-frameworks}.
 Specifically, FedML \cite{he2020fedml},
 Project Florida \cite{madrigal2023project},
-and FedScale \cite{lai2022fedscale} primarily focus on Android support.
-Although Flower \cite{beutel2020flower,mathur2021ondevice} provides
-on-smartphone support for both Android and iOS, it only offers an iOS SDK.
-It is noteworthy that PySyft \cite{ryffel2018generic,Ziller2021,hall2021syft}
+and FedScale \cite{lai2022fedscale} predominately support Android.
+Flower \cite{beutel2020flower,mathur2021ondevice} provides
+support for both Android and iOS, but only offers an iOS SDK.
+PySyft \cite{ryffel2018generic,Ziller2021,hall2021syft}
 accommodates Android and iOS devices;
 however, it employs a custom on-device training approach that
 significantly compromises performance.
 
-Moreover, beyond the challenge of seamless cross-platform support,
-the ability to customize FL implementations in real-world production settings is
-another critical consideration.
+Moreover, seamless cross-platform support is crucial,
+but so is customization in real-world production settings.
 While FedML and Florida offer a certain degree of customization,
 their reliance on proprietary services makes it impossible to be self-hosted and
 fully customized in production settings.
-In contrast, open-source solutions like Flower and PySyft empower users to
-self-host and tailor their FL experiments.
-However, they primarily support one-shot experiments,
+In contrast, open-source solutions like Flower and PySyft allow
+self-hosting and full customization,
+but are more suitable for one-shot experiments,
 limiting their adaptability for large-scale production deployments.
 
 \subsubsection{Contributions}
@@ -162,16 +160,16 @@ We developed FedKit,
 a versatile FL system designed to enable \textbf{cross-platform} FL research on
 \textbf{Android and iOS}:
 \begin{enumerate}[label=$\bullet$]
-    \item FedKit provides a set of \textbf{modularized libraries} to train
+    \item FedKit provides \textbf{modularized libraries} to train
         Python-based ML models on Android and iOS and
         aggregate across platforms.
         These libraries can serve as a foundational resource for
         on-device FL systems.
     \item We introduce a novel FL workflow within FedKit,
-        enabling flexibly \textbf{customize} ML models and implement FL algorithms from
+        enabling flexible \textbf{customization} of ML models and FL algorithms from
         the backend, even in production settings.
-        This innovative approach inspires other open-source solutions to
-        compete with proprietary services in deployment support.
+        This innovation encourages other open-source solutions to
+        rival proprietary services in deployment support.
 \end{enumerate}
 
 \section{System Description}
