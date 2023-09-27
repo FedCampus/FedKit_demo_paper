@@ -22,7 +22,7 @@
 % Custom packages
 \usepackage{tikz}
 \usepackage[inline]{enumitem}
-\usepackage{amssymb}  % for the checkmark
+\usepackage{pifont}  % for the checkmark/crossmark
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=.6pt] (char) {#1};}}
 %
@@ -185,20 +185,20 @@ Specifically, FedKit introduces two key innovations:
 \begin{table}
     \centering
     \small
-    \setlength{\tabcolsep}{2.4pt}
+    \setlength{\tabcolsep}{2pt}
     \begin{tabular}{lccccc}
-        Support              & FedML      & Florida    & Flower     & PySyft     & \textbf{FedKit} \\
+        Functionality        & FedML      & Florida    & Flower     & PySyft     & \textbf{FedKit} \\
         \hline
-        Android              & \checkmark & \checkmark & $\checkmark^\ast$ & \checkmark & \checkmark      \\
-        iOS                  &            &            & \checkmark & \checkmark & \checkmark      \\
-        Native Performance   & $\bigcirc$ & $\bigcirc$ & \checkmark &            & \checkmark      \\
-        Self-Host            &            &            & \checkmark & \checkmark & \checkmark      \\
-        Customize in Prod    & \checkmark & \checkmark &            &            & \checkmark      \\
+        Android-Only FL      & \ding{51}  & \ding{51}  & \ding{51}  & \ding{51}  & \ding{51}       \\
+        iOS-Only FL          & \ding{55}  & \ding{55}  & \ding{51}  & \ding{51}  & \ding{51}       \\
+        FL across Android/iOS& \ding{55}  & \ding{55}  & \ding{55}  & \ding{51}  & \ding{51}       \\
+        Training Acceleration& \ding{51}  & \ding{51}  & \ding{51}  & \ding{55}  & \ding{51}       \\
+        \hline
+        Open-Source Backend  & \ding{55}  & \ding{55}  & \ding{51}  & \ding{51}  & \ding{51}       \\
+        Multi Model/Iteration& \ding{51}  & \ding{51}  & \ding{55}  & \ding{55}  & \ding{51}       \\
     \end{tabular}
     \caption{Functionality Comparison among On-Smartphone FL frameworks
         as of Sep. 2023.
-        $\checkmark^\ast$: full support after our contribution.
-        $\bigcirc$: partial support.
     }
     \label{tbl:fn-frameworks}
 \end{table}
