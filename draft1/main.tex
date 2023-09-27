@@ -138,9 +138,8 @@ as summarized in Table~\ref{tbl:fn-frameworks}.
 Specifically, FedML \cite{he2020fedml},
 Project Florida \cite{madrigal2023project},
 and FedScale \cite{lai2022fedscale} primarily support Android.
-Flower \cite{beutel2020flower,mathur2021ondevice} provides SDKs for
-both Android and iOS,
-but has not yet achieved FL support across both platforms.
+Flower's \cite{beutel2020flower,mathur2021ondevice} Android and iOS SDKs have
+not yet supported aggregating models across platforms.
 PySyft \cite{ryffel2018generic,Ziller2021,hall2021syft}
 accommodates FL across Android and iOS;
 however, its custom on-device training approach lacks hardware acceleration,
@@ -192,7 +191,7 @@ Specifically, FedKit introduces two key innovations:
         \hline
         Android-Only FL      & \ding{51}  & \ding{51}  & \ding{51}  & \ding{51}  & \ding{51}       \\
         iOS-Only FL          & \ding{55}  & \ding{55}  & \ding{51}  & \ding{51}  & \ding{51}       \\
-        FL across Android/iOS& \ding{55}  & \ding{55}  & \ding{55}  & \ding{51}  & \ding{51}       \\
+        Cross Aggregation    & \ding{55}  & \ding{55}  & \ding{55}  & \ding{51}  & \ding{51}       \\
         Training Acceleration& \ding{51}  & \ding{51}  & \ding{51}  & \ding{55}  & \ding{51}       \\
         \hline
         Open-Source Backend  & \ding{55}  & \ding{55}  & \ding{51}  & \ding{51}  & \ding{51}       \\
@@ -206,13 +205,12 @@ Specifically, FedKit introduces two key innovations:
 
 \subsection{Cross-Platform FL Model Pipeline}
 
-As shown in Fig.~\ref{cross_fl},
-to enable cross-platform FL across Android and iOS,
-we propose a pipeline with three modules of
-\textit{model conversion},
+To enable cross-platform FL,
+especially \textit{cross-platform aggregation} across Android and iOS,
+we propose a pipeline with
+\textit{model conversion} and
 \textit{unified training APIs},
-and \textit{cross-platform aggregation},
-targeting FL model creation, training and aggregation, respectively.
+as shown in Fig.~\ref{cross_fl}.
 
 \begin{figure}
     \centering
@@ -231,37 +229,47 @@ an official converter called CoreMLTools.
 For TFLite, we have standardized the model format and
 developed a Python converter for TensorFlow.
 Our TFLite models encompass the four essential FL methods:
-parameter \texttt{read}/\texttt{update}, \texttt{train}, and \texttt{infer}.
+\lstinline{train}, \lstinline{infer}, \lstinline{parameters},
+and \lstinline{restore}.
 
 \subsubsection{Unified Training APIs}
-With the converted models in hand,
-we leverage TFLite and Core ML to perform training,
+We leverage TFLite and Core ML to train the converted models on device,
 utilizing GPU and NPU acceleration.
-To ensure cross-platform support,
-we have developed a set of unified APIs exposed by both trainers.
-These APIs include functions for retrieving and setting parameters,
-model fitting, and evaluation.
-On Android, we implement these APIs by indirectly invoking
-our standardized methods within the TFLite interpreter.
-However, on iOS, our experimentation revealed a significant constraint:
-Core ML forbids directly setting model parameters.
-To circumvent this restriction,
-we manually modify the parameters in the underlying ProtoBuf representations of
+Our trainers expose unified APIs including
+functions for retrieving and setting parameters,
+fitting, and evaluation.
+On Android, these APIs invoke the TFLite interpreter to call
+our standardized methods above.
+However, on iOS, our experimentation revealed a crucial obstacle:
+Core ML forbids directly setting parameters.
+
+To overcome this constraint that could impede FL,
+we modify the underlying ProtoBuf representations of
 Core ML models.
+Employing Swift code generated from the relevant ProtoBuf definition files,
+we navigate nested model definitions and access parameters on iPhones.
 
 \subsubsection{Cross-Platform Aggregation}
-The trained TFLite and Core ML models inherently possess distinct
-representations and runtime environments,
-which suggests for separate aggregation processes,
-undermining the purpose of cross-platform FL.
-In response, FedKit is engineered to maintain unified parameter representation
-on both Android and iOS.
-
-During model conversion,
-we meticulously record the model layers in the same order.
-During cross-platform training,
-our API implementations access these layers sequentially,
-retrieving or inserting parameters as byte arrays.
+The primary challenge in cross-platform aggregation lies in
+achieving uniform parameter representations.
+Both trainers retrieve and set parameters as byte arrays,
+following the order of model layers.
+However, achieving this uniformity involved a complex process.
+1)
+The TFLite interpreter only accepts inputs and outputs as maps from names to
+tensors.
+During Model Conversion,
+we automatically assign numerical names to
+each layer of parameters based on their indices.
+This allowed access during training by conversion between names and indices.
+2)
+Conversely, Core ML permits only certain layers to be updatable and
+provide the parameters of these layers after training.
+To obtain parameters for other layers,
+we extract them using ProtoBuf access.
+Additionally, for layer information retrieval,
+we record the layer names generated by CoreMLTools during Model Conversion and
+utilize them during training.
 
 \subsection{Flexible In-Production FL Customization}
 \newcommand{\model}{$M$}
