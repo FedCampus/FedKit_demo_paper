@@ -29,9 +29,13 @@
             - Researchers would want to update the model after the app is deployed
         - How it is done: FL workflow with a preparation stage
             - (Figure of structure with workflow, numbered)
-            - Model request
-            - FL Server setup
-            - Training
+            - Continuous Model Deployment
+                - Model request
+            - Parallel FL Session Support
+                - FL Server setup
+            - Flexible FL Training
+                - Model checkpointing & resumption
+                - Training Telemetry
 - Use Case: FedCampus
     - Describe the app
     - How the app is deployed
