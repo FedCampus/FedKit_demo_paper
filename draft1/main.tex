@@ -133,27 +133,28 @@ primarily cater to simulation,
 limiting their practical use on smartphones.
 
 Several FL frameworks have emerged to fulfill on-smartphone FL,
-but still suffer from limitations,
-as we summarized in Table~\ref{tbl:fn-frameworks}.
+but still exhibit limitations,
+as summarized in Table~\ref{tbl:fn-frameworks}.
 Specifically, FedML \cite{he2020fedml},
 Project Florida \cite{madrigal2023project},
-and FedScale \cite{lai2022fedscale} predominately support Android.
-Flower \cite{beutel2020flower,mathur2021ondevice} provides
-support for both Android and iOS, but only offers an iOS SDK.
+and FedScale \cite{lai2022fedscale} primarily support Android.
+Flower \cite{beutel2020flower,mathur2021ondevice} provides SDKs for
+both Android and iOS,
+but has not yet achieved FL support across both platforms.
 PySyft \cite{ryffel2018generic,Ziller2021,hall2021syft}
-accommodates Android and iOS devices;
-however, it employs a custom on-device training approach that
-significantly compromises performance.
+accommodates FL across Android and iOS;
+however, its custom on-device training approach lacks hardware acceleration,
+significantly compromising performance.
 
 In addition to seamless cross-platform support,
-customization in real-world production settings is also crucial.
-While FedML and Florida offer a certain degree of customization,
-their reliance on proprietary services makes it impossible to be self-hosted and
-fully customized in production settings.
-In contrast, open-source solutions like Flower and PySyft allow
-self-hosting and full customization,
+the ability to customize in real-world production settings is imperative.
+FedML and Florida allows for running multiple ML models and
+iterations in production settings,
+but their proprietary services limits full customization.
+In contrast, open-source solutions like Flower and PySyft enable
+full customization,
 but are more suitable for one-shot experiments,
-limiting their adaptability for large-scale production deployments.
+limiting their adaptability for real-world FL experiments.
 
 \subsubsection{Contributions}
 We developed FedKit,
