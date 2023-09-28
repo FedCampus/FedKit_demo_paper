@@ -138,19 +138,19 @@ as summarized in Table~\ref{tbl:fn-frameworks}.
 Specifically, FedML \cite{he2020fedml},
 Project Florida \cite{madrigal2023project},
 and FedScale \cite{lai2022fedscale} primarily support Android.
+On the other hand,
 Flower \cite{beutel2020flower,mathur2021ondevice} and
 PySyft \cite{ryffel2018generic,Ziller2021,hall2021syft}
-provide SDKs for both platforms,
-but Flower SDKs lack across-platform aggregation,
-and PySyft's training approach lacks hardware acceleration.
+provide SDKs for both Android and iOS platforms.
+However, Flower SDKs lack the capability for cross-platform aggregation, while PySyft's training approach lacks support for hardware acceleration.
 
 In addition to seamless cross-platform support,
-continuous deployment is crucial.
-FedML and Florida support ML operations (MLOps) in production settings,
-but their proprietary services limit full customization.
+another crucial challenge is continuous deployment, particularly for ML operations (MLOps) in production settings. 
+While FedML and Florida support MLOps,
+their proprietary services limit full customization.
 In contrast, open-source solutions like Flower and PySyft enable
-full customization,
-but are more suitable for one-shot experiments.
+full customization
+but are more suitable for one-shot experiments rather than continuous production.
 
 \subsubsection{Contributions}
 We developed FedKit,
