@@ -188,7 +188,7 @@ Specifically, FedKit introduces two key innovations:
         \hline
         Android-Only FL      & \ding{51}  & \ding{51}  & \ding{51}  & \ding{51}  & \ding{51}       \\
         iOS-Only FL          & \ding{55}  & \ding{55}  & \ding{51}  & \ding{51}  & \ding{51}       \\
-        Cross Aggregation    & \ding{55}  & \ding{55}  & \ding{55}  & \ding{51}  & \ding{51}       \\
+        Cross-Platform Aggr.    & \ding{55}  & \ding{55}  & \ding{55}  & \ding{51}  & \ding{51}       \\
         Training Acceleration& \ding{51}  & \ding{51}  & \ding{51}  & \ding{55}  & \ding{51}       \\
         \hline
         MLOps                & \ding{51}  & \ding{51}  & \ding{55}  & \ding{55}  & \ding{51}       \\
@@ -248,7 +248,7 @@ The primary challenge in cross-platform aggregation lies in
 achieving uniform parameter representations.
 Both trainers retrieve and set parameters as byte arrays,
 following the order of model layers.
-However, achieving this uniformity involved a complex process.
+We employed separate strategies to achieve this uniformity.
 1)
 The TFLite interpreter only accepts inputs and outputs as maps from names to
 tensors.
@@ -322,24 +322,24 @@ allowing FL algorithm customizations in Python.
     \centering
     % TODO: Closer laptop screen. More windows.
     \includegraphics*[width=0.7\linewidth]{fedcampus_demo.pdf}
-    \caption{FedCampus Experiment Setup.
-        The Backend runs on the server machine in the background,
-        and its logs are shown on the laptop screen in real time.}
+    \caption{FedCampus Experiment Setup.}
     \label{fig:fedcampus}
 \end{figure}
 
 We present a practical use case of FedKit, FedCampus,
 a campus-based FL experiment.
-We integrated FedKit into the FedCampus research app to
-train a sleep-efficiency prediction model with exercise data,
-similar to \cite{khoa2022fedmcrnn}.
+Our research app, powered by FedKit,
+conducts cross-platform FL with a sleep-efficiency prediction model
+akin to \cite{khoa2022fedmcrnn}.
 
-Our experiment setup (Fig.~\ref{fig:fedcampus}) featured a self-hosted Backend
-and collected data from participants' smartwatches
-though Huawei HealthKit (Android) or Apple Health (iOS).
-With participation from three test users,
-our model's training loss reduction highlights
-FedKit's real-world effectiveness.
+In the FedCampus experiment setup (Fig.~\ref{fig:fedcampus}),
+we deployed a self-hosted Backend in the background,
+with real-time logs and loss displayed on a connected laptop.
+Our Flutter app collected exercise data from smartwatches
+though Huawei HealthKit on the Android phone and Apple Health on the iPhone.
+Notably, hardware acceleration kept both smartphones cool during training.
+The outcome was a significant reduction in the model's training loss,
+confirming FedKit's effectiveness in real-world scenarios.
 
 \appendix
 
