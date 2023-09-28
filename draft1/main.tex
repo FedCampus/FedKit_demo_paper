@@ -301,22 +301,20 @@ enabling seamless cross-platform model delivery.
 \subsubsection{Customizable Continuous FL Training}
 FedKit manages continuous FL training by allowing multiple parallel FL Servers
 during FL Server Setup.
-Clients request the Backend for an FL Server to
-train their chosen model \model{}.
-The Backend assigns clients to an existing FL Server \fs{} that
-is already training \model{},
-or spawns a new one on demand.
-Each FL Server \fs{}
-operates as the Django Backend's independent Python subprocess,
+When clients require an FL Server for
+training their chosen model \model{}, they make requests to the Backend.
+The Backend either assigns clients to an existing FL Server \fs{} that
+is currently engaged in training \model{},
+or spawns a new one for clients' demand.
+Additionally, each FL Server \fs{}
+operates as an independent Python subprocess within the Django Backend,
 occupying its own port.
-Clients connect to this port for FL Training.
-This design ensures that
-newly delivered models can immediately be trained with new FL Servers,
-without interfering ongoing ones.
-Furthermore, these FL Servers employ the Flower FL Framework for
-scheduling training and evaluation,
-inheriting its flexibility and
-allowing FL algorithm customizations in Python.
+Clients connect to the FL server's port for FL Training.
+This dynamic approach ensures that
+newly delivered models can be immediately trained with new FL Servers
+without interfering with ongoing ones.
+Furthermore, to enhance adaptability and customization, we have integrated FL Servers with the Flower FL Framework. This choice empowers our platform with robust scheduling capabilities for training and evaluation tasks, providing flexibility and enabling the customization of FL algorithms using Python.
+
 
 \section{Use Case: FedCampus}
 
