@@ -171,10 +171,10 @@ a versatile FL system designed to enable \textbf{cross-platform} FL research on
 
 \section{System Description}
 
-FedKit facilitates FL among clients (mobile apps) \textit{across} Android and iOS platforms,
+FedKit facilitates FL among Android and iOS clients (mobile apps),
 coordinated by a single Backend server.
 Each client trains a local model with private data,
-and the Backend performs cross-aggregation of these local models to update the global model.
+and the Backend performs cross-platform aggregation of these local models to update the global model.
 Specifically, FedKit introduces two key innovations: 
 \circled{1} A cross-platform (Android-iOS) FL pipeline centered around ML models.
 \circled{2} Flexible MLOps to enable efficient FL research iteration in production.
@@ -228,13 +228,14 @@ Our TFLite models encompass four essential FL methods:
 and \lstinline{restore}.
 
 \subsubsection{Unified Training APIs}
-FedKit leverages TFLite and Core ML to locally train the converted models on different devices,
+FedKit's TFLite Trainer and Core ML Trainer leverage corresponding frameworks to
+locally train the converted models on device,
 utilizing GPU and NPU acceleration.
-Our \texttt{trainers} expose unified APIs for
-\lstinline{retrieving} and \lstinline{setting} parameters,
-\lstinline{fitting}, and \lstinline{evaluation} across different platforms.
+Both trainers expose unified APIs for
+retrieving and setting parameters,
+fitting, and evaluation.
 On Android, these APIs invoke the TFLite interpreter to call
-our standardized methods above.
+our standardized methods defined in Model Conversion.
 However, on iOS, our experimentation revealed that
 Core ML \textit{forbids} directly setting parameters, which could potentially impede FL.
 To overcome this constraint,
