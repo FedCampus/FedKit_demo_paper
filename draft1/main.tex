@@ -107,15 +107,15 @@
 \maketitle
 
 \begin{abstract}
-    In this paper, we present FedKit, a Federated Learning (FL) system tailored for
+    We present FedKit, a federated learning (FL) system tailored for
     cross-platform FL research on Android and iOS devices.
     FedKit pipelines FL development by
     enabling Python-based machine learning (ML) model conversion,
     native performance training with unified APIs,
     and cross-platform model aggregation.
-    Furthermore, our FL workflow supports flexible ML operations (MLOps) in production,
+    Our FL workflow supports flexible ML operations (MLOps) in production,
     facilitating continuous model delivery and training.
-    To illustrate the practical utility, we have deployed FedKit in a research application as a use case,  
+    We have deployed FedKit in a research app,
     achieving significant milestones.
     The code is open-source at \url{https://github.com/FedCampus/FedKit}.
 \end{abstract}
@@ -141,16 +141,17 @@ and FedScale \cite{lai2022fedscale} primarily support Android.
 On the other hand,
 Flower \cite{beutel2020flower,mathur2021ondevice} and
 PySyft \cite{ryffel2018generic,Ziller2021,hall2021syft}
-provide SDKs for both Android and iOS platforms.
-However, Flower SDKs lack the capability for cross-platform aggregation, while PySyft lacks support for hardware acceleration for training.
+provide SDKs for both Android and iOS.
+However, Flower SDKs lack the capability for cross-platform aggregation,
+while PySyft lacks hardware acceleration for training.
 
 In addition to seamless cross-platform support,
-another crucial challenge is continuous deployment, particularly for ML operations (MLOps) in production settings. 
-While FedML and Florida support MLOps,
+continuous deployment in production is crucial.
+While FedML and Florida support ML operations (MLOps),
 their proprietary services limit full customization.
 In contrast, open-source solutions like Flower and PySyft enable
 full customization
-but are more suitable for one-shot experiments rather than continuous production.
+but are more suitable for one-shot experiments rather than continuous deployment.
 
 \subsubsection{Contributions}
 We developed FedKit,
@@ -299,16 +300,15 @@ enabling seamless cross-platform model delivery.
 
 \subsubsection{Customizable Continuous FL Training}
 FedKit manages continuous FL training by allowing multiple parallel FL Servers
-during FL Server Setup.
-When clients require an FL Server for
-training their chosen model \model{}, they make requests to the Backend.
-The Backend either assigns clients to an existing FL Server \fs{} that
-is currently engaged in training \model{},
-or spawns a new one for clients' demand.
-Additionally, each FL Server \fs{}
-operates as an independent Python subprocess within the Django Backend,
+through FL Server Setup.
+When clients request for an FL Server to
+train their chosen model \model{},
+the Backend either reuses a suitable FL Server \fs{} if it exists,
+or spawns a new one.
+Each FL Server
+operates as an independent Python subprocess of the Django Backend,
 occupying its own port.
-Clients connect to the FL server's port for FL Training.
+Clients connect to \fs{}'s port for FL Training.
 This dynamic approach ensures that
 newly delivered models can be immediately trained with new FL Servers
 without interfering with ongoing ones.
