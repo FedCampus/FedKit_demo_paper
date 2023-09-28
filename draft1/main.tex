@@ -107,15 +107,15 @@
 \maketitle
 
 \begin{abstract}
-    We present FedKit, a federated learning (FL) system tailored for
-    cross-platform experiments on Android and iOS devices.
+    In this paper, we present FedKit, a Federated Learning (FL) system tailored for
+    cross-platform FL research on Android and iOS devices.
     FedKit pipelines FL development by
     enabling Python-based machine learning (ML) model conversion,
     native performance training with unified APIs,
     and cross-platform model aggregation.
-    Our FL workflow supports flexible ML operations (MLOps) in production,
+    Furthermore, our FL workflow supports flexible ML operations (MLOps) in production,
     facilitating continuous model delivery and training.
-    We have deployed FedKit in a research app,
+    To illustrate the practical utility, we have deployed FedKit in a research application as a use case,  
     achieving significant milestones.
     The code is open-source at \url{https://github.com/FedCampus/FedKit}.
 \end{abstract}
@@ -142,7 +142,7 @@ On the other hand,
 Flower \cite{beutel2020flower,mathur2021ondevice} and
 PySyft \cite{ryffel2018generic,Ziller2021,hall2021syft}
 provide SDKs for both Android and iOS platforms.
-However, Flower SDKs lack the capability for cross-platform aggregation, while PySyft's training approach lacks support for hardware acceleration.
+However, Flower SDKs lack the capability for cross-platform aggregation, while PySyft lacks support for hardware acceleration for training.
 
 In addition to seamless cross-platform support,
 another crucial challenge is continuous deployment, particularly for ML operations (MLOps) in production settings. 
