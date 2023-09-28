@@ -112,9 +112,9 @@
     FedKit pipelines FL development by
     enabling Python-based machine learning (ML) model conversion,
     native performance training with unified APIs,
-    and platform-agnostic model aggregation.
-    Our FL workflow supports flexible in-production customizations,
-    facilitating rapid iterations of ML models and FL algorithms.
+    and cross-platform model aggregation.
+    Our FL workflow supports flexible MLOps in production,
+    facilitating continuous delivery and training of ML models and FL algorithms.
     We have deployed FedKit in a research app,
     achieving significant milestones.
     The code is open-source at \url{https://github.com/FedCampus/FedKit}.
@@ -138,22 +138,20 @@ as summarized in Table~\ref{tbl:fn-frameworks}.
 Specifically, FedML \cite{he2020fedml},
 Project Florida \cite{madrigal2023project},
 and FedScale \cite{lai2022fedscale} primarily support Android.
-Flower's \cite{beutel2020flower,mathur2021ondevice} Android and iOS SDKs have
-not yet supported aggregating models across platforms.
+Flower \cite{beutel2020flower,mathur2021ondevice} and
 PySyft \cite{ryffel2018generic,Ziller2021,hall2021syft}
-accommodates FL across Android and iOS;
-however, its custom on-device training approach lacks hardware acceleration,
-significantly compromising performance.
+provide SDKs for both platforms,
+but Flower has not yet supported aggregating models across platforms,
+and PySyft's slow on-device training approach lacks hardware acceleration.
 
 In addition to seamless cross-platform support,
-the ability to customize in real-world production settings is imperative.
-FedML and Florida allows for running multiple ML models and
-iterations in production settings,
-but their proprietary services limits full customization.
+the ability to continuously deploy new changes is imperative.
+FedML and Florida provide MLOps support in production settings,
+but their proprietary services limit full customization.
 In contrast, open-source solutions like Flower and PySyft enable
 full customization,
-but are more suitable for one-shot experiments,
-limiting their adaptability for real-world FL experiments.
+but are more oriented for one-shot experiments,
+limiting their real-world use cases.
 
 \subsubsection{Contributions}
 We developed FedKit,
@@ -166,8 +164,8 @@ a versatile FL system designed to enable \textbf{cross-platform} FL research on
         These libraries can serve as a foundational resource for
         on-device FL systems.
     \item We introduce a novel FL workflow within FedKit,
-        enabling flexible \textbf{customization} of ML models and FL algorithms from
-        the backend, even in production settings.
+        enabling flexible \textbf{MLOps} from
+        the backend in production.
         This innovation encourages other open-source solutions to
         rival proprietary services in deployment support.
 \end{enumerate}
@@ -180,7 +178,7 @@ Each client trains a local model with private data,
 and the Backend aggregates these local models to update the global model.
 Specifically, FedKit introduces two key innovations: 
 \circled{1} A cross-platform (Android-iOS) FL pipeline centered around ML models.
-\circled{2} In-production FL customization to enable efficient FL research iteration.
+\circled{2} Flexible MLOps to enable efficient FL research iteration in production.
 
 \begin{table}
     \centering
@@ -194,8 +192,8 @@ Specifically, FedKit introduces two key innovations:
         Cross Aggregation    & \ding{55}  & \ding{55}  & \ding{55}  & \ding{51}  & \ding{51}       \\
         Training Acceleration& \ding{51}  & \ding{51}  & \ding{51}  & \ding{55}  & \ding{51}       \\
         \hline
+        MLOps                & \ding{51}  & \ding{51}  & \ding{55}  & \ding{55}  & \ding{51}       \\
         Open-Source Backend  & \ding{55}  & \ding{55}  & \ding{51}  & \ding{51}  & \ding{51}       \\
-        Multi Model/Iteration& \ding{51}  & \ding{51}  & \ding{55}  & \ding{55}  & \ding{51}       \\
     \end{tabular}
     \caption{Functionality Comparison among On-Smartphone FL frameworks
         as of Sep. 2023.
