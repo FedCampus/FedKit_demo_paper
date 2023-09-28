@@ -274,7 +274,7 @@ utilize them during training.
 \subsection{Flexible MLOps in Production}
 \newcommand{\model}{$M$}
 \newcommand{\fs}{$S_\mathrm F$}
-FedKit empowers researchers to iteratively develop models and algorithms and
+FedKit empowers researchers to continuously develop models and algorithms and
 deploy them in production.
 Our three-step FL workflow, illustrated in (Fig.~\ref{fig:fl-workflow}),
 leverages our self-hosted and directly controlled Backend.
@@ -293,7 +293,7 @@ introducing complexity from app store submissions and user adoption.
 
 Conversely,
 FedKit enables continuous model delivery without app updates.
-The Model Request step decouples models and clients,
+Model Request decouples models and clients,
 enabling model delivery by uploading them to the Backend.
 In this step, clients request the Backend for a model that
 aligns with their platform and training data type.
@@ -303,24 +303,22 @@ Using this information, clients download the TFLite or Core ML model based on
 their platforms,
 therefore achieving cross-platform model delivery.
 
-\subsubsection{FL Server Setup}
-Clients request an FL Server from the Backend to
-train their chosen model \model{}
-(Fig.~\ref{fig:fl-workflow}.2).
-The Backend assigns clients to an existing Fl Server \fs{} that
+\subsubsection{Customizable Continuous FL Training}
+FedKit handles continuous FL training by allowing multiple parallel FL Servers
+during FL Server Setup.
+Clients request the Backend for an FL Server to
+train their chosen model \model{}.
+The Backend assigns clients to an existing FL Server \fs{} that
 is already training \model{},
 or spawns a new one on demand.
-FL Servers, operating as the Backend's independent Python subprocesses,
-occupy their own ports.
-Researchers can customize how FL Servers are set up for each specific models by
-adapting the Backend's Django implementation.
-
-\subsubsection{FL Training}
-Clients participate in FL training by directly connecting to
-their assigned \fs{} on its port.
-These FL Servers employ the Flower FL Framework for
-scheduling training and evaluation.
-They function as standard Flower gRPC servers,
+Each FL Server \fs{},
+operating as the Django Backend's independent Python subprocess,
+occupy its own port.
+Clients connect to this port for FL Training.
+In this way, newly delivered models result in new FL Servers being spawn,
+without interfering with existing training sessions.
+Furthermore, these FL Servers employ the Flower FL Framework for
+scheduling training and evaluation,
 inheriting Flower's flexibility,
 allowing FL algorithm customizations in Python.
 

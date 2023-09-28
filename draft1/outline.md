@@ -29,16 +29,14 @@
             - Researchers would want to update the model after the app is deployed
         - How it is done: FL workflow with a preparation stage
             - (Figure of structure with workflow, numbered)
-            - Continuous Model Delivery
+            - Continuous Cross-Platform Model Delivery
                 - Model request
                 - Decouple clients and models
-            - Continuous FL Training
+                - Cross-platform model conversion
+            - Customizable Continuous FL Training
                 - Parallel FL Session Support
                 - FL Server setup
-            - Flexible and Observable FL Training
                 - Customization by Flower
-                - Model checkpointing & resumption
-                - Training Telemetry
 - Use Case: FedCampus
     - Describe the app
     - How the app is deployed
