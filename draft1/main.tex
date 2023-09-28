@@ -113,8 +113,8 @@
     enabling Python-based machine learning (ML) model conversion,
     native performance training with unified APIs,
     and cross-platform model aggregation.
-    Our FL workflow supports flexible MLOps in production,
-    facilitating continuous delivery and training of ML models and FL algorithms.
+    Our FL workflow supports flexible ML operations (MLOps) in production,
+    facilitating continuous model delivery and training.
     We have deployed FedKit in a research app,
     achieving significant milestones.
     The code is open-source at \url{https://github.com/FedCampus/FedKit}.
@@ -122,11 +122,11 @@
 
 \section{Introduction}
 
-Federated Learning (FL) enables edge devices to
-collaboratively train a shared Machine Learning (ML) model while
+Federated learning (FL) enables edge devices to
+collaboratively train a shared machine learning (ML) model while
 retaining private data on device \cite{mcmahan2017communication}.
 Smartphones, rich in sensitive data,
-emerge as promising candidates for participation in FL.
+are promising candidates for FL.
 Nevertheless, most existing FL frameworks
 \cite[e.g.,][]{bonawitz2019towards,liu2021fate,ma2019paddlepaddle,openfl_citation}
 primarily cater to simulation,
@@ -141,17 +141,16 @@ and FedScale \cite{lai2022fedscale} primarily support Android.
 Flower \cite{beutel2020flower,mathur2021ondevice} and
 PySyft \cite{ryffel2018generic,Ziller2021,hall2021syft}
 provide SDKs for both platforms,
-but Flower has not yet supported aggregating models across platforms,
-and PySyft's slow on-device training approach lacks hardware acceleration.
+but Flower SDKs lack across-platform aggregation,
+and PySyft's training approach lacks hardware acceleration.
 
 In addition to seamless cross-platform support,
-the ability to continuously deploy new changes is imperative.
-FedML and Florida provide MLOps support in production settings,
+continuous deployment is crucial.
+FedML and Florida support ML operations (MLOps) in production settings,
 but their proprietary services limit full customization.
 In contrast, open-source solutions like Flower and PySyft enable
 full customization,
-but are more oriented for one-shot experiments,
-limiting their real-world use cases.
+but are more suitable for one-shot experiments.
 
 \subsubsection{Contributions}
 We developed FedKit,
@@ -159,11 +158,11 @@ a versatile FL system designed to enable \textbf{cross-platform} FL research on
 \textbf{Android and iOS}:
 \begin{enumerate}[label=$\bullet$]
     \item FedKit provides \textbf{modularized libraries} to train
-        Python-based ML models on Android and iOS and
+        Python-based models on Android and iOS and
         aggregate across platforms.
         These libraries can serve as a foundational resource for
-        on-device FL systems.
-    \item We introduce a novel FL workflow within FedKit,
+        on-device ML systems.
+    \item We introduce a novel FL workflow in FedKit,
         enabling flexible \textbf{MLOps} from
         the backend in production.
         This innovation encourages other open-source solutions to
@@ -204,8 +203,8 @@ Specifically, FedKit introduces two key innovations:
 \subsection{Cross-Platform FL Model Pipeline}
 
 To enable cross-platform FL,
-especially \textit{cross-platform aggregation} across Android and iOS,
-we propose a pipeline with
+especially \textit{cross-platform aggregation},
+we propose a pipeline comprising
 \textit{model conversion} and
 \textit{unified training APIs},
 as shown in Fig.~\ref{cross_fl}.
@@ -218,29 +217,26 @@ as shown in Fig.~\ref{cross_fl}.
 \end{figure}
 
 \subsubsection{Model Conversion}
-We begin by converting Python-based ML models into formats compatible with
-Android and iOS.
-Specifically, we target Google's TensorFlow Lite (TFLite) for Android and
-Apple's Core ML for iOS.
-Core ML provides a well-defined model structure with
-an official converter called CoreMLTools.
-For TFLite, we have standardized the model format and
+We begin by converting Python-based models into formats compatible with
+Android (TensorFlow Lite or TFLite) and iOS (Core ML).
+Core ML defines a fixed model structure and provides
+official converter CoreMLTools.
+For TFLite, we standardized the model format and
 developed a Python converter for TensorFlow.
-Our TFLite models encompass the four essential FL methods:
+Our TFLite models encompass four essential FL methods:
 \lstinline{train}, \lstinline{infer}, \lstinline{parameters},
 and \lstinline{restore}.
 
 \subsubsection{Unified Training APIs}
-We leverage TFLite and Core ML to train the converted models on device,
+FedKit leverage TFLite and Core ML to train the converted models on device,
 utilizing GPU and NPU acceleration.
-Our trainers expose unified APIs including
-functions for retrieving and setting parameters,
+Our trainers expose unified APIs for
+retrieving and setting parameters,
 fitting, and evaluation.
 On Android, these APIs invoke the TFLite interpreter to call
 our standardized methods above.
-However, on iOS, our experimentation revealed a crucial obstacle:
+However, on iOS, our experimentation revealed that
 Core ML forbids directly setting parameters.
-
 To overcome this constraint that could impede FL,
 we modify the underlying ProtoBuf representations of
 Core ML models.
@@ -259,7 +255,7 @@ tensors.
 During Model Conversion,
 we automatically assign numerical names to
 each layer of parameters based on their indices.
-This allowed access during training by conversion between names and indices.
+This naming conversion allows access during training.
 2)
 Conversely, Core ML permits only certain layers to be updatable and
 provide the parameters of these layers after training.
@@ -285,39 +281,39 @@ Below, we explain how these steps enable MLOps in production.
 \end{figure}
 
 \subsubsection{Continuous Cross-Platform Model Delivery}
-Traditionally, models for on-device training are embedded into client apps.
-However, this approach couples model delivery with app updates,
-introducing complexity from app store submissions and user adoption.
-
+Traditionally, models for on-device training are embedded into client apps,
+coupling model delivery with app updates,
+leading to complexity in app store submissions and user adoption.
 Conversely,
 FedKit enables continuous model delivery without app updates.
 Model Request decouples models and clients,
-enabling model delivery by uploading them to the Backend.
-In this step, clients request the Backend for a model that
-aligns with their platform and training data type.
+enabling model delivery through uploads to the Backend.
+In this step, clients request the Backend for a model suitable for
+their platform and training data type.
 The Backend selects the appropriate model \model{} from its database and
-replies with detailed model information.
-Using this information, clients download the TFLite or Core ML model based on
+provides detailed model information.
+Clients then download the TFLite or Core ML model corresponding to
 their platforms,
 therefore achieving cross-platform model delivery.
 
 \subsubsection{Customizable Continuous FL Training}
-FedKit handles continuous FL training by allowing multiple parallel FL Servers
+FedKit manages continuous FL training by allowing multiple parallel FL Servers
 during FL Server Setup.
 Clients request the Backend for an FL Server to
 train their chosen model \model{}.
 The Backend assigns clients to an existing FL Server \fs{} that
 is already training \model{},
 or spawns a new one on demand.
-Each FL Server \fs{},
-operating as the Django Backend's independent Python subprocess,
-occupy its own port.
+Each FL Server \fs{}
+operates as the Django Backend's independent Python subprocess,
+occupying its own port.
 Clients connect to this port for FL Training.
-In this way, newly delivered models result in new FL Servers being spawn,
-without interfering with existing training sessions.
+This design ensures that
+newly delivered models can immediately be trained with new FL Servers,
+without interfering ongoing ones.
 Furthermore, these FL Servers employ the Flower FL Framework for
 scheduling training and evaluation,
-inheriting Flower's flexibility,
+inheriting its flexibility and
 allowing FL algorithm customizations in Python.
 
 \section{Use Case: FedCampus}
