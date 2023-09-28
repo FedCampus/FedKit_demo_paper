@@ -221,11 +221,10 @@ We begin by converting Python-based models into formats compatible with
 Android (TensorFlow Lite or TFLite) and iOS (Core ML).
 Core ML defines a fixed model structure and provides
 official converter CoreMLTools.
-For TFLite, we standardized the model format and
-developed a Python converter for TensorFlow.
-Our TFLite models encompass four essential FL methods:
-\lstinline{train}, \lstinline{infer}, \lstinline{parameters},
-and \lstinline{restore}.
+For TFLite, we standardized a model format with four essential FL methods
+(\lstinline{train}, \lstinline{infer}, \lstinline{parameters},
+and \lstinline{restore}),
+and developed a TensorFlow converter in Python targeting this format.
 
 \subsubsection{Unified Training APIs}
 FedKit's TFLite Trainer and Core ML Trainer leverage corresponding frameworks to
