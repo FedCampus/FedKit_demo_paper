@@ -23,17 +23,20 @@
             - Model conversion to native format (TFLite & Core ML)
             - Unified on-device training APIs using native ML frameworks
             - Cross-platform parameter aggregation
-    - Flexible In-Production FL Customization
+    - Flexible MLOps in Production
         - Motivation
             - FL frameworks assume models bundled with app
             - Researchers would want to update the model after the app is deployed
         - How it is done: FL workflow with a preparation stage
             - (Figure of structure with workflow, numbered)
-            - Continuous Model Deployment
+            - Continuous Model Delivery
                 - Model request
-            - Parallel FL Session Support
+                - Decouple clients and models
+            - Continuous FL Training
+                - Parallel FL Session Support
                 - FL Server setup
-            - Flexible FL Training
+            - Flexible and Observable FL Training
+                - Customization by Flower
                 - Model checkpointing & resumption
                 - Training Telemetry
 - Use Case: FedCampus
