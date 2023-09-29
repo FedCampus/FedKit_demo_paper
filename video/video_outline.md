@@ -7,7 +7,7 @@
 
 ## Roadmap 10s
 
-## Use Case and Motivation 20s
+## Use Case and Motivation 15s
 
 - FedCampus
 - Exercise data
@@ -28,17 +28,23 @@
 
 - Convert 20s
 - Train 15s
-- Aggregate 40s
+- Aggregate 30s
 
 ## MLOps
 
-- Continuous delivery 30s
-- Continuous training 40s
+- Continuous delivery 20s
+- Continuous training 30s
+
+## Demonstration
+
+- Training old model 10s
+- Changing model & converting new model & upload new model 20s
+- Training new model 10s
 
 ## Experiment
 
-- FedCampus experiment setup 20s
-- Results 10s
+- FedCampus experiment setup 10s
+- Results 5s
 
 ## Conclusion 10s
 
