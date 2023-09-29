@@ -8,14 +8,14 @@
 ## Roadmap 10s
 
 ## Use Case and Motivation 15s
-
+(from researcher point of view)
 - FedCampus
 - Exercise data
 - Federated learning
 
 ## Challenges
 
-- Mobile development 10s
+- Cross-Mobile development 10s
     - Chart of mobile support
 - Limitations of existing on-smartphone FL systems 20s
     - FedML, Flower, Syft
@@ -36,14 +36,13 @@
 - Continuous training 30s
 
 ## Demonstration
+(merge with FedCampus experiment)
 
+- (Recall the challenges we mentioned before during experiment)
+- FedCampus experiment setup 10s
 - Training old model 10s
 - Changing model & converting new model & upload new model 20s
 - Training new model 10s
-
-## Experiment
-
-- FedCampus experiment setup 10s
 - Results 5s
 
 ## Conclusion 10s
