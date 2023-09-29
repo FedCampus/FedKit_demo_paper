@@ -7,7 +7,7 @@
 
 ## Roadmap 10s
 
-## Use Case and Motivation 15s
+## Use Case and Motivation 25s
 
 - FedCampus
 - Exercise data
