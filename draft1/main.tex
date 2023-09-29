@@ -110,14 +110,14 @@
     We present FedKit, a federated learning (FL) system tailored for
     cross-platform FL research on Android and iOS devices.
     FedKit pipelines FL development by
-    enabling Python-based machine learning (ML) model conversion,
+    enabling conversion of Python-based machine learning (ML) models,
     native performance training with unified APIs,
     and cross-platform model aggregation.
     Our FL workflow supports flexible ML operations (MLOps) in production,
     facilitating continuous model delivery and training.
     We have deployed FedKit in a research app,
-    achieving significant milestones.
-    The code is open-source at \url{https://github.com/FedCampus/FedKit}.
+    showing its real-world effectiveness.
+    FedKit is open-source at \url{https://github.com/FedCampus/FedKit}.
 \end{abstract}
 
 \section{Introduction}
@@ -188,16 +188,15 @@ Specifically, FedKit introduces two key innovations:
     \begin{tabular}{lccccc}
         Functionality        & FedML      & Florida    & Flower     & Syft       & \textbf{FedKit} \\
         \hline
-        Android-Only FL      & \ding{51}  & \ding{51}  & \ding{51}  & \ding{51}  & \ding{51}       \\
-        iOS-Only FL          & \ding{55}  & \ding{55}  & \ding{51}  & \ding{51}  & \ding{51}       \\
+        Android-Only         & \ding{51}  & \ding{51}  & \ding{51}  & \ding{51}  & \ding{51}       \\
+        iOS-Only             & \ding{55}  & \ding{55}  & \ding{51}  & \ding{51}  & \ding{51}       \\
         Cross-Platform Aggr. & \ding{55}  & \ding{55}  & \ding{55}  & \ding{51}  & \ding{51}       \\
-        Training Acceleration& \ding{51}  & \ding{51}  & \ding{51}  & \ding{55}  & \ding{51}       \\
         \hline
+        Training Acceleration& \ding{51}  & \ding{51}  & \ding{51}  & \ding{55}  & \ding{51}       \\
         MLOps                & \ding{51}  & \ding{51}  & \ding{55}  & \ding{55}  & \ding{51}       \\
         Open-Source Backend  & \ding{55}  & \ding{55}  & \ding{51}  & \ding{51}  & \ding{51}       \\
     \end{tabular}
     \caption{Functionality Comparison among On-Smartphone FL frameworks
-        as of Sep. 2023.
     }
     \label{tbl:fn-frameworks}
 \end{table}
@@ -300,7 +299,7 @@ their platforms,
 enabling seamless cross-platform model delivery.
 
 \subsubsection{Customizable Continuous FL Training}
-FedKit manages continuous FL training by allowing multiple parallel FL Servers
+FedKit manages continuous FL training by allowing multiple parallel FL training sessions
 through FL Server Setup.
 When clients request for an FL Server to
 train their chosen model \model{},
