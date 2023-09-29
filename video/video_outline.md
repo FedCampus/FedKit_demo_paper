@@ -1,5 +1,7 @@
 # Video Outline
 
+## Roadmap
+
 ## Motivation
 
 ## Background
