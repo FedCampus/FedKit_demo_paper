@@ -140,16 +140,16 @@ Project Florida \cite{madrigal2023project},
 and FedScale \cite{lai2022fedscale} primarily support Android.
 On the other hand,
 Flower \cite{beutel2020flower,mathur2021ondevice} and
-PySyft \cite{ryffel2018generic,Ziller2021,hall2021syft}
+Syft \cite{ryffel2018generic,Ziller2021,hall2021syft}
 provide SDKs for both Android and iOS.
 However, Flower SDKs lack the capability for cross-platform aggregation,
-while PySyft lacks hardware acceleration for training.
+while Syft lacks hardware acceleration for training.
 
 In addition to seamless cross-platform support,
 continuous deployment in production is crucial.
 While FedML and Florida support ML operations (MLOps),
 their proprietary services limit full customization.
-In contrast, open-source solutions like Flower and PySyft enable
+In contrast, open-source solutions like Flower and Syft enable
 full customization
 but are more suitable for one-shot experiments rather than continuous deployment.
 
@@ -185,11 +185,11 @@ Specifically, FedKit introduces two key innovations:
     \small
     \setlength{\tabcolsep}{2pt}
     \begin{tabular}{lccccc}
-        Functionality        & FedML      & Florida    & Flower     & PySyft     & \textbf{FedKit} \\
+        Functionality        & FedML      & Florida    & Flower     & Syft       & \textbf{FedKit} \\
         \hline
         Android-Only FL      & \ding{51}  & \ding{51}  & \ding{51}  & \ding{51}  & \ding{51}       \\
         iOS-Only FL          & \ding{55}  & \ding{55}  & \ding{51}  & \ding{51}  & \ding{51}       \\
-        Cross-Platform Aggr.    & \ding{55}  & \ding{55}  & \ding{55}  & \ding{51}  & \ding{51}       \\
+        Cross-Platform Aggr. & \ding{55}  & \ding{55}  & \ding{55}  & \ding{51}  & \ding{51}       \\
         Training Acceleration& \ding{51}  & \ding{51}  & \ding{51}  & \ding{55}  & \ding{51}       \\
         \hline
         MLOps                & \ding{51}  & \ding{51}  & \ding{55}  & \ding{55}  & \ding{51}       \\
