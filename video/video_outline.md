@@ -1,57 +1,49 @@
 # Video Outline
 
+## Title 10s
+
+## Federated Learning 20s
+
+## Challenges 10s
+
+- Real-World Cross-Platform Mobile FL
+- Existing systems have limitations
+    - Chart of mobile support
+
 ## Contributions 20s
 
 - Cross-platform FL for Python model
 - MLOps: Continuous training & delivery
 
-## Roadmap 10s
+## System Overview
 
-## Use Case and Motivation 25s
-
-- FedCampus
-- Exercise data
-- Federated learning
-
-## Challenges
-
-- Cross-Platform Mobile development 10s
-    - Chart of mobile support
-- Limitations of existing on-smartphone FL systems 20s
-    - FedML, Flower, Syft
-
-## System Overview 10s
-
-- Backend-app
+- Backend-app 10s
+- roadmap 15s
 
 ## Model Pipeline
 
-- Convert 20s
-- Train 15s
-- Aggregate 30s
+- Convert 30s
+- Train 10s
+- Aggregate 20s
 
 ## MLOps
 
-- Continuous delivery 20s
-- Continuous training 30s
+- Continuous delivery/ training 20s
+- Continuous delivery 35s
+- FL workflow 40s
+- Continuous training 15s
 
-## Demonstration
+## Use Case 40s
 
-- Training old model 10s
-- Changing model & converting new model & upload new model 20s
-- Training new model 10s
-
-## Experiment
-
+- FedCampus
+- Exercise data
 - FedCampus experiment setup 10s
-- Results 5s
+- Real-world effectiveness
 
-## Conclusion 10s
+## Conclusion 1s
 
 - repeat major contributions
 - source code
-
-## References 1s
 
 # Materials
 
