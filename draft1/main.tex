@@ -113,23 +113,23 @@
 \maketitle
 
 \begin{abstract}
-    We present FedKit, a federated learning (FL) system tailored for
-    cross-platform FL research on Android and iOS devices.
+    We present FedKit, a Federated Learning (FL) system tailored for
+    cross-platform FL research on \textit{Android and iOS} devices.
     FedKit pipelines FL development by
-    enabling conversion of Python-based machine learning (ML) models,
+    enabling conversion of Python implemented models,
     native performance training with unified APIs,
-    and cross-platform model aggregation.
-    Our FL workflow supports flexible ML operations (MLOps) in production,
+    and cross-Android-iOS model aggregation.
+    FedKit supports flexible ML operations (MLOps) in production,
     facilitating continuous model delivery and training.
-    We have deployed FedKit in a research app,
+    We have deployed FedKit for conducting FL research on campus,
     showing its real-world effectiveness.
     FedKit is open-source at \url{https://github.com/FedCampus/FedKit}.
 \end{abstract}
 
 \section{Introduction}
 
-Federated learning (FL) enables edge devices to
-collaboratively train a shared machine learning (ML) model while
+Federated Learning (FL) enables edge devices to
+collaboratively train a shared Machine Learning (ML) model while
 retaining private data on device \cite{mcmahan2017communication}.
 Smartphones, rich in sensitive data,
 are promising candidates for FL.
@@ -150,7 +150,7 @@ Syft \cite{ryffel2018generic,Ziller2021,hall2021syft}
 provide SDKs for both Android and iOS.
 However, Flower SDKs lack support for on-device training and
 cross-platform aggregation,
-while Syft lacks hardware acceleration for training.
+while Syft lacks hardware acceleration for on-device training.
 
 In addition to seamless cross-platform support,
 continuous deployment in production is crucial.
@@ -228,46 +228,48 @@ We begin by converting Python-based models into formats compatible with
 Android (TensorFlow Lite or TFLite) and iOS (Core ML).
 Core ML defines a fixed model structure and provides
 official converter CoreMLTools.
-For TFLite, we standardized a model format with four essential FL methods
+For TFLite, we \textit{standardized} the model format by developing a TensorFlow converter.
+The standardized model format is equipped with
+four essential FL methods
 (\lstinline{train}, \lstinline{infer}, \lstinline{parameters},
-and \lstinline{restore}),
-and developed a TensorFlow converter in Python targeting this format.
+and \lstinline{restore}).
+
 
 \subsubsection{Unified Training APIs}
-FedKit's TFLite Trainer and Core ML Trainer leverage corresponding frameworks to
-locally train the converted models on device,
-utilizing GPU and NPU acceleration.
-Both trainers expose unified APIs for
-retrieving and setting parameters,
-fitting, and evaluation.
-On Android, these APIs invoke the TFLite interpreter to call
+FedKit provides \textit{TFLite Trainer} and \textit{Core ML Trainer} to
+locally train the converted models on Android and iOS devices. 
+The trainers leverage corresponding frameworks 
+utilizing GPU and NPU acceleration for on-device training. 
+Moreover, both trainers expose unified APIs for
+\textit{retrieving and setting model parameters,
+model fitting and evaluation}.
+On Android, these unified APIs invoke the TFLite interpreter to call
 our standardized methods defined in Model Conversion.
 However, on iOS, our experimentation revealed that
 Core ML \textit{forbids} directly setting parameters, which could potentially impede FL.
 To overcome this constraint,
 we modify the underlying ProtoBuf representations of
 Core ML models.
-We employ Swift code generated from the relevant ProtoBuf definition files. This code allows us to navigate nested model definitions and access parameters on iPhones, thus enabling smooth FL operations on iOS devices.
+Specifically, we employ Swift code, generated from the relevant ProtoBuf definition files, which allows us to navigate nested model definitions and access parameters on iPhones. Thus, FedKit enables smooth FL operations on iOS devices aside from Android devices.
 
 
 \subsubsection{Cross-Platform Aggregation}
 The primary challenge in cross-platform aggregation lies in
-the need for \textit{uniform parameter representations}, 
-where both trainers retrieve and set parameters as byte arrays,
+the need for \textit{uniform parameter representations}. 
+
+To achieve this uniformity, FedKit's trainers retrieve and set parameters as byte arrays,
 following the order of model layers.
-To achieve this uniformity,  we employed separate strategies:
+Additionally, we have employed separate strategies:
 1) For Android, 
-the TFLite interpreter only accepts inputs and outputs as maps from \textit{names} to
-\textit{tensors}.
-During \textit{Model Conversion},
+since the TFLite interpreter only accepts inputs and outputs as maps from \textit{names} to
+\textit{tensors},
 we automatically assign numerical names to
-each layer of parameters based on their indices.
+each layer of parameters based on their indices \textit{Model Conversion}.
 This naming conversion allows access during training.
 2) For iOS,
-conversely, Core ML permits \textit{only} certain \textit{updatable layers} and
-we can only access the updatable layers' parameters after training.
-To obtain other layers' parameters,
-we extract them using ProtoBuf access.
+Core ML permits \textit{only} certain \textit{updatable layers} and only allows access to the \textit{updatable layers'} parameters after training.
+Thus, to obtain \textit{other layers'} parameters,
+we design an approach with ProtoBuf access to extract those parameters.
 Additionally, for layer information retrieval,
 we record the layer names generated by CoreMLTools during Model Conversion and
 utilize them during training.
@@ -275,10 +277,9 @@ utilize them during training.
 \subsection{Flexible MLOps in Production}
 \newcommand{\model}{$M$}
 \newcommand{\fs}{$S_\mathrm F$}
-FedKit empowers researchers to continuously develop models and algorithms and
-deploy them in production.
-Our three-step FL workflow, illustrated in (Fig.~\ref{fig:fl-workflow}),
-leverages our self-hosted and directly controlled Backend.
+FedKit empowers researchers to continuously develop models and algorithms
+by leveraging the self-hosted Backend (MLOps).
+FedKit follows the three-step FL workflow, illustrated in (Fig.~\ref{fig:fl-workflow}).
 In the following sections, we will elaborate on how these steps facilitate the integration of MLOps in production.
 \begin{figure}
     \centering
@@ -288,33 +289,29 @@ In the following sections, we will elaborate on how these steps facilitate the i
 \end{figure}
 
 \subsubsection{Continuous Cross-Platform Model Delivery}
-Traditionally, models for on-device training are \textit{embedded} into client apps.
-This approach couples model delivery with app updates, 
+Traditionally, models for on-device training are \textit{embedded} into client sides (mobile apps).
+However, this approach couples model delivery with app updates, 
 resulting in complexities when submitting apps to app stores and garnering user adoption.
 
 
-Conversely,
-FedKit enables \textit{continuous model delivery without app updates}.
-This is achieved by decoupling models from clients through the Model Request, which enables model delivery through uploads to the Backend.
-Specifically, clients request the Backend for a model suitable for
+To handle this complexity,
+FedKit enables \textit{continuous model delivery without app updates} by decoupling models from clients through the Model Request, which enables model delivery through uploads to the Backend.
+Specifically, clients request the Backend for a model aligned with
 their platform (Android/iOS) and training data type.
-The Backend selects the appropriate model \model{} from the database and
-provides detailed model information.
-Consequently, clients download the TFLite or Core ML model that aligns with
-their platforms,
-enabling seamless cross-platform model delivery.
+The Backend responds the appropriate model \model{} with detailed model information from the database.
+Consequently, this seamless cross-platform model delivery provides clients with the TFLite or Core ML model for FL training.
 
 \subsubsection{Customizable Continuous FL Training}
-FedKit manages continuous FL training by allowing multiple parallel FL training sessions
+FedKit manages continuous FL training by allowing \textit{multiple FL training sessions parallelly}
 through FL Server Setup.
 When clients request for an FL Server to
 train their chosen model \model{},
-the Backend either reuses a suitable FL Server \fs{} if it exists,
-or spawns a new one.
-Each FL Server
+the Backend either reuses a suitable FL Server \fs{} (training \model{}) if it exists,
+or spawns a new \fs{} with \model{}.
+Each FL Server \fs{} 
 operates as an independent Python subprocess of the Django Backend,
-occupying its own port.
-Clients connect to \fs{}'s port for FL Training.
+occupying its own port where the
+clients connect for FL Training.
 This dynamic approach ensures that
 newly delivered models can be immediately trained with new FL Servers
 without interfering with ongoing ones.
