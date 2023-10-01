@@ -113,13 +113,15 @@
 \maketitle
 
 \begin{abstract}
-    We present FedKit, a Federated Learning (FL) system tailored for
+    % "Federated learning" is an ordinary word combination.
+    We present FedKit, a federated learning (FL) system tailored for
     cross-platform FL research on \textit{Android and iOS} devices.
-    FedKit pipelines FL development by
-    enabling conversion of Python implemented models,
-    native performance training with unified APIs,
-    and cross-Android-iOS model aggregation.
-    FedKit supports flexible ML operations (MLOps) in production,
+    FedKit pipelines FL development in Python by
+    % This is the first time model appears, so we should say "ML."
+    enabling machine learning (ML) model conversion,
+    native performance training,
+    and cross-platform model aggregation.
+    Our FL workflow supports flexible ML operations (MLOps) in production,
     facilitating continuous model delivery and training.
     We have deployed FedKit for conducting FL research on campus,
     showing its real-world effectiveness.
@@ -128,8 +130,8 @@
 
 \section{Introduction}
 
-Federated Learning (FL) enables edge devices to
-collaboratively train a shared Machine Learning (ML) model while
+Federated learning (FL) enables edge devices to
+collaboratively train a shared machine learning (ML) model while
 retaining private data on device \cite{mcmahan2017communication}.
 Smartphones, rich in sensitive data,
 are promising candidates for FL.
@@ -224,12 +226,13 @@ as shown in Fig.~\ref{cross_fl}.
 \end{figure}
 
 \subsubsection{Model Conversion}
-We begin by converting Python-based models into formats compatible with
+We begin in Python by converting models into formats compatible with
 Android (TensorFlow Lite or TFLite) and iOS (Core ML).
 Core ML defines a fixed model structure and provides
 official converter CoreMLTools.
-For TFLite, we \textit{standardized} the model format by developing a TensorFlow converter.
-The standardized model format is equipped with
+For TFLite, we \textit{standardized} a model format and
+developed a compliant TensorFlow converter.
+This standardized format includes
 four essential FL methods
 (\lstinline{train}, \lstinline{infer}, \lstinline{parameters},
 and \lstinline{restore}).
@@ -237,13 +240,12 @@ and \lstinline{restore}).
 
 \subsubsection{Unified Training APIs}
 FedKit provides \textit{TFLite Trainer} and \textit{Core ML Trainer} to
-locally train the converted models on Android and iOS devices. 
-The trainers leverage corresponding frameworks 
-utilizing GPU and NPU acceleration for on-device training. 
+train the converted models on Android and iOS devices,
+utilizing GPU and NPU acceleration.
 Moreover, both trainers expose unified APIs for
 \textit{retrieving and setting model parameters,
 model fitting and evaluation}.
-On Android, these unified APIs invoke the TFLite interpreter to call
+On Android, these APIs invoke the TFLite interpreter to call
 our standardized methods defined in Model Conversion.
 However, on iOS, our experimentation revealed that
 Core ML \textit{forbids} directly setting parameters, which could potentially impede FL.
