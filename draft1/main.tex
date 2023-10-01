@@ -334,20 +334,24 @@ Furthermore, to enhance adaptability and customization, we have integrated FL Se
     \label{fig:fedcampus}
 \end{figure}
 
-We present a practical use case of FedKit, FedCampus,
-a campus-based FL experiment.
-Our research app, powered by FedKit,
-conducts cross-platform FL with a sleep-efficiency prediction model
-akin to \cite{khoa2022fedmcrnn}.
+FedCampus serves as a practical use case of FedKit.
+It employs a mobile app to harness exercise data on university campus,
+making Android, iOS and cross-platform aggregation integral requirements.
+Additionally,
+we emphasize the necessity of training acceleration for
+a smooth user experience
+and MLOps to facilitate iterative model design.
 
 In the FedCampus experiment setup (Fig.~\ref{fig:fedcampus}),
 we deployed a self-hosted Backend in the background,
-with real-time logs and loss displayed on a connected laptop.
-Our Flutter app collected exercise data from smartwatches
-though Huawei HealthKit on the Android phone and Apple Health on the iPhone.
-Notably, hardware acceleration kept both smartphones cool during training.
-The outcome was a significant reduction in the model's training loss,
-confirming FedKit's effectiveness in real-world scenarios.
+with real-time logs and losses on a connected laptop.
+Our Flutter app, powered by FedKit,
+conducts FL across Android and iOS devices,
+using training data from the smartwatches to
+train a sleep-efficiency prediction model
+akin to \cite{khoa2022fedmcrnn}.
+The result, a significant reduction in the model's training loss,
+demonstrates FedKit's effectiveness in real-world scenarios.
 
 \appendix
 
