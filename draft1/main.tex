@@ -157,7 +157,7 @@ are promising candidates for FL.
 Nevertheless, most existing FL systems
 \cite[e.g.,][]{bonawitz2019towards,liu2021fate,ma2019paddlepaddle,openfl_citation}
 primarily cater to simulation,
-limiting their practical use on smartphones.
+limiting their practical use on smartphones for research and applications.
 
 Several systems have emerged to fulfill on-smartphone FL,
 but still exhibit limitations,
@@ -174,7 +174,7 @@ cross-platform aggregation,
 while Syft lacks hardware acceleration for on-device training.
 
 In addition to seamless cross-platform support,
-continuous deployment in production is crucial.
+customizable and continuous deployment in production is crucial.
 While FedML and Florida support ML operations (MLOps),
 their proprietary services limit full customization.
 In contrast, open-source solutions like Flower and Syft enable
@@ -318,7 +318,8 @@ Circumventing this complexity,
 FedKit enables \textit{continuous model delivery without app updates} by
 decoupling models from clients through \textit{Model Request},
 which allows new model deployment by uploading to the Backend.
-Specifically, clients request the Backend for a model aligned with
+Specifically, clients request the Backend for a model (TFLite/Core ML)
+aligned with
 their platform (Android/iOS) and training data type.
 The Backend selects the appropriate model \model{} from the database and
 responds with detailed model information.
