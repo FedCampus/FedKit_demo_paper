@@ -134,15 +134,16 @@
     % "Federated learning" is an ordinary word combination.
     We present FedKit, a federated learning (FL) system tailored for
     cross-platform FL research on \textit{Android and iOS} devices.
-    FedKit pipelines FL development in Python by
+    FedKit pipelines FL development by
     % This is the first time model appears, so we should say "ML."
     enabling machine learning (ML) model conversion,
-    native performance training,
+    hardware-accelerated training,
     and cross-platform model aggregation.
     Our FL workflow supports flexible ML operations (MLOps) in production,
     facilitating continuous model delivery and training.
-    We have deployed FedKit for conducting FL research on campus,
-    showing its real-world effectiveness.
+    We have deployed FedKit in a real-world use case for
+    exercise data analysis on campus,
+    demonstrating its effectiveness.
     FedKit is open-source at \url{https://github.com/FedCampus/FedKit}.
 \end{abstract}
 
@@ -158,9 +159,9 @@ Nevertheless, most existing FL systems
 primarily cater to simulation,
 limiting their practical use on smartphones.
 
-Several FL systems have emerged to fulfill on-smartphone FL,
+Several systems have emerged to fulfill on-smartphone FL,
 but still exhibit limitations,
-as summarized in Table~\ref{tbl:fn-systems}.
+as shown in Table~\ref{tbl:fn-systems}.
 Specifically, FedML \cite{he2020fedml},
 Project Florida \cite{madrigal2023project},
 and FedScale \cite{lai2022fedscale} primarily support Android.
@@ -187,11 +188,11 @@ a versatile FL system designed to enable \textbf{cross-platform} FL research on
 \begin{enumerate}[label=$\bullet$]
     \item FedKit provides \textbf{modularized libraries} to train
         Python-based models on Android and iOS and
-        aggregate across platforms.
+        aggregate them across platforms.
         These libraries can serve as a foundational resource for
         on-device ML systems.
-    \item We introduce a novel FL workflow in FedKit,
-        enabling flexible \textbf{MLOps} from
+    \item The FL workflow in FedKit
+        enables flexible \textbf{MLOps} from
         the backend in production.
         This innovation encourages other open-source solutions to
         rival proprietary services in deployment support.
@@ -360,24 +361,24 @@ allow for FL algorithm customizations in Python.
     \label{fig:fedcampus}
 \end{figure}
 
-FedCampus serves as a practical use case of FedKit.
-It employs a mobile app to harness exercise data on university campus,
-making Android, iOS and cross-platform aggregation integral requirements.
+We applied FedKit to a practical use case, FedCampus,
+utilizing a mobile app to harness exercise data on a university campus.
+This context demanded Android, iOS and cross-platform aggregation support.
 Additionally,
-we emphasize the necessity of training acceleration for
+FL on mobile devices necessitates training acceleration for
 a smooth user experience
 and MLOps to facilitate iterative model design.
 
 In the FedCampus experiment setup (Fig.~\ref{fig:fedcampus}),
-we deployed a self-hosted Backend in the background,
-with real-time logs and losses on a connected laptop.
-Our Flutter app, powered by FedKit,
-conducts FL across Android and iOS devices,
-using training data from the smartwatches to
-train a sleep-efficiency prediction model
-akin to \cite{khoa2022fedmcrnn}.
-The result, a significant reduction in the model's training loss,
-demonstrates FedKit's effectiveness in real-world scenarios.
+we self-hosted the Backend
+and displayed the real-time logs and losses on a connected laptop.
+Our app, powered by FedKit,
+performed FL across Android and iOS devices,
+training a sleep-efficiency prediction model
+akin to \cite{khoa2022fedmcrnn}
+using data from the smartwatches.
+The results showcased a significant reduction in the model's training loss,
+demonstrating FedKit's effectiveness in real-world scenarios.
 
 \appendix
 
