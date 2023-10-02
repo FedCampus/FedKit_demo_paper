@@ -308,13 +308,6 @@ in production.
 Leveraging our full control of the self-hosted Backend,
 FedKit's three-step FL workflow, illustrated in (Fig.~\ref{fig:fl-workflow}),
 facilitates continuous delivery and training.
-\begin{figure}
-    \centering
-    \includegraphics*[width=0.9\linewidth]{fl_workflow.pdf}
-    \caption{FedKit FL Workflow.}
-    \label{fig:fl-workflow}
-\end{figure}
-
 \subsubsection{Continuous Cross-Platform Model Delivery}
 Traditionally, models for on-device training are \textit{embedded} into client apps.
 However, this approach couples model delivery with app updates, 
@@ -350,6 +343,13 @@ these FL Servers employ the Flower FL Framework for
 scheduling training and evaluation.
 This decision empowers our FL Servers to leverage Flower's flexibility and
 allow for FL algorithm customizations in Python.
+
+\begin{figure}
+    \centering
+    \includegraphics*[width=0.9\linewidth]{fl_workflow.pdf}
+    \caption{FedKit FL Workflow.}
+    \label{fig:fl-workflow}
+\end{figure}
 
 \section{Use Case: FedCampus}
 
