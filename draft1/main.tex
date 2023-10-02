@@ -176,7 +176,7 @@ while Syft lacks hardware acceleration for on-device training.
 In addition to seamless cross-platform support,
 customizable and continuous deployment in production is crucial.
 While FedML and Florida support ML operations (MLOps),
-their proprietary services limit full customization.
+their proprietary backends limit full customization.
 In contrast, open-source solutions like Flower and Syft enable
 full customization
 but are more suitable for single experiments rather than continuous deployment.
@@ -186,14 +186,14 @@ We developed FedKit,
 a versatile FL system designed to enable \textbf{cross-platform} FL research on
 \textbf{Android and iOS}:
 \begin{enumerate}[label=$\bullet$]
-    \item FedKit provides \textbf{modularized libraries} to train
-        Python-based models on Android and iOS and
-        aggregate them across platforms.
+    \item FedKit provides \textbf{modularized libraries} to convert
+        Python-based models,
+        and train and aggregate them across platforms.
         These libraries can serve as a foundational resource for
-        on-device ML systems.
+        on-device FL or even ML systems.
     \item The FL workflow in FedKit
         enables flexible \textbf{MLOps} from
-        the Backend in production.
+        the backend in production.
         This innovation encourages other open-source solutions to
         rival proprietary services in deployment support.
 \end{enumerate}
@@ -249,7 +249,7 @@ We begin in Python by converting models into formats compatible with
 Android (TensorFlow Lite or TFLite) and iOS (Core ML).
 Core ML defines a fixed model structure and provides
 the official converter CoreMLTools.
-For TFLite, we \textit{standardized} a model format and
+For TFLite, we \textit{standardized} a model format, and then
 developed a compliant TensorFlow converter.
 This standardized format includes
 four essential FL methods
