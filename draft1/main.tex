@@ -151,7 +151,7 @@
 
 Federated learning (FL) enables edge devices to
 collaboratively train a shared machine learning (ML) model while
-retaining private data on device \cite{mcmahan2017communication}.
+retaining private data on the device \cite{mcmahan2017communication}.
 Smartphones, rich in sensitive data,
 are promising candidates for FL.
 Nevertheless, most existing FL systems
@@ -193,7 +193,7 @@ a versatile FL system designed to enable \textbf{cross-platform} FL research on
         on-device ML systems.
     \item The FL workflow in FedKit
         enables flexible \textbf{MLOps} from
-        the backend in production.
+        the Backend in production.
         This innovation encourages other open-source solutions to
         rival proprietary services in deployment support.
 \end{enumerate}
@@ -248,7 +248,7 @@ as shown in Fig.~\ref{cross_fl}.
 We begin in Python by converting models into formats compatible with
 Android (TensorFlow Lite or TFLite) and iOS (Core ML).
 Core ML defines a fixed model structure and provides
-official converter CoreMLTools.
+the official converter CoreMLTools.
 For TFLite, we \textit{standardized} a model format and
 developed a compliant TensorFlow converter.
 This standardized format includes
@@ -263,11 +263,11 @@ train the converted models on Android and iOS devices,
 utilizing GPU and NPU acceleration.
 Moreover, both trainers expose unified APIs for
 \textit{retrieving and setting model parameters,
-model fitting and evaluation}.
+model fitting, and evaluation}.
 On Android, these APIs invoke the TFLite interpreter to call
 our \textit{standardized methods} defined in \textit{Model Conversion}.
 However, on iOS, our experimentation revealed that
-Core ML \textit{forbids} directly setting parameters, which could potentially impede FL.
+Core ML \textit{forbids} directly setting parameters, which could impede FL.
 To overcome this constraint,
 we modify the underlying ProtoBuf representations of
 Core ML models.
@@ -292,21 +292,21 @@ dynamically generate the concrete methods that accept these arguments.
 During training, we call the methods with these index-based names to
 access parameters.
 2)
-Core ML permits \textit{only} certain layers to be \textit{updatable} and
+Core ML permits \textit{only} specific layers to be \textit{updatable} and
 only provides their parameters post-training.
 Thus, to obtain \textit{other layers'} parameters,
 we implemented a solution using ProtoBuf manipulation.
 This approach involves recording layer information
 during \textit{Model Conversion} and
 utilizing it during training.
-Finally, these unified parameters enables seamless cross-platform aggregation.
+Finally, these unified parameters enable seamless cross-platform aggregation.
 
 \subsection{Flexible MLOps in Production}
 \newcommand{\model}{$M$}
 \newcommand{\fs}{$S_\mathrm F$}
-FedKit empowers researchers to continuously deploy models and algorithms (MLOps)
+FedKit empowers researchers to deploy models and algorithms continuously (MLOps)
 in production.
-Leveraging our full control of the self-hosted Backend,
+Leveraging our complete control of the self-hosted Backend,
 FedKit's three-step FL workflow, illustrated in (Fig.~\ref{fig:fl-workflow}),
 facilitates continuous delivery and training.
 \subsubsection{Continuous Cross-Platform Model Delivery}
@@ -317,7 +317,7 @@ resulting in complexities when submitting apps to app stores and garnering user 
 Circumventing this complexity,
 FedKit enables \textit{continuous model delivery without app updates} by
 decoupling models from clients through \textit{Model Request},
-which enables new model deployment by uploading to the Backend.
+which allows new model deployment by uploading to the Backend.
 Specifically, clients request the Backend for a model aligned with
 their platform (Android/iOS) and training data type.
 The Backend selects the appropriate model \model{} from the database and
@@ -328,7 +328,7 @@ to clients for FL training.
 \subsubsection{Customizable Continuous FL Training}
 FedKit manages continuous FL training by allowing \textit{multiple parallel FL training sessions}
 through \textit{FL Server Setup}.
-When clients request for an FL Server to
+When clients request an FL Server to
 train their chosen model \model{},
 the Backend either reuses a suitable FL Server \fs{} if it exists,
 or spawns a new one.
@@ -339,7 +339,7 @@ clients connect to for FL Training.
 This dynamic approach ensures that
 newly delivered models can be immediately trained with new FL Servers
 without affecting ongoing ones.
-Furthermore, for enhanced adaptability and customization,
+Furthermore,
 these FL Servers employ the Flower FL Framework for
 scheduling training and evaluation.
 This decision empowers our FL Servers to leverage Flower's flexibility and
@@ -363,7 +363,7 @@ allow for FL algorithm customizations in Python.
 
 We applied FedKit to a practical use case, FedCampus,
 utilizing a mobile app to harness exercise data on a university campus.
-This context demanded Android, iOS and cross-platform aggregation support.
+This context demanded Android, iOS, and cross-platform aggregation support.
 Additionally,
 FL on mobile devices necessitates training acceleration for
 a smooth user experience
