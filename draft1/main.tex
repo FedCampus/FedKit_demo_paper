@@ -151,11 +151,11 @@
 
 Federated learning (FL) enables edge devices to
 collaboratively train a shared machine learning (ML) model while
-retaining private data on the device \cite{mcmahan2017communication}.
+retaining private local data \cite{mcmahan2017communication}.
 Smartphones, rich in sensitive data,
 are promising candidates for FL.
 Nevertheless, most existing FL systems
-\cite[e.g.,][]{bonawitz2019towards,liu2021fate,ma2019paddlepaddle,openfl_citation}
+\cite[e.g.,][]{bonawitz2019towards,ma2019paddlepaddle,liu2021fate,openfl_citation}
 primarily cater to simulation,
 limiting their practical use on smartphones for research and applications.
 
@@ -286,7 +286,7 @@ retrieving and setting parameters for TFLite and Core ML.
 1)
 The TFLite interpreter only accepts inputs/outputs as maps from \textit{names} to
 \textit{tensors}.
-Consequently, during \textit{Model Conversion},
+Therefore, during \textit{Model Conversion},
 we assign index-based names to each parameter layer and
 dynamically generate the concrete methods that accept these arguments.
 During training, we call the methods with these index-based names to
@@ -307,8 +307,9 @@ Finally, these unified parameters enable seamless cross-platform aggregation.
 FedKit empowers researchers to deploy models and algorithms continuously (MLOps)
 in production.
 Leveraging our complete control of the self-hosted Backend,
-FedKit's three-step FL workflow, illustrated in (Fig.~\ref{fig:fl-workflow}),
-facilitates continuous delivery and training.
+FedKit's three-step FL workflow
+facilitates continuous delivery and training,
+as illustrated in Fig.~\ref{fig:fl-workflow}.
 \subsubsection{Continuous Cross-Platform Model Delivery}
 Traditionally, models for on-device training are \textit{embedded} into client apps.
 However, this approach couples model delivery with app updates, 
