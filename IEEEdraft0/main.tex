@@ -1,132 +1,70 @@
-%File: anonymous-submission-latex-2024.tex
-\documentclass[letterpaper]{article} % DO NOT CHANGE THIS
-\usepackage[submission]{aaai24}  % DO NOT CHANGE THIS
-% \usepackage{aaai24}
-\usepackage{times}  % DO NOT CHANGE THIS
-\usepackage{helvet}  % DO NOT CHANGE THIS
-\usepackage{courier}  % DO NOT CHANGE THIS
-\usepackage[hyphens]{url}  % DO NOT CHANGE THIS
-\usepackage{graphicx} % DO NOT CHANGE THIS
-\graphicspath{ {./images/} }
-\urlstyle{rm} % DO NOT CHANGE THIS
-\def\UrlFont{\rm}  % DO NOT CHANGE THIS
-\usepackage{natbib}  % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
-\usepackage{caption} % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
-\frenchspacing  % DO NOT CHANGE THIS
-\setlength{\pdfpagewidth}{8.5in} % DO NOT CHANGE THIS
-\setlength{\pdfpageheight}{11in} % DO NOT CHANGE THIS
-%
-% These are recommended to typeset algorithms but not required. See the subsubsection on algorithms. Remove them if you don't have algorithms in your paper.
-\usepackage{algorithm}
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
-
-% Custom packages
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage[hyphens]{url}
 \usepackage{tikz}
 \usepackage[inline]{enumitem}
-\usepackage{pifont}  % for the checkmark/crossmark
-\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
-            \node[shape=circle,draw,inner sep=.6pt] (char) {#1};}}
-%
-% These are are recommended to typeset listings but not required. See the subsubsection on listing. Remove this block if you don't have listings in your paper.
-\usepackage{newfloat}
+\usepackage{pifont} 
 \usepackage{listings}
-\DeclareCaptionStyle{ruled}{labelfont=normalfont,labelsep=colon,strut=off} % DO NOT CHANGE THIS
-\lstset{%
-	basicstyle={\footnotesize\ttfamily},% footnotesize acceptable for monospace
-	numbers=left,numberstyle=\footnotesize,xleftmargin=2em,% show line numbers, remove this entire line if you don't want the numbers.
-	aboveskip=0pt,belowskip=0pt,%
-	showstringspaces=false,tabsize=2,breaklines=true}
-\floatstyle{ruled}
-\newfloat{listing}{tb}{lst}{}
-\floatname{listing}{Listing}
-%
-% Keep the \pdfinfo as shown here. There's no need
-% for you to add the /Title and /Author tags.
-\pdfinfo{
-/TemplateVersion (2024.1)
-}
-
-% DISALLOWED PACKAGES
-% \usepackage{authblk} -- This package is specifically forbidden
-% \usepackage{balance} -- This package is specifically forbidden
-% \usepackage{color (if used in text)
-% \usepackage{CJK} -- This package is specifically forbidden
-% \usepackage{float} -- This package is specifically forbidden
-% \usepackage{flushend} -- This package is specifically forbidden
-% \usepackage{fontenc} -- This package is specifically forbidden
-% \usepackage{fullpage} -- This package is specifically forbidden
-% \usepackage{geometry} -- This package is specifically forbidden
-% \usepackage{grffile} -- This package is specifically forbidden
-% \usepackage{hyperref} -- This package is specifically forbidden
-% \usepackage{navigator} -- This package is specifically forbidden
-% (or any other package that embeds links such as navigator or hyperref)
-% \indentfirst} -- This package is specifically forbidden
-% \layout} -- This package is specifically forbidden
-% \multicol} -- This package is specifically forbidden
-% \nameref} -- This package is specifically forbidden
-% \usepackage{savetrees} -- This package is specifically forbidden
-% \usepackage{setspace} -- This package is specifically forbidden
-% \usepackage{stfloats} -- This package is specifically forbidden
-% \usepackage{tabu} -- This package is specifically forbidden
-% \usepackage{titlesec} -- This package is specifically forbidden
-% \usepackage{tocbibind} -- This package is specifically forbidden
-% \usepackage{ulem} -- This package is specifically forbidden
-% \usepackage{wrapfig} -- This package is specifically forbidden
-% DISALLOWED COMMANDS
-% \nocopyright -- Your paper will not be published if you use this command
-% \addtolength -- This command may not be used
-% \balance -- This command may not be used
-% \baselinestretch -- Your paper will not be published if you use this command
-% \clearpage -- No page breaks of any kind may be used for the final version of your paper
-% \columnsep -- This command may not be used
-% \newpage -- No page breaks of any kind may be used for the final version of your paper
-% \pagebreak -- No page breaks of any kind may be used for the final version of your paperr
-% \pagestyle -- This command may not be used
-% \tiny -- This is not an acceptable font size.
-% \vspace{- -- No negative value may be used in proximity of a caption, figure, table, section, subsection, subsubsection, or reference
-% \vskip{- -- No negative value may be used to alter spacing above or below a caption, figure, table, section, subsection, subsubsection, or reference
-
-\setcounter{secnumdepth}{0} %May be changed to 1 or 2 if section numbers are desired.
-
-% The file aaai24.sty is the style file for AAAI Press
-% proceedings, working notes, and technical reports.
-%
-
-% Title
-
-% Your title must be in mixed case, not sentence case.
-% That means all verbs (including short verbs like be, is, using,and go),
-% nouns, adverbs, adjectives should be capitalized, including both words in hyphenated terms, while
-% articles, conjunctions, and prepositions are lower case unless they
-% directly follow a colon or long dash
-\title{FedKit: Enabling Cross-Platform Federated Learning for Android and iOS}
-\author{
-    Sichang He\textsuperscript{\rm 1},
-    Beilong Tang\textsuperscript{\rm 1},
-    Boyan Zhang\textsuperscript{\rm 1},
-    Jiaqi Shao\textsuperscript{\rm 1} \textsuperscript{\rm 2},
-    \\
-    Xiaomin Ouyang\textsuperscript{\rm 3},
-    Daniel Nata Nugraha\textsuperscript{\rm 4},
-    Bing Luo\textsuperscript{\rm 1}
-}
-\affiliations{
-    \textsuperscript{\rm 1}Data Science Research Center,
-        Duke Kunshan University, Jiangsu, China\\
-    \textsuperscript{\rm 2}Department of Electronic and Computer Engineering,
-        The Hong Kong University of Science and Technology, China\\
-    \textsuperscript{\rm 3}Department of Electrical and Computer Engineering,
-        University of California, Los Angeles, USA\\
-    \textsuperscript{\rm 4}
-        Flower Labs GmbH, Winterhuder Weg 29, 22085 Hamburg, Germany\\
-    \{sichang.he, beilong.tang, boyan.zhang\}@dukekunshan.edu.cn,
-    jiaqi.shao@connect.ust.hk,
-    xmouyang19@gmail.com,
-    daniel.nata@flower.dev,
-    bing.luo@dukekunshan.edu.cn
-}
-
+\graphicspath{ {./images/} }
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+        \node[shape=circle,draw,inner sep=.6pt] (char) {#1};}}
+
+\title{FedKit: Enabling Cross-Platform Federated Learning for Android and iOS\\
+}
+
+\author{\IEEEauthorblockN{1\textsuperscript{st} Sichang He}
+    \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+        \textit{name of organization (of Aff.)}\\
+        City, Country \\
+        email address or ORCID}
+    \and
+    \IEEEauthorblockN{2\textsuperscript{nd} Beilong Tang}
+    \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+        \textit{name of organization (of Aff.)}\\
+        City, Country \\
+        email address or ORCID}
+    \and
+    \IEEEauthorblockN{3\textsuperscript{rd} Boyan Zhang}
+    \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+        \textit{name of organization (of Aff.)}\\
+        City, Country \\
+        email address or ORCID}
+    \and
+    \IEEEauthorblockN{4\textsuperscript{th} Jiaqi Shao}
+    \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+        \textit{name of organization (of Aff.)}\\
+        City, Country \\
+        email address or ORCID}
+    \and
+    \IEEEauthorblockN{5\textsuperscript{th} Xiaomin Ouyang}
+    \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+        \textit{name of organization (of Aff.)}\\
+        City, Country \\
+        email address or ORCID}
+    \and
+    \IEEEauthorblockN{6\textsuperscript{th} Daniel Nata Nugraha}
+    \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+        \textit{name of organization (of Aff.)}\\
+        City, Country \\
+        email address or ORCID}
+    \and
+    \IEEEauthorblockN{6\textsuperscript{th} Bing Luo}
+    \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+        \textit{name of organization (of Aff.)}\\
+        City, Country \\
+        email address or ORCID}
+}
 
 \maketitle
 
@@ -147,6 +85,10 @@
     FedKit is open-source at \url{https://github.com/FedCampus/FedKit}.
 \end{abstract}
 
+\begin{IEEEkeywords}
+    component, formatting, style, styling, insert
+\end{IEEEkeywords}
+
 \section{Introduction}
 
 Federated learning (FL) enables edge devices to
@@ -155,7 +97,7 @@ retaining private local data \cite{mcmahan2017communication}.
 Smartphones, rich in sensitive data,
 are promising candidates for FL.
 Nevertheless, most existing FL systems
-\cite[e.g.,][]{bonawitz2019towards,ma2019paddlepaddle,liu2021fate,openfl_citation}
+\cite{bonawitz2019towards,ma2019paddlepaddle,liu2021fate,openfl_citation}
 primarily cater to simulation,
 limiting their practical use on smartphones for research and applications.
 
@@ -382,15 +324,12 @@ using data from the smartwatches.
 The results showcased a significant reduction in the model's training loss,
 demonstrating FedKit's effectiveness in real-world scenarios.
 
-\appendix
-
 \section*{Acknowledgments}
 We would like to thank Flower Labs for the discussion on on-device training.
-% We also thank undergraduate student Renyuan Zhang,
-% who participated in the project.
 
-\bigskip
-
+\bibliographystyle{IEEEtran}
 \bibliography{main}
+\vspace{12pt}
+\color{red}
 
 \end{document}
