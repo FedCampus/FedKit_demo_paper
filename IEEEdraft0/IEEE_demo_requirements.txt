@@ -1,0 +1,21 @@
+The INFOCOM Poster/Demo accepts only novel, previously unpublished work which is not under review by any journal or conference. Accepted and presented poster/demo papers will be published in the IEEE INFOCOM 2024 Conference Proceedings and submitted to IEEE Xplore®.
+
+Overview of Submission Instructions:
+
+Paper page limit: 2 pages.
+
+Paper Instructions:
+
+Poster/demo papers must be written in English. Only electronic submissions will be accepted (see instructions below). Poster/demo papers not meeting the exact guidelines detailed below will be returned to the authors.
+
+Format and Length:
+
+Submitted poster/demo papers must be no longer than the pages lengths described above, in double-column format with standard margins (i.e., at least one inch all around) and at least a 10 point font. This length includes everything: figures, tables, references, appendices and so forth. Longer submissions will not be reviewed. Poster/demo papers should include a title; full list of authors, their organization and email address; and an abstract of fewer than 200 words. Accepted posters/demo papers will be published in the INFOCOM proceedings.
+
+All poster/demo papers must adhere to IEEE formatting standards. Consult the IEEE Transactions LaTeX and Microsoft Word Style Files. Papers must be submitted in PDF (Portable Document Format) and compatible with Acrobat (English version), not including any special characters or non-standard fonts. We must be able to display and print your submission exactly as we receive it and using only standard tools and postscript printers, so we strongly suggest that you use only standard fonts. Make sure that the paper prints well on black-and-white printers, not color printers. This is especially true for plots and graphs in the paper.
+
+Papers should be formatted for printing on US LETTER (8.5" by 11") size paper.
+
+Registration and Presentation:
+
+At least one of the authors of each poster/demo paper presented at the conference must be registered in a non-student category. Additionally, each paper has to be presented at the virtual conference in order for the paper to be published in the conference proceedings and submitted for inclusion in the IEEE digital library.
