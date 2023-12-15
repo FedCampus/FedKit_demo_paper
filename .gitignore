@@ -7,4 +7,5 @@
 **.log
 **.gz
 **.pdf
+!IEEEpapers/*.pdf
 !*/images/*
