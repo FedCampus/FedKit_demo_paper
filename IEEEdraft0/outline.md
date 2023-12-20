@@ -1,4 +1,4 @@
-# Draft 1 Outline
+# IEEE INFOCOM Draft 0 Outline
 
 - Introduction
     - Background
