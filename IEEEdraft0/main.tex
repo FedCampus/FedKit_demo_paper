@@ -297,6 +297,22 @@ using data from the smartwatches.
 The results showcased a significant reduction in the model's training loss,
 demonstrating FedKit's effectiveness in real-world scenarios.
 
+\begin{table}
+\centering
+\small
+\begin{tabular}{lrrrrrrr}
+      &\multicolumn{3}{c}{iOS} & & \multicolumn{3}{c}{Android}\\
+\hline
+Round & Time   & Loss  & Accu. & & Time   & Loss  & Accu.     \\
+\hline
+0     &  2.80s & 0.802 & 0.568 & & 29.26s & 0.948 & 0.103     \\
+1     &  2.84s & 0.500 & 0.794 & & 29.08s & 0.897 & 0.192     \\
+2     &  2.85s & 0.360 & 0.791 & & 29.72s & 0.853 & 0.210     \\
+\end{tabular}
+\caption{Local Training Time, Test Loss, and Test Accuracy in the Demo Run Between An iOS Simulator and An Android Phone.}
+\label{tbl:demo-stats}
+\end{table}
+
 % \section*{Acknowledgments}
 % We would like to thank Flower Labs for the discussion on on-device training.
 
