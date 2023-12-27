@@ -1,11 +1,13 @@
 # IEEE INFOCOM Draft 0 Outline
 
-- Introduction
+- Motivation and Analysis
     - Background
         - FL
         - Smartphone good for FL
+        - End goal: mobile FL platform for continuous real-world experiments
+    - Analysis and Proposed Solution
         - What we need for FL on smartphone
-    - Related work in mobile FL lack stuff
+    - Lack of real-world mobile FL experiments
         - (Checklist table)
         - Cross-platform training support
         - Customizing FL in production
@@ -37,6 +39,7 @@
                 - Parallel FL Session Support
                 - FL Server setup
                 - Customization by Flower
+- Demonstration
 - Use Case: FedCampus
     - Describe the app
     - How the app is deployed

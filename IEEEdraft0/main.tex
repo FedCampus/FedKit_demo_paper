@@ -16,6 +16,7 @@
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
+\bstctlcite{IEEEexample:BSTcontrol}
 
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
         \node[shape=circle,draw,inner sep=.6pt] (char) {#1};}}
@@ -25,7 +26,7 @@
 
 \author{\IEEEauthorblockN{Sichang He\IEEEauthorrefmark{1}, Beilong Tang\IEEEauthorrefmark{1}, Boyan Zhang\IEEEauthorrefmark{1}, Jiaoqi Shao\IEEEauthorrefmark{1}\IEEEauthorrefmark{2}, Xiaomin Ouyang\IEEEauthorrefmark{3}, Daniel\,Nata Nugraha\IEEEauthorrefmark{4}, Bing Luo\IEEEauthorrefmark{1}}
     \IEEEauthorblockA{\IEEEauthorrefmark{1}% Data Science Research Center,
-        Duke Kunshan University, Jiangsu, China,
+        Duke Kunshan University (DKU), Jiangsu, China,
     % }
     % \IEEEauthorblockA{
         \IEEEauthorrefmark{2}% Department of Electronic and Computer Engineering,
@@ -54,7 +55,7 @@
     Our FL workflow supports flexible ML operations (MLOps) in production,
     facilitating continuous model delivery and training.
     We have deployed FedKit in a real-world use case for
-    exercise data analysis on campus,
+    exercise data analysis on DKU campus,
     demonstrating its effectiveness.
     FedKit is open-source at \url{https://github.com/FedCampus/FedKit}.
 \end{abstract}
@@ -62,31 +63,21 @@
 % \begin{IEEEkeywords}
 % \end{IEEEkeywords}
 
-\section{Introduction}
+\section{Motivation and Analysis}
 
-Federated learning (FL) enables edge devices to
+FL enables edge devices to
 collaboratively train a shared machine learning (ML) model while
-retaining private local data \cite{mcmahan2017communication}.
+retaining private local data.
 Smartphones, rich in sensitive data,
 are promising candidates for FL.
-Nevertheless, most existing FL systems
-\cite{bonawitz2019towards,ma2019paddlepaddle,liu2021fate,openfl_citation}
-primarily cater to simulation,
-limiting their practical use on smartphones for research and applications.
+Nevertheless, deployed mobile FL systems for real-world experiments are rare.
+Our end goal is to build such a platform for
+continuous FL research using smartphone data on DKU campus.
 
-Several systems have emerged to fulfill on-smartphone FL,
-but still exhibit limitations,
-as shown in Table~\ref{tbl:fn-systems}.
-Specifically, FedML \cite{he2020fedml},
-Project Florida \cite{madrigal2023project},
-and FedScale \cite{lai2022fedscale} primarily support Android.
-On the other hand,
-Flower \cite{beutel2020flower,mathur2021ondevice} and
-Syft \cite{ryffel2018generic,Ziller2021,hall2021syft}
-provide SDKs for both Android and iOS.
-However, Flower SDKs lack support for on-device training and
-cross-platform aggregation,
-while Syft lacks hardware acceleration for on-device training.
+Existing on-smartphone FL systems could not satisfy our requirements to
+support our endeavor,
+as we outline in Table~\ref{tbl:fn-systems}.
+% TODO: analysis.
 
 In addition to seamless cross-platform support,
 customizable and continuous deployment in production is crucial.
@@ -95,23 +86,6 @@ their proprietary backends limit full customization.
 In contrast, open-source solutions like Flower and Syft enable
 full customization
 but are more suitable for single experiments rather than continuous deployment.
-
-\subsubsection{Contributions}
-We developed FedKit,
-a versatile FL system designed to enable \textbf{cross-platform} FL research on
-\textbf{Android and iOS}:
-\begin{enumerate}[label=$\bullet$]
-    \item FedKit provides \textbf{modularized libraries} to convert
-          Python-based models,
-          and train and aggregate them across platforms.
-          These libraries can serve as a foundational resource for
-          on-device FL or even ML systems.
-    \item The FL workflow in FedKit
-          enables flexible \textbf{MLOps} from
-          the backend in production.
-          This innovation encourages other open-source solutions to
-          rival proprietary services in deployment support.
-\end{enumerate}
 
 \section{System Description}
 
@@ -126,17 +100,21 @@ Specifically, FedKit introduces two key innovations:
 \begin{table}
     \centering
     \small
-    \setlength{\tabcolsep}{2pt}
+    % \setlength{\tabcolsep}{2pt}
     \begin{tabular}{lccccc}
-        Functionality         & FedML     & Florida   & Flower    & Syft      & \textbf{FedKit} \\
+        Functionality         & \cite{he2020fedml}
+                                          & \cite{madrigal2023project,lai2022fedscale}
+                                                      & \cite{beutel2020flower,mathur2021ondevice}
+                                                                  & \textbf{FedKit} \\
         \hline
-        Android-Only          & \ding{51} & \ding{51} & \ding{51} & \ding{51} & \ding{51}       \\
-        iOS-Only              & \ding{55} & \ding{55} & \ding{51} & \ding{51} & \ding{51}       \\
-        Cross-Platform Aggr.  & \ding{55} & \ding{55} & \ding{55} & \ding{51} & \ding{51}       \\
+        Android-Only          & \ding{51} & \ding{51} & \ding{51} & \ding{51}       \\
+        iOS-Only              & \ding{55} & \ding{55} & \ding{51} & \ding{51}       \\
+        Cross-Platform Aggregation
+                              & \ding{55} & \ding{55} & \ding{55} & \ding{51}       \\
         \hline
-        Training Acceleration & \ding{51} & \ding{51} & \ding{51} & \ding{55} & \ding{51}       \\
-        MLOps                 & \ding{51} & \ding{51} & \ding{55} & \ding{55} & \ding{51}       \\
-        Open-Source Backend   & \ding{55} & \ding{55} & \ding{51} & \ding{51} & \ding{51}       \\
+        Training Acceleration & \ding{51} & \ding{51} & \ding{51} & \ding{51}       \\
+        MLOps                 & \ding{51} & \ding{51} & \ding{55} & \ding{51}       \\
+        Open-Source Backend   & \ding{55} & \ding{55} & \ding{51} & \ding{51}       \\
     \end{tabular}
     \caption{Functionality Comparison among On-Smartphone FL Systems.
     }
@@ -296,22 +274,6 @@ akin to \cite{khoa2022fedmcrnn}
 using data from the smartwatches.
 The results showcased a significant reduction in the model's training loss,
 demonstrating FedKit's effectiveness in real-world scenarios.
-
-\begin{table}
-\centering
-\small
-\begin{tabular}{lrrrrrrr}
-      &\multicolumn{3}{c}{iOS} & & \multicolumn{3}{c}{Android}\\
-\hline
-Round & Time   & Loss  & Accu. & & Time   & Loss  & Accu.     \\
-\hline
-0     &  2.80s & 0.802 & 0.568 & & 29.26s & 0.948 & 0.103     \\
-1     &  2.84s & 0.500 & 0.794 & & 29.08s & 0.897 & 0.192     \\
-2     &  2.85s & 0.360 & 0.791 & & 29.72s & 0.853 & 0.210     \\
-\end{tabular}
-\caption{Local Training Time, Test Loss, and Test Accuracy in the Demo Run Between An iOS Simulator and An Android Phone.}
-\label{tbl:demo-stats}
-\end{table}
 
 % \section*{Acknowledgments}
 % We would like to thank Flower Labs for the discussion on on-device training.
