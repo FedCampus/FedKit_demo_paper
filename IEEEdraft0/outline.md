@@ -3,8 +3,7 @@
 - Motivation and Analysis
     - Background
         - FL
-        - Smartphone good for FL
-        - End goal: mobile FL platform for continuous real-world experiments
+        - Problem and goal: mobile FL platform for continuous real-world experiments
     - Analysis and Proposed Solution
         - What we need for FL on smartphone
     - Lack of real-world mobile FL experiments

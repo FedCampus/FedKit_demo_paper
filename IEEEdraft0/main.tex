@@ -65,20 +65,18 @@
 
 \section{Motivation and Analysis}
 
-FL enables edge devices to
-collaboratively train a shared machine learning (ML) model while
-retaining private local data.
-Smartphones, rich in sensitive data,
-are promising candidates for FL.
-Nevertheless, deployed mobile FL systems for real-world experiments are rare.
-Our end goal is to build such a platform for
-continuous FL research using smartphone data on DKU campus.
-
-Existing on-smartphone FL systems could not satisfy our requirements to
-support our endeavor,
+FL is a promising technique to collaboratively train shared ML models on
+end devices while retaining private local data~\cite{wang2023federated}.
+To guide FL algorithm design with real-world statistics,
+our FedCampus project aims to build a platform for
+FL experiments using user data on smartphones.
+However, no accessible and practical FL systems could satisfy our requirements,
 as we outline in Table~\ref{tbl:fn-systems}.
-% TODO: analysis.
+Thus, we present FedKit,
+our libraries for continuous cross-platform FL on Android and iOS.
 
+\paragraph{Analysis}
+% TODO: analysis.
 In addition to seamless cross-platform support,
 customizable and continuous deployment in production is crucial.
 While FedML and Florida support ML operations (MLOps),
