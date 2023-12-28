@@ -20,9 +20,14 @@
 
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
         \node[shape=circle,draw,inner sep=.6pt] (char) {#1};}}
+\newcommand{\FedCampus}{\textsc{FedCampus}}
+\newcommand{\FedKit}{\textsc{FedKit}}
+\newcommand{\challa}{\circled{$\boldsymbol\alpha$}}
+\newcommand{\challb}{\circled{$\boldsymbol\beta$}}
+\newcommand{\challc}{\circled{$\boldsymbol\gamma$}}
 
-\title{FedKit: Enabling Cross-Platform Federated Learning for Android and iOS\\
-}
+\title
+{\FedKit{}: Enabling Cross-Platform Federated Learning for Android and iOS}
 
 \author{\IEEEauthorblockN{Sichang He\IEEEauthorrefmark{1}, Beilong Tang\IEEEauthorrefmark{1}, Boyan Zhang\IEEEauthorrefmark{1}, Jiaoqi Shao\IEEEauthorrefmark{1}\IEEEauthorrefmark{2}, Xiaomin Ouyang\IEEEauthorrefmark{3}, Daniel\,Nata Nugraha\IEEEauthorrefmark{4}, Bing Luo\IEEEauthorrefmark{1}}
     \IEEEauthorblockA{\IEEEauthorrefmark{1}% Data Science Research Center,
@@ -44,20 +49,18 @@
 \maketitle
 
 \begin{abstract}
-    % "Federated learning" is an ordinary word combination.
-    We present FedKit, a federated learning (FL) system tailored for
+    We present \FedKit{}, a federated learning (FL) system tailored for
     cross-platform FL research on \textit{Android and iOS} devices.
-    FedKit pipelines FL development by
-    % This is the first time model appears, so we should say "ML."
+    \FedKit{} pipelines FL development by
     enabling machine learning (ML) model conversion,
     hardware-accelerated training,
     and cross-platform model aggregation.
     Our FL workflow supports flexible ML operations (MLOps) in production,
     facilitating continuous model delivery and training.
-    We have deployed FedKit in a real-world use case for
+    We have deployed \FedKit{} in a real-world use case for
     exercise data analysis on DKU campus,
     demonstrating its effectiveness.
-    FedKit is open-source at \url{https://github.com/FedCampus/FedKit}.
+    \FedKit{} is open-source at \url{https://github.com/FedCampus/FedKit}.
 \end{abstract}
 
 % \begin{IEEEkeywords}
@@ -67,33 +70,43 @@
 
 FL is a promising technique to collaboratively train shared ML models on
 end devices while retaining private local data~\cite{wang2023federated}.
+However, most mobile FL systems cater to simulations on desktop computers.
 To guide FL algorithm design with real-world statistics,
-our FedCampus project aims to build a platform for
-FL experiments using user data on smartphones.
-However, no accessible and practical FL systems could satisfy our requirements,
+we proposed the \FedCampus{} project to build a mobile FL platform for
+harnessing real users' health data on university campuses.
+
+Existing accessible FL systems fall short of \FedCampus{}' requirements,
 as we outline in Table~\ref{tbl:fn-systems}.
-Thus, we present FedKit,
-our libraries for continuous cross-platform FL on Android and iOS.
+Specifically, we identify three key challenges:
+\challa~to collaboratively train the same models across
+our users' diverse smartphones,
+we require cross-platform on-device training and
+cross-platform model aggregation;
+\challb~to facilitate model development,
+we require a friendly development environment for our data scientists;
+\challc~to deploy new models on our mobile apps in production,
+we require a customizable and streamlined deployment procedure.
 
-\paragraph{Analysis}
-% TODO: analysis.
-In addition to seamless cross-platform support,
-customizable and continuous deployment in production is crucial.
-While FedML and Florida support ML operations (MLOps),
-their proprietary backends limit full customization.
-In contrast, open-source solutions like Flower and Syft enable
-full customization
-but are more suitable for single experiments rather than continuous deployment.
+\section{Proposed Solution}
 
-\section{System Description}
-
-FedKit facilitates FL among Android and iOS clients (mobile apps),
+\FedKit{} addresses these challenges by
+\circled{1} a cross-platform (Android-iOS) FL pipeline centered around
+ML models and
+\circled{2} flexible MLOps.
+As an overview,
+\FedKit{} facilitates FL among Android and iOS client apps,
 coordinated by a single Backend server.
 Each client trains a local model with private data,
 and the Backend performs cross-platform aggregation of these local models to update the global model.
-Specifically, FedKit introduces two key innovations:
-\circled{1} A cross-platform (Android-iOS) FL pipeline centered around ML models.
-\circled{2} Flexible MLOps to enable efficient FL research iteration in production.
+
+\subsection{Cross-Platform FL Model Pipeline}
+
+To enable cross-platform FL,
+especially \textit{cross-platform aggregation},
+we propose a pipeline comprising
+\textit{model conversion} and
+\textit{unified training APIs},
+as shown in Fig.~\ref{cross_fl}.
 
 \begin{table}
     \centering
@@ -103,7 +116,7 @@ Specifically, FedKit introduces two key innovations:
         Functionality         & \cite{he2020fedml}
                                           & \cite{madrigal2023project,lai2022fedscale}
                                                       & \cite{beutel2020flower,mathur2021ondevice}
-                                                                  & \textbf{FedKit} \\
+                                                                  & \FedKit{} \\
         \hline
         Android-Only          & \ding{51} & \ding{51} & \ding{51} & \ding{51}       \\
         iOS-Only              & \ding{55} & \ding{55} & \ding{51} & \ding{51}       \\
@@ -119,19 +132,10 @@ Specifically, FedKit introduces two key innovations:
     \label{tbl:fn-systems}
 \end{table}
 
-\subsection{Cross-Platform FL Model Pipeline}
-
-To enable cross-platform FL,
-especially \textit{cross-platform aggregation},
-we propose a pipeline comprising
-\textit{model conversion} and
-\textit{unified training APIs},
-as shown in Fig.~\ref{cross_fl}.
-
 \begin{figure}
     \centering
     \includegraphics*[width=\linewidth]{model_pipeline.pdf}
-    \caption{FedKit Model Pipeline for Cross-Platform FL.}
+    \caption{\FedKit{} Model Pipeline for Cross-Platform FL.}
     \label{cross_fl}
 \end{figure}
 
@@ -149,7 +153,7 @@ and \lstinline{restore}).
 
 
 \subsubsection{Unified Training APIs}
-FedKit provides \textit{TFLite Trainer} and \textit{Core ML Trainer} to
+\FedKit{} provides \textit{TFLite Trainer} and \textit{Core ML Trainer} to
 train the converted models on Android and iOS devices,
 utilizing GPU and NPU acceleration.
 Moreover, both trainers expose unified APIs for
@@ -195,10 +199,10 @@ Finally, these unified parameters enable seamless cross-platform aggregation.
 \subsection{Flexible MLOps in Production}
 \newcommand{\model}{$M$}
 \newcommand{\fs}{$S_\mathrm F$}
-FedKit empowers researchers to deploy models and algorithms continuously (MLOps)
+\FedKit{} empowers researchers to deploy models and algorithms continuously (MLOps)
 in production.
 Leveraging our complete control of the self-hosted Backend,
-FedKit's three-step FL workflow
+\FedKit{}'s three-step FL workflow
 facilitates continuous delivery and training,
 as illustrated in Fig.~\ref{fig:fl-workflow}.
 \subsubsection{Continuous Cross-Platform Model Delivery}
@@ -207,7 +211,7 @@ However, this approach couples model delivery with app updates,
 resulting in complexities when submitting apps to app stores and garnering user adoption.
 
 Circumventing this complexity,
-FedKit enables \textit{continuous model delivery without app updates} by
+\FedKit{} enables \textit{continuous model delivery without app updates} by
 decoupling models from clients through \textit{Model Request},
 which allows new model deployment by uploading to the Backend.
 Specifically, clients request the Backend for a model (TFLite/Core ML)
@@ -219,7 +223,7 @@ Consequently, \textit{Model Request} delivers the TFLite or Core ML model
 to clients for FL training.
 
 \subsubsection{Customizable Continuous FL Training}
-FedKit manages continuous FL training by allowing \textit{multiple parallel FL training sessions}
+\FedKit{} manages continuous FL training by allowing \textit{multiple parallel FL training sessions}
 through \textit{FL Server Setup}.
 When clients request an FL Server to
 train their chosen model \model{},
@@ -241,7 +245,7 @@ allow for FL algorithm customizations in Python.
 \begin{figure}
     \centering
     \includegraphics*[width=0.9\linewidth]{fl_workflow.pdf}
-    \caption{FedKit FL Workflow.}
+    \caption{\FedKit{} FL Workflow.}
     \label{fig:fl-workflow}
 \end{figure}
 
@@ -254,7 +258,7 @@ allow for FL algorithm customizations in Python.
     \label{fig:fedcampus}
 \end{figure}
 
-We applied FedKit to a practical use case, FedCampus,
+We applied \FedKit{} to a practical use case, FedCampus,
 utilizing a mobile app to harness exercise data on a university campus.
 This context demanded Android, iOS, and cross-platform aggregation support.
 Additionally,
@@ -265,13 +269,13 @@ and MLOps to facilitate iterative model design.
 In the FedCampus experiment setup (Fig.~\ref{fig:fedcampus}),
 we self-hosted the Backend
 and displayed the real-time logs and losses on a connected laptop.
-Our app, powered by FedKit,
+Our app, powered by \FedKit{},
 performed FL across Android and iOS devices,
 training a sleep-efficiency prediction model
 akin to \cite{khoa2022fedmcrnn}
 using data from the smartwatches.
 The results showcased a significant reduction in the model's training loss,
-demonstrating FedKit's effectiveness in real-world scenarios.
+demonstrating \FedKit{}'s effectiveness in real-world scenarios.
 
 % \section*{Acknowledgments}
 % We would like to thank Flower Labs for the discussion on on-device training.

@@ -3,15 +3,11 @@
 - Motivation and Analysis
     - Background
         - FL
+        - Lack of real-world mobile FL experiments
         - Problem and goal: mobile FL platform for continuous real-world experiments
-    - Analysis and Proposed Solution
-        - What we need for FL on smartphone
-    - Lack of real-world mobile FL experiments
+    - Analysis and why existing solutions don't work
         - (Checklist table)
-        - Cross-platform training support
-        - Customizing FL in production
-    - Brief introduction to FedKit
-        - FedKit features
+        - What we need for FL on smartphone
         <!-- TODO: - Our research app in production (Key contributions) -->
 - System Description
     - Architecture Overview
