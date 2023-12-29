@@ -11,8 +11,8 @@
         <!-- TODO: - Our research app in production (Key contributions) -->
 - System Description
     - Architecture Overview
+        - 2 key solutions
         - Client-server relationship
-        - 2 innovations: the following
     - Cross-Platform FL Model Pipeline (detailed)
         - Description: cross-platform FL on smartphones
         - Three steps

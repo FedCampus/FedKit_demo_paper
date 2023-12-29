@@ -89,10 +89,10 @@ we require a customizable and streamlined deployment procedure.
 
 \section{Proposed Solution}
 
-\FedKit{} addresses these challenges by
-\circled{1} a cross-platform (Android-iOS) FL pipeline centered around
-ML models and
-\circled{2} flexible MLOps.
+\FedKit{} addresses challenges \challa{} and \challb{} by
+a cross-platform (Android-iOS) FL pipeline centered around ML models in
+Section~\ref{sec:pipeline},
+and addresses challenge \challc{} by flexible MLOps in Section~\ref{sec:mlops}.
 As an overview,
 \FedKit{} facilitates FL among Android and iOS client apps,
 coordinated by a single Backend server.
@@ -100,6 +100,7 @@ Each client trains a local model with private data,
 and the Backend performs cross-platform aggregation of these local models to update the global model.
 
 \subsection{Cross-Platform FL Model Pipeline}
+\label{sec:pipeline}
 
 To enable cross-platform FL,
 especially \textit{cross-platform aggregation},
@@ -197,6 +198,7 @@ utilizing it during training.
 Finally, these unified parameters enable seamless cross-platform aggregation.
 
 \subsection{Flexible MLOps in Production}
+\label{sec:mlops}
 \newcommand{\model}{$M$}
 \newcommand{\fs}{$S_\mathrm F$}
 \FedKit{} empowers researchers to deploy models and algorithms continuously (MLOps)
