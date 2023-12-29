@@ -35,10 +35,11 @@
                 - FL Server setup
                 - Customization by Flower
 - Demonstration
-- Use Case: FedCampus
-    - Describe the app
-    - How the app is deployed
-        - (Figure of the setup)
+    - Demo app
+    - FedCampus
+        - Describe the app
+        - How the app is deployed
+            - (Figure of the setup)
 
 ## Not Mentioned
 
