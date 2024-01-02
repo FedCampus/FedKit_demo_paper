@@ -113,20 +113,21 @@ as shown in Fig.~\ref{cross_fl}.
     \centering
     \small
     % \setlength{\tabcolsep}{2pt}
-    \begin{tabular}{lccccc}
+    \begin{tabular}{lcccccc}
         Functionality         & \cite{he2020fedml}
-                                          & \cite{madrigal2023project,lai2022fedscale}
-                                                      & \cite{beutel2020flower,mathur2021ondevice}
-                                                                  & \FedKit{} \\
+                                          & \cite{madrigal2023project}
+                                                      & \cite{mathur2021ondevice}
+                                                                  & \cite{hall2021syft}
+                                                                              &\FedKit{} \\
         \hline
-        Android-Only          & \ding{51} & \ding{51} & \ding{51} & \ding{51}       \\
-        iOS-Only              & \ding{55} & \ding{55} & \ding{51} & \ding{51}       \\
+        Android-Only          & \ding{51} & \ding{51} & \ding{51} & \ding{51} & \ding{51}       \\
+        iOS-Only              & \ding{55} & \ding{55} & \ding{51} & \ding{51} & \ding{51}       \\
         Cross-Platform Aggregation
-                              & \ding{55} & \ding{55} & \ding{55} & \ding{51}       \\
+                              & \ding{55} & \ding{55} & \ding{55} & \ding{51} & \ding{51}       \\
         \hline
-        Training Acceleration & \ding{51} & \ding{51} & \ding{51} & \ding{51}       \\
-        MLOps                 & \ding{51} & \ding{51} & \ding{55} & \ding{51}       \\
-        Open-Source Backend   & \ding{55} & \ding{55} & \ding{51} & \ding{51}       \\
+        Training Acceleration & \ding{51} & \ding{51} & \ding{51} & \ding{55} & \ding{51}       \\
+        MLOps                 & \ding{51} & \ding{51} & \ding{55} & \ding{55} & \ding{51}       \\
+        Open-Source Backend   & \ding{55} & \ding{55} & \ding{51} & \ding{51} & \ding{51}       \\
     \end{tabular}
     \caption{Functionality Comparison among On-Smartphone FL Systems.
     }
@@ -149,8 +150,8 @@ For TFLite, we \textit{standardized} a model format, and then
 developed a compliant TensorFlow converter.
 This standardized format includes
 four essential FL methods
-(\lstinline{train}, \lstinline{infer}, \lstinline{parameters},
-and \lstinline{restore}).
+(\textsf{train}, \textsf{infer}, \textsf{parameters},
+and \textsf{restore}).
 
 
 \subsubsection{Unified Training APIs}
@@ -169,7 +170,7 @@ we modify the underlying ProtoBuf representations of
 Core ML models.
 Specifically,
 we employ Swift code generated from the relevant ProtoBuf definition files,
-and navigate nested model definitions to access parameters on iPhones.
+and navigate nested model definitions to access parameters on iOS.
 Consequently, our unified training APIs exhibit comparable functionality on
 both iOS and Android platforms.
 
