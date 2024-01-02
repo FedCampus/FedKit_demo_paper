@@ -208,6 +208,14 @@ Leveraging our complete control of the self-hosted Backend,
 \FedKit{}'s three-step FL workflow
 facilitates continuous delivery and training,
 as illustrated in Fig.~\ref{fig:fl-workflow}.
+
+\begin{figure}
+    \centering
+    \includegraphics*[width=0.9\linewidth]{fl_workflow.pdf}
+    \caption{\FedKit{} FL Workflow.}
+    \label{fig:fl-workflow}
+\end{figure}
+
 \subsubsection{Continuous Cross-Platform Model Delivery}
 Traditionally, models for on-device training are \textit{embedded} into client apps.
 However, this approach couples model delivery with app updates,
@@ -245,13 +253,6 @@ scheduling training and evaluation.
 This decision empowers our FL Servers to leverage Flower's flexibility and
 allow for FL algorithm customizations in Python.
 
-\begin{figure}
-    \centering
-    \includegraphics*[width=0.9\linewidth]{fl_workflow.pdf}
-    \caption{\FedKit{} FL Workflow.}
-    \label{fig:fl-workflow}
-\end{figure}
-
 \section{Live Demonstrations}
 
 \begin{figure}
@@ -265,6 +266,21 @@ We demonstrate \FedKit{}'s effectiveness under two settings.
 
 \subsubsection{Model Deployment in Demo Android/iOS App}
 % TODO: Setup and steps.
+
+\begin{table}
+    \centering
+    \small
+    \setlength{\tabcolsep}{3pt}
+\begin{tabular}{llllr}
+Device          & SoC               & Accel.        & RAM   & Time      \\\hline
+Nova 9 Pro      & Snapdragon 778G   & GPU           & 8GB   & 3s 583ms  \\
+iPhone 13 mini  & A15 Bionic        & GPU/NPU       & 4GB   & 656ms     \\
+\end{tabular}
+\caption{Configurations of Devices and Average Local Training Time Per Round in
+    A Previous Demo Run.
+}
+\label{tbl:demo-stats}
+\end{table}
 
 \subsubsection{\FedCampus{}}
 In the FedCampus experiment setup (Fig.~\ref{fig:fedcampus}),
