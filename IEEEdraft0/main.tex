@@ -255,17 +255,16 @@ allow for FL algorithm customizations in Python.
 
 \section{Live Demonstrations}
 
-\begin{figure}
-    \centering
-    \includegraphics*[width=0.9\linewidth]{fedcampus.pdf}
-    \caption{FedCampus Experiment Setup.}
-    \label{fig:fedcampus}
-\end{figure}
+We demonstrate \FedKit{}'s effectiveness in two settings.\footnote{
+    Demo video: \url{https://www.youtube.com/watch?v=TONTBkp_l6M}.
+}
 
-We demonstrate \FedKit{}'s effectiveness under two settings.
-
-\subsubsection{Model Deployment in Demo Android/iOS App}
-% TODO: Setup and steps.
+\subsubsection{Model Deployment on Demo Android/iOS App}
+We run an MNIST model written in Python through our model pipeline,
+and deploy it on a laptop running a \FedKit{} server instance.
+We then run FL across an Android and an iOS devices,
+as outlined in Table~\ref{tbl:demo-stats}.
+Finally, we modify the model and deploy the new version to showcase MLOps.
 
 \begin{table}
     \centering
@@ -283,7 +282,7 @@ iPhone 13 mini  & A15 Bionic        & GPU/NPU       & 4GB   & 656ms     \\
 \end{table}
 
 \subsubsection{\FedCampus{}}
-In the FedCampus experiment setup (Fig.~\ref{fig:fedcampus}),
+As illustrated in Fig.~\ref{fig:fedcampus},
 we self-hosted the Backend
 and displayed the real-time logs and losses on a connected laptop.
 Our app, powered by \FedKit{},
@@ -293,6 +292,13 @@ akin to \cite{khoa2022fedmcrnn}
 using data from the smartwatches.
 The results showcased a significant reduction in the model's training loss,
 demonstrating \FedKit{}'s effectiveness in real-world scenarios.
+
+\begin{figure}
+    \centering
+    \includegraphics*[width=0.9\linewidth]{fedcampus.pdf}
+    \caption{FedCampus Experiment Setup.}
+    \label{fig:fedcampus}
+\end{figure}
 
 % \section*{Acknowledgments}
 % We would like to thank Flower Labs for the discussion on on-device training.
