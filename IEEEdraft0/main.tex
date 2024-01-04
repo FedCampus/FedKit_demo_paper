@@ -72,28 +72,35 @@ FL is a promising technique to collaboratively train shared ML models on
 end devices while retaining private local data~\cite{wang2023federated}.
 However, most mobile FL systems cater to simulations on desktop computers.
 To guide FL algorithm design with real-world statistics,
-we aim to build a mobile FL platform for
+we aim to build a practical mobile FL platform for
 harnessing real users' health data on university campuses,
 which we named the \FedCampus{} project.
 
-Existing accessible FL systems fall short of \FedCampus{}' requirements,
+However,
+existing accessible FL systems fall short of \FedCampus{}' requirements,
 as we outline in Table~\ref{tbl:fn-systems}.
 Specifically, we identify three key challenges:
 \challa~to collaboratively train the same models across
 our users' diverse smartphones,
-we require cross-platform on-device training and
-cross-platform model aggregation;
+we require \textbf{cross-platform on-device training and model aggregation};
 \challb~to facilitate model development,
-we require a friendly development environment for our data scientists;
-\challc~to deploy new models on our mobile apps in production,
-we require a customizable and streamlined deployment procedure.
+we require a \textbf{friendly development environment for data scientists};
+\challc~to customize FL algorithms and update models in production,
+we require a \textbf{customizable and streamlined deployment procedure}.
 
 \section{Proposed Solution}
 
-\FedKit{} addresses challenges \challa{} and \challb{} by
-a cross-platform (Android-iOS) FL pipeline centered around ML models in
-Section~\ref{sec:pipeline},
-and addresses challenge \challc{} by flexible MLOps in Section~\ref{sec:mlops}.
+\FedKit{} is designed to enable practical \textbf{cross-platform} FL research on
+\textbf{Android and iOS}.
+In Section~\ref{sec:pipeline},
+we present an FL pipeline to convert Python-based models,
+and train and aggregate them across platforms,
+addressing challenge~\challa{}.
+For challenge~\challc{},
+our FL workflow enables \textbf{flexible MLOps} from the backend in production,
+as we detail in Section~\ref{sec:mlops}.
+Both the FL pipeline and workflow provide a familiar Python environment,
+addressing challenge~\challb{}.
 As an overview,
 \FedKit{} facilitates FL among Android and iOS client apps,
 coordinated by a single Backend server.
