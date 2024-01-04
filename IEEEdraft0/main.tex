@@ -22,9 +22,9 @@
         \node[shape=circle,draw,inner sep=.6pt] (char) {#1};}}
 \newcommand{\FedCampus}{\textsc{FedCampus}}
 \newcommand{\FedKit}{\textsc{FedKit}}
-\newcommand{\challa}{\circled{$\boldsymbol\alpha$}}
-\newcommand{\challb}{\circled{$\boldsymbol\beta$}}
-\newcommand{\challc}{\circled{$\boldsymbol\gamma$}}
+\newcommand{\challa}{\textbf{(a)}}
+\newcommand{\challb}{\textbf{(b)}}
+\newcommand{\challc}{\textbf{(c)}}
 
 \title
 {\FedKit{}: Enabling Cross-Platform Federated Learning for Android and iOS}
@@ -51,15 +51,16 @@
 \begin{abstract}
     We present \FedKit{}, a federated learning (FL) system tailored for
     cross-platform FL research on \textit{Android and iOS} devices.
-    \FedKit{} pipelines FL development by
-    enabling machine learning (ML) model conversion,
+    \FedKit{} pipelines cross-platform FL development by
+    enabling model conversion,
     hardware-accelerated training,
     and cross-platform model aggregation.
-    Our FL workflow supports flexible ML operations (MLOps) in production,
+    Our FL workflow supports flexible machine learning operations (MLOps) in production,
     facilitating continuous model delivery and training.
     We have deployed \FedKit{} in a real-world use case for
     health data analysis on Duke Kunshan University (DKU) campus,
     demonstrating its effectiveness.
+    % TODO: Xiaomin: in xxx various platforms such as xxx
     \FedKit{} is open-source at \url{https://github.com/FedCampus/FedKit}.
 \end{abstract}
 
@@ -71,13 +72,12 @@
 FL is a promising technique to collaboratively train shared ML models on
 end devices while retaining private local data~\cite{wang2023federated}.
 However, most mobile FL systems cater to simulations on desktop computers.
-To guide FL algorithm design with real-world statistics,
-we aim to build a practical mobile FL platform for
-harnessing real users' health data on university campuses,
-which we named the \FedCampus{} project.
+To enhance FL algorithm design with real-world data,
+we aim to build a practical mobile FL system for
+harnessing real user data.
 
 However,
-existing accessible FL systems fall short of \FedCampus{}' requirements,
+existing accessible mobile FL systems exhibit important limitations,
 as we outline in Table~\ref{tbl:fn-systems}.
 Specifically, we identify three key challenges:
 \challa~to collaboratively train the same models across
@@ -85,8 +85,10 @@ our users' diverse smartphones,
 we require \textbf{cross-platform on-device training and model aggregation};
 \challb~to facilitate model development,
 we require a \textbf{friendly development environment for data scientists};
+% TODO: xiaomin: The key requirement for "friendly" is not clear
 \challc~to customize FL algorithms and update models in production,
 we require a \textbf{customizable and streamlined deployment procedure}.
+% TODO: xiaomin: Again, avoid using these in problem description, we should clarify what customized and streamlined mean.
 
 \section{Proposed Solution}
 
@@ -179,6 +181,7 @@ Core ML models.
 Specifically,
 we employ Swift code generated from the relevant ProtoBuf definition files,
 and navigate nested model definitions to access parameters on iOS.
+% TODO: xiaomin: should be expanded
 Consequently, our unified training APIs exhibit comparable functionality on
 both iOS and Android platforms.
 
@@ -207,6 +210,7 @@ utilizing it during training.
 Finally, these unified parameters enable seamless cross-platform aggregation.
 
 \subsection{Flexible MLOps in Production}
+% TODO: xiaomin: What are the challenges of MLOPs in Production?
 \label{sec:mlops}
 \newcommand{\model}{$M$}
 \newcommand{\fs}{$S_\mathrm F$}
@@ -304,6 +308,7 @@ As illustrated in Fig.~\ref{fig:fedcampus},
 we showcase our self-hosted Backend,
 and display the real-time logs and losses on a connected laptop.
 The results showcased a significant reduction in the model's training loss,
+% TODO: xiaomin: and xxx (something about continous model training across platforms)
 demonstrating \FedKit{}'s effectiveness in real-world scenarios.
 
 \begin{figure}
