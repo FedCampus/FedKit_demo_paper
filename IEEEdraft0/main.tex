@@ -58,7 +58,7 @@
     Our FL workflow supports flexible ML operations (MLOps) in production,
     facilitating continuous model delivery and training.
     We have deployed \FedKit{} in a real-world use case for
-    exercise data analysis on Duke Kunshan University (DKU) campus,
+    health data analysis on Duke Kunshan University (DKU) campus,
     demonstrating its effectiveness.
     \FedKit{} is open-source at \url{https://github.com/FedCampus/FedKit}.
 \end{abstract}
@@ -72,8 +72,9 @@ FL is a promising technique to collaboratively train shared ML models on
 end devices while retaining private local data~\cite{wang2023federated}.
 However, most mobile FL systems cater to simulations on desktop computers.
 To guide FL algorithm design with real-world statistics,
-we proposed the \FedCampus{} project to build a mobile FL platform for
-harnessing real users' health data on university campuses.
+we aim to build a mobile FL platform for
+harnessing real users' health data on university campuses,
+which we named the \FedCampus{} project.
 
 Existing accessible FL systems fall short of \FedCampus{}' requirements,
 as we outline in Table~\ref{tbl:fn-systems}.
@@ -260,43 +261,48 @@ We demonstrate \FedKit{}'s effectiveness in two settings.\footnote{
 }
 
 \subsubsection{Model Deployment on Demo Android/iOS App}
-We run an MNIST model written in Python through our model pipeline,
-and deploy it on a laptop running a \FedKit{} server instance.
-We then run FL across an Android and an iOS devices,
-as outlined in Table~\ref{tbl:demo-stats}.
-Finally, we modify the model and deploy the new version to showcase MLOps.
+We demonstrate FL among
+two clients running an example Flutter client app,
+and a laptop running a \FedKit{} Backend.
+First, our \textit{FL model pipeline} is demonstrated.
+We convert a TensorFlow MNIST model and
+conduct FL with it across an Android and an iOS device.
+Second, to showcase \textit{MLOps},
+we modify the model and deploy the new version.
+As outlined in Table~\ref{tbl:demo-stats},
+the real-world statistics shows that
+the iOS device is over $5\times$ faster in local training despite
+having $0.5\times$ RAM.
 
 \begin{table}
     \centering
     \small
-    \setlength{\tabcolsep}{3pt}
+    \setlength{\tabcolsep}{5pt}
 \begin{tabular}{llllr}
-Device          & SoC               & Accel.        & RAM   & Time      \\\hline
-Nova 9 Pro      & Snapdragon 778G   & GPU           & 8GB   & 3s 583ms  \\
-iPhone 13 mini  & A15 Bionic        & GPU/NPU       & 4GB   & 656ms     \\
+Device      & SoC               & Acceleration  & RAM   & Time   \\\hline
+Nova 9 Pro  & Snapdragon 778G   & GPU           & 8GB   & 3.583s \\
+iPhone 13   & A15 Bionic        & GPU/NPU       & 4GB   & 0.656s \\
 \end{tabular}
-\caption{Configurations of Devices and Average Local Training Time Per Round in
-    A Previous Demo Run.
+\caption{Configurations of Devices and Average Local Training Time Per Round
+    (Two Local Epochs) in A Previous Demo Run.
 }
 \label{tbl:demo-stats}
 \end{table}
 
 \subsubsection{\FedCampus{}}
+The \FedCampus{} Android/iOS app leverages health data from
+DKU participants' smartwatches to perform FL on
+a sleep-efficiency prediction model.
 As illustrated in Fig.~\ref{fig:fedcampus},
-we self-hosted the Backend in DKU,
-and displayed the real-time logs and losses on a connected laptop.
-Our app, powered by \FedKit{},
-performed FL across Android and iOS devices,
-training a sleep-efficiency prediction model
-akin to \cite{khoa2022fedmcrnn}
-using data from the smartwatches.
+we showcase our self-hosted Backend,
+and display the real-time logs and losses on a connected laptop.
 The results showcased a significant reduction in the model's training loss,
 demonstrating \FedKit{}'s effectiveness in real-world scenarios.
 
 \begin{figure}
     \centering
     \includegraphics*[width=0.9\linewidth]{fedcampus.pdf}
-    \caption{FedCampus Experiment Setup.}
+    \caption{FedCampus Experiment Setup on DKU Campus.}
     \label{fig:fedcampus}
 \end{figure}
 
