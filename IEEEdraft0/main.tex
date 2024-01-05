@@ -49,19 +49,19 @@
 \maketitle
 
 \begin{abstract}
-    We present \FedKit{}, a federated learning (FL) system tailored for
-    cross-platform FL research on \textit{Android and iOS} devices.
-    \FedKit{} pipelines cross-platform FL development by
-    enabling model conversion,
-    hardware-accelerated training,
-    and cross-platform model aggregation.
-    Our FL workflow supports flexible machine learning operations (MLOps) in production,
-    facilitating continuous model delivery and training.
-    We have deployed \FedKit{} in a real-world use case for
-    health data analysis on Duke Kunshan University (DKU) campus,
-    demonstrating its effectiveness.
-    % TODO: Xiaomin: in xxx various platforms such as xxx
-    \FedKit{} is open-source at \url{https://github.com/FedCampus/FedKit}.
+We present \FedKit{}, a federated learning (FL) system tailored for
+cross-platform FL research on \textit{Android and iOS} devices.
+\FedKit{} pipelines cross-platform FL development by
+enabling model conversion,
+hardware-accelerated training,
+and cross-platform model aggregation.
+Our FL workflow supports flexible machine learning operations (MLOps) in production,
+facilitating continuous model delivery and training.
+We have deployed \FedKit{} in a real-world use case for
+health data analysis on Duke Kunshan University (DKU) campus,
+demonstrating its effectiveness.
+% TODO: Xiaomin: in xxx various platforms such as xxx
+\FedKit{} is open-source at \url{https://github.com/FedCampus/FedKit}.
 \end{abstract}
 
 % \begin{IEEEkeywords}
@@ -124,25 +124,24 @@ as shown in Fig.~\ref{cross_fl}.
     \centering
     \small
     % \setlength{\tabcolsep}{2pt}
-    \begin{tabular}{lcccccc}
-        Functionality         & \cite{he2020fedml}
-                                          & \cite{madrigal2023project}
-                                                      & \cite{mathur2021ondevice}
-                                                                  & \cite{hall2021syft}
-                                                                              &\FedKit{} \\
-        \hline
-        Android-Only          & \ding{51} & \ding{51} & \ding{51} & \ding{51} & \ding{51}       \\
-        iOS-Only              & \ding{55} & \ding{55} & \ding{51} & \ding{51} & \ding{51}       \\
-        Cross-Platform Aggregation
-                              & \ding{55} & \ding{55} & \ding{55} & \ding{51} & \ding{51}       \\
-        \hline
-        Training Acceleration & \ding{51} & \ding{51} & \ding{51} & \ding{55} & \ding{51}       \\
-        MLOps                 & \ding{51} & \ding{51} & \ding{55} & \ding{55} & \ding{51}       \\
-        Open-Source Backend   & \ding{55} & \ding{55} & \ding{51} & \ding{51} & \ding{51}       \\
-    \end{tabular}
-    \caption{Functionality Comparison among On-Smartphone FL Systems.
-    }
-    \label{tbl:fn-systems}
+    \newcommand{\Ys}{\ding{51}}
+    \newcommand{\No}{\ding{55}}
+\begin{tabular}{lcccccc}
+Functionality               & \cite{he2020fedml}
+                                    & \cite{madrigal2023project}
+                                            & \cite{mathur2021ondevice}
+                                                    & \cite{hall2021syft}
+                                                            & \FedKit{}\\
+\hline
+Android-Only                & \Ys   & \Ys   & \Ys   & \Ys   & \Ys   \\
+iOS-Only                    & \No   & \No   & \Ys   & \Ys   & \Ys   \\
+Cross-Platform Aggregation  & \No   & \No   & \No   & \Ys   & \Ys   \\\hline
+Training Acceleration       & \Ys   & \Ys   & \Ys   & \No   & \Ys   \\
+MLOps                       & \Ys   & \Ys   & \No   & \No   & \Ys   \\
+Open-Source Backend         & \No   & \No   & \Ys   & \Ys   & \Ys   \\
+\end{tabular}
+\caption{Functionality Comparison among On-Smartphone FL Systems.}
+\label{tbl:fn-systems}
 \end{table}
 
 \begin{figure}
@@ -324,12 +323,7 @@ demonstrating \FedKit{}'s effectiveness in real-world scenarios.
     \label{fig:fedcampus}
 \end{figure}
 
-% \section*{Acknowledgments}
-% We would like to thank Flower Labs for the discussion on on-device training.
-
 \bibliographystyle{IEEEtran}
 \bibliography{main}
-\vspace{12pt}
-\color{red}
 
 \end{document}
