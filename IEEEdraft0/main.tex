@@ -71,7 +71,8 @@
 
 FL is a promising technique to collaboratively train shared ML models on
 end devices while retaining private local data~\cite{wang2023federated}.
-However, most mobile FL systems cater to simulations on desktop computers.
+However, most FL research experiments with simulations on desktop computers,
+which may overlook constraints in realistic FL applications.
 To enhance FL algorithm design with real-world data,
 we aim to build a practical mobile FL system for
 harnessing real user data.
@@ -103,8 +104,8 @@ our FL workflow enables \textbf{flexible MLOps} from the backend in production,
 as we detail in Section~\ref{sec:mlops}.
 Both the FL pipeline and workflow provide a familiar Python environment,
 addressing challenge~\challb{}.
-As an overview,
-\FedKit{} facilitates FL among Android and iOS client apps,
+Overall,
+\FedKit{} facilitates FL across Android and iOS client devices,
 coordinated by a single Backend server.
 Each client trains a local model with private data,
 and the Backend performs cross-platform aggregation of these local models to update the global model.
@@ -152,6 +153,7 @@ as shown in Fig.~\ref{cross_fl}.
 \end{figure}
 
 \subsubsection{Model Conversion}
+% TODO: Jiaqi: State: why model conversion and what are the implementation challenges 
 We begin in Python by converting models into formats compatible with
 Android (TensorFlow Lite or TFLite) and iOS (Core ML).
 Core ML defines a fixed model structure and provides
@@ -175,6 +177,7 @@ On Android, these APIs invoke the TFLite interpreter to call
 our \textit{standardized methods} defined in \textit{Model Conversion}.
 However, on iOS, our experimentation revealed that
 Core ML \textit{forbids} directly setting parameters, which could impede FL.
+% TODO: Jiaqi: I think the challenge should be highlight at the beginning of this paragraph. 
 To overcome this constraint,
 we modify the underlying ProtoBuf representations of
 Core ML models.
@@ -194,6 +197,7 @@ retrieving and setting parameters for TFLite and Core ML.
 1)
 The TFLite interpreter only accepts inputs/outputs as maps from \textit{names} to
 \textit{tensors}.
+% TODO: Jiaqi: should followed by (2).  And then, provide the details of your solution
 Therefore, during \textit{Model Conversion},
 we assign index-based names to each parameter layer and
 dynamically generate the concrete methods that accept these arguments.
@@ -273,17 +277,19 @@ We demonstrate \FedKit{}'s effectiveness in two settings.\footnote{
 
 \subsubsection{Model Deployment on Demo Android/iOS App}
 We demonstrate FL among
-two clients running an example Flutter client app,
+devices running an example Flutter client app,
 and a laptop running a \FedKit{} Backend.
-First, our \textit{FL model pipeline} is demonstrated.
+First, we demonstrate our seamless \textit{FL model pipeline}.
 We convert a TensorFlow MNIST model and
 conduct FL with it across an Android and an iOS device.
 Second, to showcase \textit{MLOps},
-we modify the model and deploy the new version.
+we modify the model and deploy its new version.
 As outlined in Table~\ref{tbl:demo-stats},
-the real-world statistics shows that
-the iOS device is over $5\times$ faster in local training despite
-having $0.5\times$ RAM.
+our telemetry shows that
+the iOS device is over 5$\times$ faster in local training despite
+having 0.5$\times$ RAM,
+illustrating how \FedKit{} will provide real-world statistics to
+enhance FL algorithm design.
 
 \begin{table}
     \centering
