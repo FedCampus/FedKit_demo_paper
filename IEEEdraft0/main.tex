@@ -151,12 +151,12 @@ Open-Source Backend         & \No   & \No   & \Ys   & \Ys   & \Ys   \\
 \end{figure}
 
 \subsubsection{Model Conversion}
-% TODO: Jiaqi: State: why model conversion and what are the implementation challenges 
-We begin in Python by converting models into formats compatible with
+To enable model creation in Python,
+we begin by converting models into formats compatible with
 Android (TensorFlow Lite or TFLite) and iOS (Core ML).
 Core ML defines a fixed model structure and provides
 the official converter CoreMLTools.
-For TFLite, we \textit{standardized} a model format, and then
+For TFLite, we standardized a model format, and then
 developed a compliant TensorFlow converter.
 This standardized format includes
 four essential FL methods
