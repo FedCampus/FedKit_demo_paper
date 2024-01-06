@@ -22,9 +22,9 @@
         \node[shape=circle,draw,inner sep=.6pt] (char) {#1};}}
 \newcommand{\FedCampus}{\textsc{FedCampus}}
 \newcommand{\FedKit}{\textsc{FedKit}}
-\newcommand{\challa}{\textbf{(a)}}
-\newcommand{\challb}{\textbf{(b)}}
-\newcommand{\challc}{\textbf{(c)}}
+\newcommand{\challa}{\textbf{(C0)}}
+\newcommand{\challb}{\textbf{(C1)}}
+\newcommand{\challc}{\textbf{(C2)}}
 
 \title
 {\FedKit{}: Enabling Cross-Platform Federated Learning for Android and iOS}
@@ -58,7 +58,7 @@ and cross-platform model aggregation.
 Our FL workflow supports flexible machine learning operations (MLOps) in production,
 facilitating continuous model delivery and training.
 We have deployed \FedKit{} in a real-world use case for
-health data analysis on Duke Kunshan University (DKU) campus,
+health data analysis on university campuses,
 demonstrating its effectiveness.
 % TODO: Xiaomin: in xxx various platforms such as xxx
 % @Xiaomin: What are you thinking about for the xxx?
@@ -70,41 +70,40 @@ demonstrating its effectiveness.
 
 \section{Motivation and Analysis}
 
-FL is a promising technique to collaboratively train shared ML models on
-end devices while retaining private local data~\cite{wang2023federated}.
-However, most FL research experiments with simulations on desktop computers,
+FL is promising for training shared ML models collaboratively on
+end devices while preserving data privacy~\cite{wang2023federated}.
+Yet, most FL research relies on simulations on desktop computers,
 which may overlook constraints in realistic FL applications.
 To enhance FL algorithm design with real-world data,
-we aim to build a practical mobile FL system for
+we aim to build a practical mobile FL system
 harnessing real user data.
 
 However,
 existing accessible mobile FL systems exhibit important limitations,
-as we outline in Table~\ref{tbl:fn-systems}.
-Specifically, we identify three key challenges:
-\challa~to collaboratively train the same models across
+as outlined in Table~\ref{tbl:fn-systems}.
+Specifically, we identify \textbf{three key challenges}:
+\challa~To collaboratively train the same models across
 our users' diverse smartphones,
-we require \textbf{cross-platform on-device training and model aggregation};
-\challb~while developing models for mobile FL,
-data scientists are hindered by
-the unfamiliar mobile \textbf{development environment};
-\challc~to customize FL algorithms and update models in production,
-we need to \textbf{remotely control FL models and training} on
+we require \textbf{cross-platform on-device training and model aggregation}.
+\challb~To customize FL algorithms and update models in production,
+we need \textbf{maximal control over the FL process} on
 user' devices from our end.
+\challc~The unfamiliar mobile \textbf{development environment} hinders
+data scientists while developing models for mobile FL.
 
 \section{Proposed Solution}
 
 \FedKit{} is designed to enable practical \textbf{cross-platform} FL research on
 \textbf{Android and iOS}.
-In Section~\ref{sec:pipeline},
-we present an FL pipeline to convert Python-based models,
-and train and aggregate them across platforms,
-addressing challenge~\challa{}.
-For challenge~\challc{},
+In Sec.~\ref{sec:pipeline},
+we present an FL pipeline that converts Python-based models,
+and trains and aggregates them across platforms,
+addressing~\challa{}.
+For~\challb{},
 our FL workflow enables \textbf{flexible MLOps} from the backend in production,
-as we detail in Section~\ref{sec:mlops}.
-Both the FL pipeline and workflow provide a familiar Python environment,
-addressing challenge~\challb{}.
+as we detail in Sec.~\ref{sec:mlops}.
+The entire procedure tackles~\challc{} by
+ensuring a user-friendly development environment in Python.
 Overall,
 \FedKit{} facilitates FL across Android and iOS client devices,
 coordinated by a single Backend server.
@@ -303,7 +302,7 @@ iPhone 13   & A15 Bionic        & GPU/NPU       & 4GB   & 0.656s \\
 \end{table}
 
 \subsubsection{\FedCampus{}}
-To harness real users' health data on DKU campus,
+To harness real users' health data on university campuses,
 we developed the \FedCampus{} Android/iOS app to leverage data from
 participants' smartwatches to perform FL on
 a sleep-efficiency prediction model.
@@ -317,7 +316,7 @@ demonstrating \FedKit{}'s effectiveness in real-world scenarios.
 \begin{figure}
     \centering
     \includegraphics*[width=0.9\linewidth]{fedcampus.pdf}
-    \caption{\FedCampus{} Experiment Setup on DKU Campus.}
+    \caption{\FedCampus{} Experiment Setup on Duke Kunshan University Campus.}
     \label{fig:fedcampus}
 \end{figure}
 
