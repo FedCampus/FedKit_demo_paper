@@ -61,6 +61,7 @@ We have deployed \FedKit{} in a real-world use case for
 health data analysis on Duke Kunshan University (DKU) campus,
 demonstrating its effectiveness.
 % TODO: Xiaomin: in xxx various platforms such as xxx
+% @Xiaomin: What are you thinking about for the xxx?
 \FedKit{} is open-source at \url{https://github.com/FedCampus/FedKit}.
 \end{abstract}
 
@@ -84,12 +85,12 @@ Specifically, we identify three key challenges:
 \challa~to collaboratively train the same models across
 our users' diverse smartphones,
 we require \textbf{cross-platform on-device training and model aggregation};
-\challb~to facilitate model development,
-we require a \textbf{friendly development environment for data scientists};
-% TODO: xiaomin: The key requirement for "friendly" is not clear
+\challb~while developing models for mobile FL,
+data scientists are hindered by
+the unfamiliar mobile \textbf{development environment};
 \challc~to customize FL algorithms and update models in production,
-we require a \textbf{customizable and streamlined deployment procedure}.
-% TODO: xiaomin: Again, avoid using these in problem description, we should clarify what customized and streamlined mean.
+we need to \textbf{remotely control FL models and training} on
+user' devices from our end.
 
 \section{Proposed Solution}
 
