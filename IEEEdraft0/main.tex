@@ -122,7 +122,6 @@ as shown in Fig.~\ref{cross_fl}.
 
 \begin{table}
     \centering
-    \small
     % \setlength{\tabcolsep}{2pt}
     \newcommand{\Ys}{\ding{51}}
     \newcommand{\No}{\ding{55}}
@@ -192,33 +191,31 @@ both iOS and Android platforms.
 Aggregation necessitates
 \textit{uniform parameter representations},
 which poses primary challenges in
-retrieving and setting parameters for TFLite and Core ML.
-1)
-The TFLite interpreter only accepts inputs/outputs as maps from \textit{names} to
-\textit{tensors}.
-% TODO: Jiaqi: should followed by (2).  And then, provide the details of your solution
-Therefore, during \textit{Model Conversion},
-we assign index-based names to each parameter layer and
-dynamically generate the concrete methods that accept these arguments.
-During training, we call the methods with these index-based names to
-access parameters.
-2)
-Core ML permits \textit{only} specific layers to be \textit{updatable} and
+retrieving and setting parameters for Core ML and TFLite.
+1)~Core ML permits \textit{only} specific layers to be \textit{updatable} and
 only provides their parameters post-training.
 Thus, to obtain \textit{other layers'} parameters,
 we implemented a solution using ProtoBuf manipulation.
 This approach involves recording layer information
 during \textit{Model Conversion} and
 utilizing it during training.
+2)~The TFLite interpreter only accepts inputs/outputs as maps from
+\textit{names} to \textit{tensors}.
+Therefore, during \textit{Model Conversion},
+we assign index-based names to each parameter layer and
+dynamically generate the concrete methods that accept these arguments.
+During training, we call the methods with these index-based names to
+access parameters.
 Finally, these unified parameters enable seamless cross-platform aggregation.
 
 \subsection{Flexible MLOps in Production}
-% TODO: xiaomin: What are the challenges of MLOPs in Production?
 \label{sec:mlops}
 \newcommand{\model}{$M$}
 \newcommand{\fs}{$S_\mathrm F$}
-\FedKit{} empowers researchers to deploy models and algorithms continuously (MLOps)
-in production.
+In production,
+FL development faces challenges from
+the lack of direct control over end devices.
+\FedKit{} empowers researchers to deploy models and algorithms continuously (MLOps).
 Leveraging our complete control of the self-hosted Backend,
 \FedKit{}'s three-step FL workflow
 facilitates continuous delivery and training,
@@ -292,7 +289,6 @@ enhance FL algorithm design.
 
 \begin{table}
     \centering
-    \small
     \setlength{\tabcolsep}{5pt}
 \begin{tabular}{llllr}
 Device      & SoC               & Acceleration  & RAM   & Time   \\\hline
