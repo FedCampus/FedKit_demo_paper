@@ -289,11 +289,12 @@ enhance FL algorithm design.
 
 \begin{table}
     \centering
-    \setlength{\tabcolsep}{5pt}
+    \setlength{\tabcolsep}{4pt}
 \begin{tabular}{llllr}
-Device      & SoC               & Acceleration  & RAM   & Time   \\\hline
-Nova 9 Pro  & Snapdragon 778G   & GPU           & 8GB   & 3.583s \\
-iPhone 13   & A15 Bionic        & GPU/NPU       & 4GB   & 0.656s \\
+% Added info on RAM speed propose replacing GPU(/NPU) with OpenCL and CoreML
+Device      & SoC               & Accel.        & RAM           & Time   \\\hline
+Nova 9 Pro  & Snapdragon 778G   & OpenCL        & 8GB LPDDR5    & 3.583s \\
+iPhone 13   & A15 Bionic, 4 GPU & CoreML        & 4GB LPDDR4X   & 0.656s \\
 \end{tabular}
 \caption{Configurations of Devices and Average Local Training Time Per Round
     (Two Local Epochs) in A Previous Demo Run.
