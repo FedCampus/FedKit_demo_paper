@@ -177,8 +177,8 @@ However, on iOS, our experimentation revealed that
 Core ML \textit{forbids} directly setting parameters, which could impede FL.
 % TODO: Jiaqi: I think the challenge should be highlight at the beginning of this paragraph. 
 To overcome this constraint,
-we modify the underlying ProtoBuf representations of
-Core ML models.
+we apply a mostly undocumented method that
+modifies the underlying ProtoBuf representations of Core ML models.
 Specifically,
 we employ Swift code generated from the relevant ProtoBuf definition files,
 and navigate nested model definitions to access parameters on iOS.
@@ -260,7 +260,7 @@ This dynamic approach ensures that
 newly delivered models can be immediately trained with new FL Servers
 without affecting ongoing ones.
 Furthermore,
-these FL Servers employ the Flower FL Framework for
+these FL Servers employ the Flower FL Framework~\cite{mathur2021ondevice} for
 scheduling training and evaluation.
 This decision empowers our FL Servers to leverage Flower's flexibility and
 allow for FL algorithm customizations in Python.
