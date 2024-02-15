@@ -24,7 +24,13 @@ We removed the mentioning that it is undocumented. Adding that back.
 ### **Demo Submission Reviews 2**
 
 > The paper does not discuss how platform differences might affect model
-> performance, and the YouTube demo provided is inaccessible.
+> performance,
+
+Because we did not explore that.
+
+> and the YouTube demo provided is inaccessible.
+
+Fixed by using `hyperref`.
 
 ### **Demo Submission Reviews 3**
 
@@ -34,7 +40,7 @@ We removed the mentioning that it is undocumented. Adding that back.
 
 ### **Demo Submission Reviews 4**
 
-> Not enough benchmarks are compared with The live demonstration only
+> Not enough benchmarks are compared with. The live demonstration only
 > demonstrate the reduction of training loss but it is not enough to
 > showcase the performance of the system.
 >
@@ -50,6 +56,11 @@ We removed the mentioning that it is undocumented. Adding that back.
 > - The authors only provided results on an Android device and an iOS
 >     device while results on more devices particularly Android devices
 >     from different manufacturers are expected.
->
+
+This demo is not (yet) a benchmark.
+
 > - It is better that Fig. 3 is to show training progress rather than a
 >     photo illustrating the setup.
+
+Unclear how we can show the training progress in a photo…
+We only have these photos.

@@ -6,6 +6,7 @@
 **.fls
 **.log
 **.gz
+**.out
 **.pdf
 !IEEEpapers/*.pdf
 !*/images/*
