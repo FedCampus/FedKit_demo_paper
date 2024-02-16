@@ -108,7 +108,8 @@ Overall,
 \FedKit{} facilitates FL across Android and iOS client devices,
 coordinated by a single Backend server.
 Each client trains a local model with private data,
-and the Backend performs cross-platform aggregation of these local models to update the global model.
+and the Backend performs cross-platform aggregation of these local models to
+update the global model.
 
 \subsection{Cross-Platform FL Model Pipeline}
 \label{sec:pipeline}
@@ -190,14 +191,14 @@ both iOS and Android platforms.
 \subsubsection{Cross-Platform Aggregation}
 Aggregation necessitates
 \textit{uniform parameter representations},
-which poses primary challenges in
+posing primary challenges in
 retrieving and setting parameters for Core ML and TFLite.
 1)~Core ML permits \textit{only} specific layers to be \textit{updatable} and
 only provides their parameters post-training.
 Thus, to obtain \textit{other layers'} parameters,
 we implemented a solution using ProtoBuf manipulation.
 This approach involves recording layer information
-during \textit{Model Conversion} and
+in \textit{Model Conversion} and
 utilizing it during training.
 2)~The TFLite interpreter only accepts inputs/outputs as maps from
 \textit{names} to \textit{tensors}.
@@ -273,11 +274,14 @@ We demonstrate \FedKit{}'s effectiveness in two settings.\footnote{
 
 \subsubsection{Model Deployment on Demo Android/iOS App}
 We demonstrate FL among
-devices running an example Flutter client app,
+devices running a Flutter client app
 and a laptop running a \FedKit{} Backend.
 First, we demonstrate our seamless \textit{FL model pipeline}.
-We convert a TensorFlow MNIST model and
-conduct FL with it across an Android and an iOS device.
+We convert a TensorFlow MNIST model,
+and conduct \textit{normal} FL across an Android and an iOS device,
+heterogeneous devices.
+Note that TFLite, Core ML, and the aggregation strategy determine the model
+performance.
 Second, to showcase \textit{MLOps},
 we modify the model and deploy its new version.
 As outlined in Table~\ref{tbl:demo-stats},
@@ -290,9 +294,9 @@ enhance FL algorithm design.
 \begin{table}
     \centering
     \setlength{\tabcolsep}{4pt}
-\begin{tabular}{llllr}
+\begin{tabular}{lllll}
 % Added info on RAM speed propose replacing GPU(/NPU) with OpenCL and CoreML
-Device      & SoC               & Accel.        & RAM           & Time   \\\hline
+Device      & System on a Chip  & Accel.        & RAM           & Time   \\\hline
 Nova 9 Pro  & Snapdragon 778G   & OpenCL        & 8GB LPDDR5    & 3.583s \\
 iPhone 13   & A15 Bionic, 4 GPU & CoreML        & 4GB LPDDR4X   & 0.656s \\
 \end{tabular}

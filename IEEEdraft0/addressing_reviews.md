@@ -28,6 +28,8 @@ We removed the mentioning that it is undocumented. Adding that back.
 
 Because we did not explore that.
 
+We now state that the FL process is "normal".
+
 > and the YouTube demo provided is inaccessible.
 
 Fixed by using `hyperref`.
@@ -35,21 +37,39 @@ Fixed by using `hyperref`.
 ### **Demo Submission Reviews 3**
 
 > It is unclear how the version of the OS in cross-platform affects the
-> training, or can the model trained on one platform affect the
+> training,
+
+We did not explore that deep.
+
+> or can the model trained on one platform affect the
 > aggregation with other models?
+
+We observed that the training is "normal".
+Unfortunately, we do not have formal comparisons.
 
 ### **Demo Submission Reviews 4**
 
 > Not enough benchmarks are compared with. The live demonstration only
 > demonstrate the reduction of training loss but it is not enough to
 > showcase the performance of the system.
->
+
+Benchmarks would be benchmarking the performance of TFLite/ Core ML +
+the aggregation strategy used.
+Added a note on that.
+
 > The only concerning the reviewer has is that there is not
 > enough assessment for their proposed FedKit system except the train time
 > is in a few seconds (for two local epochs). Still, it seems slow and we
-> do not know how it scales, like how many parameters are used in the
+> do not know how it scales,
+
+Right, we don't have detailed benchmarks.
+
+> like how many parameters are used in the
 > model, the size of dataset, etc. and some details of the training model
 > are missing. Some discussion on that is expected.
+
+We omit these details to save space.
+The important point here is not how it performs, but that it works.
 
 ### **Demo Submission Reviews 5**
 
