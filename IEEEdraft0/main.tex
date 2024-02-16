@@ -26,10 +26,34 @@
 \newcommand{\challb}{\textbf{(C1)}}
 \newcommand{\challc}{\textbf{(C2)}}
 
+
+\setlength\floatsep{0.5\baselineskip plus 1pt minus 2pt}
+\setlength\textfloatsep{0.5\baselineskip plus 1pt minus 2pt}
+\setlength\intextsep{0.5\baselineskip plus 1pt minus 2 pt}
+\renewcommand\topfraction{0.95}
+\renewcommand\bottomfraction{0.95}
+\renewcommand\textfraction{0.05}
+\renewcommand\floatpagefraction{0.95}
+\setlength{\abovecaptionskip}{3pt plus 0pt minus 2pt}
+\setlength{\skip\footins}{0.3cm}
+
+\abovedisplayshortskip=3pt
+\belowdisplayshortskip=3pt
+\abovedisplayskip=5pt
+\belowdisplayskip=5pt
+
+
+
+
+
+
 \title
 {\FedKit{}: Enabling Cross-Platform Federated Learning for Android and iOS}
 
-\author{\IEEEauthorblockN{Sichang He\IEEEauthorrefmark{1}, Beilong Tang\IEEEauthorrefmark{1}, Boyan Zhang\IEEEauthorrefmark{1}, Jiaoqi Shao\IEEEauthorrefmark{1}\IEEEauthorrefmark{2}, Xiaomin Ouyang\IEEEauthorrefmark{3}, Daniel\,Nata Nugraha\IEEEauthorrefmark{4}, Bing Luo\IEEEauthorrefmark{1}}
+
+
+\author{
+\IEEEauthorblockN{Sichang He\IEEEauthorrefmark{1}, Beilong Tang\IEEEauthorrefmark{1}, Boyan Zhang\IEEEauthorrefmark{1}, Jiaoqi Shao\IEEEauthorrefmark{1}\IEEEauthorrefmark{2}, Xiaomin Ouyang\IEEEauthorrefmark{3}, Daniel\,Nata Nugraha\IEEEauthorrefmark{4}, Bing Luo\IEEEauthorrefmark{1}}
     \IEEEauthorblockA{\IEEEauthorrefmark{1}% Data Science Research Center,
         Duke Kunshan University, Jiangsu, China,
     % }
@@ -44,10 +68,9 @@
     % \IEEEauthorblockA{
         \IEEEauthorrefmark{4}Flower Labs GmbH, Winterhuder Weg 29, 22085 Hamburg, Germany
     }% <-this % stops an unwanted space
-}
+\thanks{This work of Sichang He, Beilong Tang, and Boyan Zhang was supported by DKU Undergraduate Studies Office through the Summer Research Scholars program. The work of Jiaqi Shao and Bing Luo was supported by the Suzhou Frontier Science and Technology Program (SYG202310). (Corrsponding author: Bing Luo.)}}
 
 \maketitle
-
 \begin{abstract}
 We present \FedKit{}, a federated learning (FL) system tailored for
 cross-platform FL research on \textit{Android and iOS} devices.
@@ -69,7 +92,6 @@ demonstrating its effectiveness.
 % \end{IEEEkeywords}
 
 \section{Motivation and Analysis}
-
 FL is promising for training shared ML models collaboratively on
 end devices while preserving data privacy~\cite{farcas2023demo}.
 Yet, most FL research relies on simulations on desktop computers,
@@ -149,6 +171,7 @@ Open-Source Backend         & \No   & \No   & \Ys   & \Ys   & \Ys   \\
     \includegraphics*[width=\linewidth]{model_pipeline.pdf}
     \caption{\FedKit{} Model Pipeline for Cross-Platform FL.}
     \label{cross_fl}
+        \vspace{-1mm}
 \end{figure}
 
 \subsubsection{Model Conversion}
@@ -225,8 +248,10 @@ as illustrated in Fig.~\ref{fig:fl-workflow}.
 \begin{figure}
     \centering
     \includegraphics*[width=0.8\linewidth]{fl_workflow.pdf}
+    \vspace{-1mm}
     \caption{\FedKit{} FL Workflow.}
     \label{fig:fl-workflow}
+    \vspace{-1mm}
 \end{figure}
 
 \subsubsection{Continuous Cross-Platform Model Delivery}
@@ -304,6 +329,7 @@ iPhone 13   & A15 Bionic, 4 GPU & CoreML        & 4GB LPDDR4X   & 0.656s \\
     (Two Local Epochs) in A Previous Demo Run.
 }
 \label{tbl:demo-stats}
+    \vspace{-2mm}
 \end{table}
 
 \subsubsection{\FedCampus{}}
@@ -321,8 +347,10 @@ demonstrating \FedKit{}'s effectiveness in real-world scenarios.
 \begin{figure}
     \centering
     \includegraphics*[width=0.9\linewidth]{fedcampus.pdf}
+       \vspace{-1mm}
     \caption{\FedCampus{} Experiment Setup on Duke Kunshan University Campus.}
     \label{fig:fedcampus}
+        \vspace{-1mm}
 \end{figure}
 
 \bibliographystyle{IEEEtran}
